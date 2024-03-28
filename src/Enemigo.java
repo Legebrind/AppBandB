@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Enemigo {
 
     private String Nombre;
-    private String AreaPutada;
+    private String[] AreaPutada;
     public String getAreaPutada() {
         return AreaPutada;
     }

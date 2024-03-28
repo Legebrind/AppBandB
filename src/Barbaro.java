@@ -2,18 +2,22 @@
 //crear una clase TablaPG en la mesa y llamar al metodo
 //Barbaro.setPG("TablaPG.getPg(Nivel_de_Mundo,NR)")
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Barbaro extends Clases{
 
-    private HashMap<int,String> Furia,Sentido_Trampas;//tabla que controla los valores de las aptitudes especiales
+    private HashMap<Integer,String> Furia,Sentido_Trampas;//tabla que controla los valores de las aptitudes especiales
     private ArrayList<String> Aptitudes; //Se guardan los titulos de las aptitudes especiales
     
     public Barbaro (){
+        setNombre();
         setAtaqueBase();
         setFuria();
         setSentido_Trampas();
         setNR(3);
         setTipoDano("Cortante");
-        setSalvacion(0,"Fortaleza");
+        setSalvacion("Fortaleza");
         setAtaque(TablaAtaque.get(1));
         setAptitudes(1);
         EquipoInicial();
@@ -42,10 +46,7 @@ public class Barbaro extends Clases{
         this.TablaAtaque.put(15,13);
 
     } 
-    public abstract int getAtaqueBase(int a){
-        return this.TablaAtaque.get(a);
-
-    }
+ 
     private void setFuria(){
         this.Furia.put(1,"Furia x2");
         this.Furia.put(2,"Furia x2");
@@ -80,6 +81,7 @@ private void setSentido_Trampas(){
     this.Sentido_Trampas.put(13,"Sentido trampas 3");
     this.Sentido_Trampas.put(14,"Sentido trampas 4");
     this.Sentido_Trampas.put(15,"Sentido trampas 4");
+}
 public String getFuria(int a){
 
     return this.Furia.get(a);
@@ -94,7 +96,20 @@ public void setAptitudes(int nivel){
  if(nivel==6){
     this.Aptitudes.add(2,"Reflejos_Rapidos");
  }
+ 
 }
 
+public ArrayList<String> getAptitudes(){
+
+    return this.Aptitudes;
 }
+
+
+public int getAtaqueBase(int NivelMundo) {
+   return this.TablaAtaque.get(NivelMundo);
+}
+
+
+
+
 }

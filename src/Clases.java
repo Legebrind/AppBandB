@@ -6,6 +6,8 @@ public abstract class Clases extends Jugador{
     private int Ataque, NR, PG;
     private ArrayList<String> TipoDano,Salvaciones;
     private ArrayList<Objeto> Equipo;
+    private int EquipoMax=4;
+    private int EquipoActual=0;
     protected HashMap <Integer, Integer> TablaAtaque;
     protected void setAtaque(int a){
         this.Ataque=a;
@@ -42,9 +44,23 @@ public abstract class Clases extends Jugador{
         return this.PG;
     }
 
-    public abstract int getAtaqueBase();
+    public abstract int getAtaqueBase(int NivelMundo);
     public void EquipoInicial(){
-        this.Equipo= new ArrayList (4);
+        this.Equipo= new ArrayList<Objeto>(4); 
+    }
+    public void equipar(Objeto objeto){
+    if (EquipoActual<3){
+        this.Equipo.add(EquipoActual,objeto);
+        EquipoActual++;
+    }              
+    else{System.out.println("Ande vas, no te caben mas equipo");}
     }
 
-}
+    public void eliminarEquipo(int a){
+        this.Equipo.remove(a);
+        EquipoActual--;
+    }
+        }
+
+    
+

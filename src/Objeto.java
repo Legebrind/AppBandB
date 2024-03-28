@@ -1,12 +1,13 @@
-public class Objeto{
+public abstract class Objeto{
     //Campos:
     private String Nombre;
     private int Nivel;
-    private String[] Descripcion;
+    private String Descripcion;
+   
     //Constructor:
     public Objeto(){
     }
-    public Objeto(String Nombre, int Nivel, String[] Descripcion){
+    public Objeto(String Nombre, int Nivel, String Descripcion){
         this.Nombre=Nombre;
         this.Nivel=Nivel;
         this.Descripcion=Descripcion;
@@ -21,8 +22,8 @@ public void setNivel(int Nivel){
     this.Nivel=Nivel;
 
 }
-public void setDescripcion(String[] Descripcion){
-this.Descripcion=Descripcion;
+public void setDescripcion(String string){
+this.Descripcion=string;
 }
 public String getNombre(){
     return this.Nombre;
@@ -32,7 +33,7 @@ public int getNivel(){
     return this.Nivel;
 
 }
-public String[] getDescripcion(){
+public String getDescripcion(){
     return this.Descripcion;
 
 }

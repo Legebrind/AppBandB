@@ -1,13 +1,20 @@
 //Clase Jugador, es abstracta junto con la clase Clases, ambas definen la clase final que elegirá el jugador
 //quedando definidos todos los campos y métodos para acceder a ellos.
+//Jugador y Clases se pueden usar para definir enemigos.
+
+import java.util.Scanner;
 
 public abstract class Jugador {
     private String Nombre;//Nombre del jugador
-    private Boolean Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
+    private boolean Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
     private int FD;
     
-    protected void setNombre(String Nom){
+    protected void setNombre(){
+        Scanner sc =new Scanner(System.in);
+        System.out.println("Introduce tu nombre");
+        String Nom = sc.nextLine();
         this.Nombre=Nom;
+        sc.close();
     }
     protected void setJefe(Boolean a){
         this.Jefe=a;
@@ -27,11 +34,13 @@ public abstract class Jugador {
     protected String getNombre(){
         return this.Nombre;
     }
-    protected Boolean getJefe(){
+    protected boolean getJefe(){
         return this.Jefe;
         }
     
-
+        protected int getFD(int a){
+            return this.FD=a;
+        }
 
 
 }

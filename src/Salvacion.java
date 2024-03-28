@@ -5,7 +5,7 @@ import java.util.HashMap;
 //3.Voluntad
 
 public class Salvacion{
-private HashMap<int, String> Salvaciones;
+private HashMap<Integer, String> Salvaciones;
 
 public Salvacion(){
     Salvaciones.put(1,"Fortaleza");

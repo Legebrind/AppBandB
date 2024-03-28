@@ -1,4 +1,6 @@
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.random.RandomGenerator;
 
@@ -44,4 +46,26 @@ Scanner sc=new Scanner(System.in);
     
 
 }
-}
+
+public void leer_Txt(String txt){
+
+   
+            try {
+                File archivo = new File(txt);
+                Scanner scanner = new Scanner(archivo);
+    
+                while (scanner.hasNextLine()) {
+                    String linea = scanner.nextLine();
+                    System.out.println(linea);
+                }
+    
+                scanner.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    
+
+
