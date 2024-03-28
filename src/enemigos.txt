@@ -1,0 +1,3 @@
+Kobol,1,1,3
+Esqueleto,1,1,4
+Necrófago,1,1,10

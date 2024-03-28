@@ -8,37 +8,13 @@ public class Grupo {
     private HashMap<Integer,String> ListaClases;
     
     public Grupo(){
-        jugadores = new ArrayList<>();
-        ListaClases =new HashMap<>();
+        jugadores = new ArrayList<Jugador>();
+        ListaClases =new HashMap<Integer, String>();
         crearlistadoClases();
         numeroJugadores();
     }
 
-    public void agregarJugador(int a) {
-        Jugador jugador;
-        Scanner sc =new Scanner(System.in);
-        System.out.println("Jugador nº"+a+ "¿Que clase quieres jugar?\n");
-        System.out.println(ListaClases);
-        System.out.println("\n");
-        int clase =sc.nextInt();
-        while(clase> ListaClases.size() || clase<0){
-            System.out.println("No te pases de listo elige tu clase introduciendo un número entre 0 y "+ListaClases.size());
-            System.out.println("Jugador nº"+a+ "¿Que clase quieres jugar?\n");
-            System.out.println(ListaClases);
-            System.out.println("\n");
-            clase =sc.nextInt();
-        }
-        sc.close();
-        switch (clase) {
-            case 0:
-                jugador= new Barbaro();
-                break;
-        
-            default:
-                break;
-        }
-        this.jugadores.add(a,jugador);
-    }
+  
 
     public void eliminarJugador(Jugador jugador) {
         jugadores.remove(jugador);
@@ -57,20 +33,51 @@ public class Grupo {
 
     // Otros métodos según tus necesidades
     public void numeroJugadores(){
-    Scanner sc=new Scanner(System.in);
-    System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
-    int njugadores =sc.nextInt();
+        System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
+        int njugadores=0;
+        try (Scanner input = new Scanner(System.in)) {
+            njugadores =input.nextInt();
+            input.nextLine();
+            // Código para leer datos...
+        } // El recurso se cerrará automáticamente aquíScanner sc=new Scanner(System.in);
+    
+    
     for(int i=0;i<njugadores;i++){
-        agregarJugador(i);
+        String clase;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Jugador nº"+(i+1)+ "¿Que clase quieres jugar?\n");
+        System.out.println(ListaClases);
+        clase=input.nextLine();
+        input.close();     
+        
+       
+        
+                
+        while(ListaClases.containsValue(clase)==false){
+            System.out.println("No te pases de listo elige tu clase escribiéndola tal y como aparece "+ListaClases.size());
+            System.out.println("Jugador nº"+i+1+ "¿Que clase quieres jugar?\n");
+            System.out.println(ListaClases);
+            System.out.println("\n");
+            try(Scanner sc =new Scanner(System.in)){
+                clase =sc.nextLine();
+            };
+        }
+        
+        switch (clase) {
+            case "Barbaro":
+                Barbaro jugador= new Barbaro();
+                this.jugadores.add(i,jugador);
+                break;
+        
+            default:
+                break;
+        }
     }
-
+    
   }
 
   public void crearlistadoClases(){
     this.ListaClases.put(0,"Barbaro");
 
   }
-}
-
-    }
 }
