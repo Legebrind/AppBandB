@@ -4,7 +4,6 @@ import  java.util.HashMap;
 public abstract class Clases extends Jugador{
 
     private int Ataque, NR, PG;
-    private ArrayList<String> TipoDano,Salvaciones;
     private ArrayList<Objeto> Equipo;
     private int EquipoMax=4;
     private int EquipoActual=0;
@@ -16,12 +15,8 @@ public abstract class Clases extends Jugador{
     protected void setNR(int a){
         this.NR=a;
     }
-    protected void setSalvacion(String b){
-        this.Salvaciones.add(b);
-    }
-    protected void setTipoDano(String b){
-        this.TipoDano.add(b);
-    }
+   
+ 
     protected int getAtaque(){
         return this.Ataque;
 
@@ -29,13 +24,7 @@ public abstract class Clases extends Jugador{
     protected int getNR(){
         return this.NR;
     }
-    protected String getSalvacion(int a){
-        return this.Salvaciones.get(a);
-    }
-    protected String getTipoDano(int a){
-        return this.TipoDano.get(a);
-    }
-
+  
     protected void setPG(int a){
         this.PG=a;
     }

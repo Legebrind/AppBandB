@@ -6,18 +6,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Barbaro extends Clases{
-
+    
     private HashMap<Integer,String> Furia,Sentido_Trampas;//tabla que controla los valores de las aptitudes especiales
     private ArrayList<String> Aptitudes; //Se guardan los titulos de las aptitudes especiales
-    
+    private TipoDano TipoAtaque;
+    private Salvacion TiradaSalvacion;
     public Barbaro (){
+        TablaAtaque = new HashMap<>();
+        Furia= new HashMap<>();
+        Sentido_Trampas = new HashMap<>();
+        Aptitudes = new ArrayList<>();
+        TipoAtaque = new TipoDano();
+        TiradaSalvacion=new Salvacion();
+        TipoAtaque.eliminarTipo(2);
+        TipoAtaque.eliminarTipo(3);
+        TiradaSalvacion.eliminarSalvacion(2);
+        TiradaSalvacion.eliminarSalvacion(3);
+        
         setNombre();
         setAtaqueBase();
         setFuria();
         setSentido_Trampas();
         setNR(3);
-        setTipoDano("Cortante");
-        setSalvacion("Fortaleza");
         setAtaque(TablaAtaque.get(1));
         setAptitudes(1);
         EquipoInicial();

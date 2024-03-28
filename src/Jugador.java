@@ -12,11 +12,10 @@ public abstract class Jugador {
     protected void setNombre(){
         System.out.println("Introduce tu nombre");
         String Nom;
-        try(Scanner sc =new Scanner(System.in)){
-            Nom = sc.nextLine();
-        }
-               
+        Scanner sc =new Scanner(System.in);
+        Nom= sc.nextLine();      
         this.Nombre=Nom;
+        sc.close();
         
     }
     protected void setJefe(Boolean a){

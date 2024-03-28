@@ -11,7 +11,7 @@ public class Grupo {
         jugadores = new ArrayList<Jugador>();
         ListaClases =new HashMap<Integer, String>();
         crearlistadoClases();
-        numeroJugadores();
+        
     }
 
   
@@ -32,39 +32,29 @@ public class Grupo {
     }
 
     // Otros métodos según tus necesidades
-    public void numeroJugadores(){
-        System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
-        int njugadores=0;
-        try (Scanner input = new Scanner(System.in)) {
-            njugadores =input.nextInt();
-            input.nextLine();
-            // Código para leer datos...
-        } // El recurso se cerrará automáticamente aquíScanner sc=new Scanner(System.in);
-    
-    
-    for(int i=0;i<njugadores;i++){
-        String clase;
-        Scanner input = new Scanner(System.in);
+    public void setJugador(int i){
+        int clase=99;
+        
         System.out.println("Jugador nº"+(i+1)+ "¿Que clase quieres jugar?\n");
-        System.out.println(ListaClases);
-        clase=input.nextLine();
-        input.close();     
+        System.out.println(ListaClases+"\n");
+        Scanner input =new Scanner(System.in);
+        input.nextLine();
+        input.remove();
         
-       
+        clase = input.nextInt();
         
-                
-        while(ListaClases.containsValue(clase)==false){
+                    
+        while(ListaClases.containsKey(clase)==false){
             System.out.println("No te pases de listo elige tu clase escribiéndola tal y como aparece "+ListaClases.size());
             System.out.println("Jugador nº"+i+1+ "¿Que clase quieres jugar?\n");
             System.out.println(ListaClases);
             System.out.println("\n");
-            try(Scanner sc =new Scanner(System.in)){
-                clase =sc.nextLine();
-            };
-        }
+            clase = input.nextInt();
+            }
+        
         
         switch (clase) {
-            case "Barbaro":
+            case 0:
                 Barbaro jugador= new Barbaro();
                 this.jugadores.add(i,jugador);
                 break;
@@ -72,9 +62,10 @@ public class Grupo {
             default:
                 break;
         }
+    
     }
     
-  }
+  
 
   public void crearlistadoClases(){
     this.ListaClases.put(0,"Barbaro");
