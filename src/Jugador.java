@@ -9,14 +9,11 @@ public abstract class Jugador {
     private boolean Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
     private int FD;
     
-    protected void setNombre(){
+    protected void setNombre(Scanner input){
         System.out.println("Introduce tu nombre");
         String Nom;
-        Scanner sc =new Scanner(System.in);
-        Nom= sc.nextLine();      
+        Nom= input.nextLine();
         this.Nombre=Nom;
-        sc.close();
-        
     }
     protected void setJefe(Boolean a){
         this.Jefe=a;

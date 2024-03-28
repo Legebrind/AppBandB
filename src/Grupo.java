@@ -32,30 +32,26 @@ public class Grupo {
     }
 
     // Otros métodos según tus necesidades
-    public void setJugador(int i){
+    public void setJugador(int i, Scanner input){
         int clase=99;
         
         System.out.println("Jugador nº"+(i+1)+ "¿Que clase quieres jugar?\n");
         System.out.println(ListaClases+"\n");
-        Scanner input =new Scanner(System.in);
-        input.nextLine();
-        input.remove();
-        
         clase = input.nextInt();
-        
-                    
+        input.nextLine();
+
         while(ListaClases.containsKey(clase)==false){
             System.out.println("No te pases de listo elige tu clase escribiéndola tal y como aparece "+ListaClases.size());
             System.out.println("Jugador nº"+i+1+ "¿Que clase quieres jugar?\n");
             System.out.println(ListaClases);
             System.out.println("\n");
             clase = input.nextInt();
-            }
-        
-        
+            input.nextLine();
+        }
+
         switch (clase) {
             case 0:
-                Barbaro jugador= new Barbaro();
+                Barbaro jugador= new Barbaro(input);
                 this.jugadores.add(i,jugador);
                 break;
         
