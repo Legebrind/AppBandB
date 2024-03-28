@@ -8,7 +8,7 @@ public class Main {
     private Logica Reglas;
     private MesaDestino Mesaprincipal;
     private Grupo Aventureros;
-    
+    private static HUD pantalla;
     
     public static void main(String[] args) {
         Logica Reglas = new Logica();
@@ -20,6 +20,8 @@ public class Main {
         Mesaprincipal = new MesaDestino();
         Mesaprincipal.ListaEnemigos();
         Mesaprincipal.imprimirEnemigos();
+        pantalla =new HUD();
+        
         Grupo Aventureros =new Grupo();
         
         System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
