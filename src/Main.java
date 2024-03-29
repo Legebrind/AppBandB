@@ -1,5 +1,8 @@
 import java.util.Scanner;
-
+/* Hay que usar este comentario para elimar todas las línes de código que sean de test
+                   
+                        Borra una vez finalizada la programación
+*/
 public class Main {
     
     //Campos
@@ -12,26 +15,27 @@ public class Main {
     private static Scanner input = new Scanner(System.in);
     
     public static void main(String[] args) {
-        Logica Reglas = new Logica();
-        MesaDestino Mesaprincipal = new MesaDestino();
+        
+        //Clase que contiene todos los métodos para el cálculo y las reglas
+        Logica Reglas = new Logica();  
+       
+       //Clase donde se guarda el grupo, los enemigos y los tesoros. Debería controlar el orden del juego.
+        MesaDestino Mesaprincipal = new MesaDestino(); 
+        
         Reglas.leer_Txt("Portada.txt");
         boolean Juego = true;
         int Nivel_de_Mundo = 1;
-        Reglas = new Logica();
-        Mesaprincipal = new MesaDestino();
+        
+        //Se carga el mazo de enemigos a través del "enemigos.txt"
         Mesaprincipal.ListaEnemigos();
-        Mesaprincipal.imprimirEnemigos();
+        //Borra una vez finalizada la programación
+        Mesaprincipal.imprimirEnemigos(); //este método es solo para comprobar que todo ha ido bien
         pantalla = new HUD();
 
-        Grupo Aventureros = new Grupo();
+        Grupo Aventureros = new Grupo(input);
+        Aventureros.mostrarInformacionEquipo();//Borra una vez finalizada la programación
 
-        System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
-        int njugadores = 0;
-        njugadores = input.nextInt();
-        input.nextLine();
-        for (int i = 0; i < njugadores; i++) {
-            Aventureros.setJugador(i, input);
-        }
+ 
         //Esta linea debe ir al final del programa
         System.out.println("Cerrando programa");
         input.close();
