@@ -60,7 +60,7 @@ public class MesaDestino  {
                 nAptitudes=3;
                       
         }
-        
+
       return enemigo;
 
 
@@ -85,10 +85,5 @@ public class MesaDestino  {
         }
     }
     
-    public void imprimirEnemigos(){
-
-    for(Enemigo a:ListaEnemigos){
-        System.out.println("Nombre: "+a.getNombre()+"Nivel: "+a.getNivel()+"Ataque: "+a.getAtaque()+"PG: "+a.getPG_enemigo());
-    }
+    
 }
-    }

@@ -9,47 +9,48 @@ import java.util.Scanner;
 public class Barbaro extends Jugador {
     private HashMap<Integer,String> Sentido_Trampas;
     private HashMap<Integer,Furia> Furia; //tabla que controla los valores de las aptitudes especiales
-    
+    private HashMap<Integer,Integer> TablaAtaque;
     
     
     
     
     public Barbaro (Scanner input){
-        IsAtaqueMagico=false;
-        NR=3;
-        HaJugado=false;
-        Clase=Enums.Tipo_Clase.Barbaro;
-        TablaAtaque = new HashMap<>();
+        setIsAtaqueMagico(false);
+        setNR(3);
+        setHajugado(false);
+        setClase(Enums.Tipo_Clase.Barbaro);
+        setTablaAtaque(new HashMap<Integer,Integer>());
         Furia = new HashMap<>();
         Sentido_Trampas = new HashMap<>();
-        Salvaciones=new ArrayList<Salvacion>();
-        Salvaciones.add(new Salvacion(Enums.Tipo_Salvacion.Fortaleza));
-        TipoAtaque = new ArrayList<TipoDano>();
-        TipoAtaque.add(new TipoDano(Enums.Tipo_Ataque.Cortante));
-        iniciarAtaqueBase();
+        setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
+        addSalvaciones(Enums.Tipo_Salvacion.Fortaleza);
+        setTipoAtaque(new ArrayList<Enums.Tipo_Ataque>());
+        addTipoAtaque(Enums.Tipo_Ataque.Cortante);
+        setTablaAtaque(iniciarAtaqueBase());
         iniciarFuria();
         iniciarSentido_Trampas();
                       
         
     }
 
-    private void iniciarAtaqueBase(){
-        this.TablaAtaque.put(1,6);
-        this.TablaAtaque.put(2,6);
-        this.TablaAtaque.put(3,7);
-        this.TablaAtaque.put(4,7);
-        this.TablaAtaque.put(5,8);
-        this.TablaAtaque.put(6,8);
-        this.TablaAtaque.put(7,9);
-        this.TablaAtaque.put(8,9);
-        this.TablaAtaque.put(9,10);
-        this.TablaAtaque.put(10,10);
-        this.TablaAtaque.put(11,11);
-        this.TablaAtaque.put(12,11);
-        this.TablaAtaque.put(13,12);
-        this.TablaAtaque.put(14,12);
-        this.TablaAtaque.put(15,13);
-
+    private HashMap<Integer,Integer> iniciarAtaqueBase(){
+        TablaAtaque = new HashMap<Integer,Integer>();
+        TablaAtaque.put(1,6);
+        TablaAtaque.put(2,6);
+        TablaAtaque.put(3,7);
+        TablaAtaque.put(4,7);
+        TablaAtaque.put(5,8);
+        TablaAtaque.put(6,8);
+        TablaAtaque.put(7,9);
+        TablaAtaque.put(8,9);
+        TablaAtaque.put(9,10);
+        TablaAtaque.put(10,10);
+        TablaAtaque.put(11,11);
+        TablaAtaque.put(12,11);
+        TablaAtaque.put(13,12);
+        TablaAtaque.put(14,12);
+        TablaAtaque.put(15,13);
+        return TablaAtaque;
     } 
     
     private void iniciarFuria(){

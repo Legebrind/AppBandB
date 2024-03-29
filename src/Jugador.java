@@ -7,43 +7,60 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class Jugador {
-    protected String Nombre;//Nombre del jugador
-    protected boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
-    protected boolean HaJugado;
-    protected int Fichas_Dano,Puntos_Golpe;
-    protected Enums.Tipo_Clase Clase;
-    protected Enums.Tipo_Raza Raza;    
-    protected ArrayList<Objeto> Equipo;
+    private String Nombre;//Nombre del jugador
+    private boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
+    private boolean HaJugado;
+    private int Fichas_Dano,Puntos_Golpe;
+    private Enums.Tipo_Clase Clase;
+    private Enums.Tipo_Raza Raza;    
+    private ArrayList<Objeto> Equipo;
     private final int EquipoMax=4;
-    protected int NR;
-    protected HashMap <Integer, Integer> TablaAtaque;
-    protected ArrayList<Salvacion> Salvaciones;
-    protected ArrayList<TipoDano> TipoAtaque;
-    protected boolean IsAtaqueMagico;
+    private int NR;
+    private HashMap <Integer, Integer> TablaAtaque;
+    private ArrayList<Enums.Tipo_Salvacion> Salvaciones;
+    private ArrayList<Enums.Tipo_Ataque> TipoAtaque;
+    private boolean IsAtaqueMagico;
     
 
+    public int getNR() {
+        return NR;
+    }
+    public void setNR(int nR) {
+        NR = nR;
+    }
+    public void setRaza(Enums.Tipo_Raza raza) {
+        Raza = raza;
+    }
 
+    public void setClase(Enums.Tipo_Clase clase) {
+        Clase = clase;
+    }
     
-    
-    protected void iniciarNombre(Scanner input){
+    public boolean isIsAtaqueMagico() {
+        return IsAtaqueMagico;
+    }
+    public void setIsAtaqueMagico(boolean isAtaqueMagico) {
+        IsAtaqueMagico = isAtaqueMagico;
+    }
+    public void iniciarNombre(Scanner input){
         System.out.println("Introduce tu nombre");
         String Nom;
         Nom= input.nextLine();
         this.Nombre=Nom;
     }
-    protected void setJefe(boolean a){
+    public void setJefe(boolean a){
         this.Is_Jefe=a;
     }
-    protected void setDebilitado(Boolean b){
+    public void setDebilitado(Boolean b){
         this.Debilitado=b;
     };
-    protected void setEnvenedado(Boolean b){
+    public void setEnvenedado(Boolean b){
         this.Envenenado=b;
     };
-    protected void setPerdida_de_Nivel(Boolean b){
+    public void setPerdida_de_Nivel(Boolean b){
         this.Perdida_de_Nivel=b;
     };
-    protected void setFichas_Dano(int a){
+    public void setFichas_Dano(int a){
         this.Fichas_Dano=a;
     }
     public String getNombre(){
@@ -82,15 +99,81 @@ public abstract class Jugador {
         this.Raza=Enums.Tipo_Raza.values()[i-1];
 
     }
-    protected void setHajugado(boolean Hajugado){
+    public void setHajugado(boolean Hajugado){
         this.HaJugado=Hajugado;
 
     }
-    protected boolean getHajugado(){
+    public boolean isHajugado(){
        return this.HaJugado;
 
     }
-    protected abstract int ataqueMagico(int nivelMundo);
+
+    public int getPuntos_Golpe() {
+        return Puntos_Golpe;
+    }
+    public void setPuntos_Golpe(int puntos_Golpe) {
+        Puntos_Golpe = puntos_Golpe;
+    }
+    public int getFichas_Dano() {
+        return Fichas_Dano;
+    }
+    public boolean isPerdida_de_Nivel() {
+        return Perdida_de_Nivel;
+    }
+    public void setPerdida_de_Nivel(boolean perdida_de_Nivel) {
+        Perdida_de_Nivel = perdida_de_Nivel;
+    }
+    public boolean isEnvenenado() {
+        return Envenenado;
+    }
+    public void setEnvenenado(boolean envenenado) {
+        Envenenado = envenenado;
+    }
+    public boolean isDebilitado() {
+        return Debilitado;
+    }
+    public void setDebilitado(boolean debilitado) {
+        Debilitado = debilitado;
+    }
+
+    public HashMap<Integer, Integer> getTablaAtaque() {
+        return TablaAtaque;
+    }
+    public void setTablaAtaque(HashMap<Integer, Integer> tablaAtaque) {
+        TablaAtaque = tablaAtaque;
+    }
+
+    public ArrayList<Enums.Tipo_Salvacion> getSalvaciones() {
+        return Salvaciones;
+    }
+    public void setSalvaciones(ArrayList<Enums.Tipo_Salvacion> salvaciones) {
+        Salvaciones = salvaciones;
+    }
+    public void addSalvaciones(Enums.Tipo_Salvacion salvacion){
+        this.Salvaciones.add(salvacion);
+    }
+
+    public ArrayList<Enums.Tipo_Ataque> getTipoAtaque() {
+        return TipoAtaque;
+    }
+    public void setTipoAtaque(ArrayList<Enums.Tipo_Ataque> tipoAtaque) {
+        TipoAtaque = tipoAtaque;
+    }
+    public void addTipoAtaque(Enums.Tipo_Ataque tipoAtaque){
+        this.TipoAtaque.add(tipoAtaque);
+
+    }
+    public ArrayList<Objeto> getEquipo() {
+        return Equipo;
+    }
+    public void setEquipo(ArrayList<Objeto> equipo) {
+        Equipo = equipo;
+    }
+
+    public int getEquipoMax() {
+        return EquipoMax;
+    }
+    public abstract int ataqueMagico(int nivelMundo);
 
 
 

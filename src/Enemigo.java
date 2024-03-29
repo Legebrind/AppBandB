@@ -22,8 +22,8 @@ public class Enemigo {
         return this.Nombre;
     }
      
-    public void getAtaque() {
-        System.out.println("El"+ Nombre +"ataca con todo lo gordo haciendo "+Ataque +"de daño");
+    public void getAtaque(Descripcion_Combate Descripciones) {
+        System.out.println(Descripciones.getDescripcion_del_Ataque() + " y hace"+Ataque +"de daño");
         
     }
 
