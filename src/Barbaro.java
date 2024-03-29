@@ -1,45 +1,39 @@
 //Para poder determinar los PG de la clase es necesario
 //crear una clase TablaPG en la mesa y llamar al metodo
-//Barbaro.setPG("TablaPG.getPg(Nivel_de_Mundo,NR)")
+//Barbaro.iniciarPG("TablaPG.getPg(Nivel_de_Mundo,NR)")
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Barbaro extends Clases{
+public class Barbaro extends Jugador {
+    private HashMap<Integer,String> Sentido_Trampas;
+    private HashMap<Integer,Furia> Furia; //tabla que controla los valores de las aptitudes especiales
     
-    private HashMap<Integer,String> Furia,Sentido_Trampas;//tabla que controla los valores de las aptitudes especiales
-    private ArrayList<String> Aptitudes; //Se guardan los titulos de las aptitudes especiales
-    private TipoDano TipoAtaque;
-    private Salvacion TiradaSalvacion;
+    
+    
+    
+    
     public Barbaro (Scanner input){
+        IsAtaqueMagico=false;
+        NR=3;
+        HaJugado=false;
+        Clase=Enums.Tipo_Clase.Barbaro;
         TablaAtaque = new HashMap<>();
-        Furia= new HashMap<>();
+        Furia = new HashMap<>();
         Sentido_Trampas = new HashMap<>();
-        Aptitudes = new ArrayList<>();
-        TipoAtaque = new TipoDano();
-        TiradaSalvacion=new Salvacion();
-        TipoAtaque.eliminarTipo(2);
-        TipoAtaque.eliminarTipo(3);
-        TiradaSalvacion.eliminarSalvacion(2);
-        TiradaSalvacion.eliminarSalvacion(3);
-        
-        setNombre(input);
-        setAtaqueBase();
-        setFuria();
-        setSentido_Trampas();
-        setNR(3);
-        setAtaque(TablaAtaque.get(1));
-        setAptitudes(1);
-        EquipoInicial();
-        setDebilitado(false);
-        setEnvenedado(false);
-        setPerdida_de_Nivel(false);
-       
+        Salvaciones=new ArrayList<Salvacion>();
+        Salvaciones.add(new Salvacion(Enums.Tipo_Salvacion.Fortaleza));
+        TipoAtaque = new ArrayList<TipoDano>();
+        TipoAtaque.add(new TipoDano(Enums.Tipo_Ataque.Cortante));
+        iniciarAtaqueBase();
+        iniciarFuria();
+        iniciarSentido_Trampas();
+                      
         
     }
 
-    private void setAtaqueBase(){
+    private void iniciarAtaqueBase(){
         this.TablaAtaque.put(1,6);
         this.TablaAtaque.put(2,6);
         this.TablaAtaque.put(3,7);
@@ -57,26 +51,26 @@ public class Barbaro extends Clases{
         this.TablaAtaque.put(15,13);
 
     } 
- 
-    private void setFuria(){
-        this.Furia.put(1,"Furia x2");
-        this.Furia.put(2,"Furia x2");
-        this.Furia.put(3,"Furia x2");
-        this.Furia.put(4,"Furia x2");
-        this.Furia.put(5,"Furia x2");
-        this.Furia.put(6,"Furia x3");
-        this.Furia.put(7,"Furia x3");
-        this.Furia.put(8,"Furia x3");
-        this.Furia.put(9,"Furia x3");
-        this.Furia.put(10,"Furia x3");
-        this.Furia.put(11,"Furia x4");
-        this.Furia.put(12,"Furia x4");
-        this.Furia.put(13,"Furia x4");
-        this.Furia.put(14,"Furia x4");
-        this.Furia.put(15,"Furia x4");
+    
+    private void iniciarFuria(){
+        this.Furia.put(1,new Furia("Furia x2",2));
+        this.Furia.put(2,new Furia("Furia x2",2));
+        this.Furia.put(3,new Furia("Furia x2",2));
+        this.Furia.put(4,new Furia("Furia x2",2));
+        this.Furia.put(5,new Furia("Furia x2",2));
+        this.Furia.put(6,new Furia("Furia x3",3));
+        this.Furia.put(7,new Furia("Furia x3",3));
+        this.Furia.put(8,new Furia("Furia x3",3));
+        this.Furia.put(9,new Furia("Furia x3",3));
+        this.Furia.put(10,new Furia("Furia x3",3));
+        this.Furia.put(11,new Furia("Furia x4",4));
+        this.Furia.put(12,new Furia("Furia x4",4));
+        this.Furia.put(13,new Furia("Furia x4",4));
+        this.Furia.put(14,new Furia("Furia x4",4));
+        this.Furia.put(15,new Furia("Furia x4",4));
     } 
-private void setSentido_Trampas(){
-
+    private void iniciarSentido_Trampas(){
+    //Modificar como clase Furia;
     this.Sentido_Trampas.put(1,"Sentido trampas 0");
     this.Sentido_Trampas.put(2,"Sentido trampas 1");
     this.Sentido_Trampas.put(3,"Sentido trampas 1");
@@ -92,35 +86,47 @@ private void setSentido_Trampas(){
     this.Sentido_Trampas.put(13,"Sentido trampas 3");
     this.Sentido_Trampas.put(14,"Sentido trampas 4");
     this.Sentido_Trampas.put(15,"Sentido trampas 4");
-}
-public String getFuria(int a){
+    }
+    public Furia getFuria(int nivelMundo){
 
-    return this.Furia.get(a);
-}
-public String getSentido_Trampas(int a){
+        return Furia.get(nivelMundo);
+    }
+    public String getSentido_Trampas(int a){
 
-    return this.Sentido_Trampas.get(a);
-}
-public void setAptitudes(int nivel){
- this.Aptitudes.add(0,this.Furia.get(nivel));
- this.Aptitudes.add(1,this.Sentido_Trampas.get(nivel)); 
- if(nivel==6){
-    this.Aptitudes.add(2,"Reflejos_Rapidos");
- }
- 
-}
-
-public ArrayList<String> getAptitudes(){
-
-    return this.Aptitudes;
-}
-
-
-public int getAtaqueBase(int NivelMundo) {
-   return this.TablaAtaque.get(NivelMundo);
-}
+        return this.Sentido_Trampas.get(a);
+    }
 
 
 
+    public int getAtaqueBase(int NivelMundo) {
+        return this.TablaAtaque.get(NivelMundo);
+    }
+    public int atacar(Scanner input,int nivelMundo){
+        String utilizarFuria="z";
+   
+        Furia furia=getFuria(nivelMundo);
+        int danoBase=getAtaqueBase(nivelMundo);
+        //Preguntas
+         while(utilizarFuria!="s" && utilizarFuria!="n"){
+            System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
+            utilizarFuria=input.nextLine();
+            input.nextLine();
+        }
+        switch (utilizarFuria) {
+            case "s":
+                System.out.println("Bebes 1 UBE y 1 chupito");
+                System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*furia.getMultiplicador()+" daño"));
+            return danoBase*furia.getMultiplicador();        
+        
+            default:
+                System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
+                System.out.println("Bebes 1 UBE");
+            return danoBase;
+            
+        }
+    }
+    public int ataqueMagico(int nivelMundo){
+        return 0;
+    }
 
 }

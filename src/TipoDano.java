@@ -1,29 +1,13 @@
-//Clase tipo HashMap que alberga los tipos de daño
-//1.Cortante
-//2.Perforante
-//3.Contundente
-import java.util.HashMap;
+
+
 public class TipoDano {
+    private Enums.Tipo_Ataque Tipo_Ataque;
+    
 
-    private HashMap <Integer, String> TiposDano;
-
-    public TipoDano(){
-        TiposDano=new HashMap<>();
-        this.TiposDano.put(1,"Cortante");
-        this.TiposDano.put(2,"Perforante");
-        this.TiposDano.put(3,"Contundente");
+    public TipoDano(Enums.Tipo_Ataque TA){
+        this.Tipo_Ataque=TA;
     }
 
-    public void eliminarTipo(int a){
-        this.TiposDano.put(a,"");
-
-    }
-    public String getTp_Dano(int a){
-
-        return this.TiposDano.get(a);
-    }
-    public void anadirTipo(int a, String b){
-        this.TiposDano.put(a,b);
-    }
+    
 
 }

@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class HUD {
 
 
+    
     public HUD (){
         JFrame frame = new JFrame("Game Interface");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -19,7 +23,8 @@ public class HUD {
         ImagenJugadores.put(7,"Jugador7.jpg");
 
         // Parte Superior Izquierda
-        JPanel enemyPanel = new JPanel();
+        JPanel enemyPanel = new JPanel(new GridLayout(1,2));
+        enemyPanel.setBackground(Color.BLACK);
         JLabel enemyImageLabel = new JLabel(new ImageIcon("enemy.jpg"));
         JTextArea enemyDescriptionArea = new JTextArea("Descripción del enemigo...");
         enemyPanel.add(enemyImageLabel);
@@ -34,6 +39,9 @@ public class HUD {
 
         // Parte Inferior Izquierda (Terminal)
         JTextArea combatLogArea = new JTextArea("Sucesos del combate...");
+        combatLogArea.setBackground(Color.black);
+        combatLogArea.setForeground(Color.green);
+        combatLogArea.setFont(new Font("Dialog", Font.BOLD, 20));
 
         // Parte Inferior Derecha
         JPanel infoPanel = new JPanel(new GridLayout(2, 1));
@@ -52,9 +60,7 @@ public class HUD {
         frame.pack();
         frame.setVisible(true);
     }
-    public void imagenEnemigo(){
-
-        this.enemyImageLabel.add("Kobold.jpg");
-    }
+    
+    
 }
 

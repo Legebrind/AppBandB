@@ -20,13 +20,49 @@ public class MesaDestino  {
         Random Aleatorio =new Random();
 
     }
-  
-    public Enemigo getEnemigo(int NivelDungeon){
+  //Se obtiene un enemigo en función del nivel de Dungeon,y lo elimina de la listaEnemigos.
+    public Enemigo getEnemigo(int NivelMundo){
         List<Enemigo> auxList = ListaEnemigos.stream()
-        .filter(x->x.getNivel()==NivelDungeon)
+        .filter(x->x.getNivel()==NivelMundo)
         .collect(Collectors.toList());
-      int aux = Aleatorio.nextInt(auxList.size()); // Corrección aquí
-        return auxList.get(aux);
+      int aux = Aleatorio.nextInt(0,(auxList.size())); // Corrección aquí
+      Enemigo enemigo=auxList.get(aux);
+      ListaEnemigos.remove(enemigo);
+      return enemigo;
+
+
+    }
+    public Enemigo getBoss(int NivelMundo){
+        Enemigo enemigo =getEnemigo(NivelMundo);
+        int nAptitudes;
+        switch (NivelMundo) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                              
+                break;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+              nAptitudes=1;
+              break;
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+                nAptitudes=2;
+                break;
+            default:
+                nAptitudes=3;
+                      
+        }
+        
+      return enemigo;
+
 
     }
     public void ListaEnemigos(){

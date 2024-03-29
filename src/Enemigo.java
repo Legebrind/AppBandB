@@ -4,6 +4,7 @@ public class Enemigo {
 
     private String Nombre;
     private int Ataque,Nivel,PG_enemigo;
+    
    
 
     public Enemigo(String Nombre,int Nivel,int Ataque,int PG_enemigo){
@@ -21,8 +22,9 @@ public class Enemigo {
         return this.Nombre;
     }
      
-    public int getAtaque() {
-        return this.Ataque;
+    public void getAtaque() {
+        System.out.println("El"+ Nombre +"ataca con todo lo gordo haciendo "+Ataque +"de daño");
+        
     }
 
     public int getPG_enemigo() {
@@ -32,6 +34,7 @@ public class Enemigo {
     public int getNivel() {
         return this.Nivel;
     }
+
     
     }
 

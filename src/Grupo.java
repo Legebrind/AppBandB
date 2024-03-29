@@ -1,28 +1,23 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class Grupo {
-    private List<Jugador> jugadores;
-    private HashMap<Integer,String> ListaClases;
+    private ArrayList<Jugador> jugadores;
+    
     
     public Grupo(Scanner input){
         jugadores = new ArrayList<Jugador>();
-        ListaClases =new HashMap<Integer, String>();
-        crearlistadoClases();
         setJugador(input);
         
     }
 
-  
-
-    public void eliminarJugador(Jugador jugador) {
-        jugadores.remove(jugador);
+      public int getJugadoresMax() {
+        return jugadores.size();
     }
 
-    public int obtenerCantidadJugadores() {
-        return jugadores.size();
+    public ArrayList<Jugador> getJugadores(){
+        return this.jugadores;
     }
 
     public void mostrarInformacionEquipo() {
@@ -34,45 +29,41 @@ public class Grupo {
 
     // Método que solo se invoca una vez para crear el grupo de jugadores y sus clases
     public void setJugador(Scanner input){
-        int clase=99;
+        int clase;
         System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
-        int njugadores = 0;
+        int njugadores;
         njugadores = input.nextInt();
         input.nextLine();
         for (int i = 0; i < njugadores; i++) {
             
         
-        System.out.println("Jugador nº"+(i+1)+ "¿Que clase quieres jugar?\n");
-        System.out.println(ListaClases+"\n");
-        clase = input.nextInt();
-        input.nextLine();
-
-        while(ListaClases.containsKey(clase)==false){
-            System.out.println("No te pases de listo elige tu clase escribiéndola tal y como aparece "+ListaClases.size());
-            System.out.println("Jugador nº"+i+1+ " ¿Que clase quieres jugar?\n");
-            System.out.println(ListaClases);
-            System.out.println("\n");
+            System.out.println("Jugador nº"+(i+1)+ "¿Que clase quieres jugar?\n");
+            for (Enums.Tipo_Clase s : Enums.Tipo_Clase.values()) {
+                System.out.println(i+")"+s);
+            }
             clase = input.nextInt();
             input.nextLine();
-        }
 
-        switch (clase) {
-            case 0:
-                Barbaro jugador= new Barbaro(input);
-                this.jugadores.add(i,jugador);
+            while(clase>i || clase<=0){
+                System.out.println("No te pases de listo elige tu clase con el número tal y como aparece ");
+                System.out.println("Jugador nº"+i+1+ " ¿Que clase quieres jugar?\n");
+                clase = input.nextInt();
+                input.nextLine();
+            }
+
+            switch (clase-1) {
+                case 0:
+                    Barbaro jugador= new Barbaro(input);
+                    this.jugadores.add(i,jugador);
+                    break;
+            
+                default:
                 break;
-        
-            default:
-                break;
+            }
         }
-    }
     
     }
     
   
 
-  public void crearlistadoClases(){
-    this.ListaClases.put(0,"Barbaro");
-
-  }
 }
