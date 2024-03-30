@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 //Clase de Enemigo. Define el nombre, ataque, nivel y puntos de golpe. Ademas tiene un arraylist Enums para 
 //el tipo de Aptitud del boss.
 //También tiene dos campos para la putada y descripcion
@@ -7,14 +8,16 @@ public class Enemigo {
     private String Nombre;
     private int Ataque,Nivel,PG_enemigo;
     private ArrayList<Enums> Tipo_Aptitud_Boss; 
-    private String Putada,Regla_de_Combate,Descripcion_Enemigo,Caracteristica1,Caracteristica2;
-
+    private String Putada,Regla_de_Combate,Descripcion_Enemigo;
     private Integer nEnemigos;
-   
+    private Random Aleatorio;
+    private ArrayList<String> Caracteristicas;
+    
 
 
 
-    public Enemigo(String Nombre,int Nivel,int Ataque,int PG_enemigo,String Putada, String Descp,int nEne,String descp_Enemigo,String caracterisitca1,String caracteristica2){
+
+    public Enemigo(String Nombre,int Nivel,int Ataque,int PG_enemigo,String Putada, String Descp,int nEne,String descp_Enemigo,ArrayList<String> caracterisitcas){
       this.Nombre=Nombre;
       this.Nivel=Nivel;
       this.Ataque=Ataque;
@@ -23,14 +26,19 @@ public class Enemigo {
       this.Regla_de_Combate=Descp;
       this.nEnemigos=nEne;
       this.Descripcion_Enemigo=descp_Enemigo;
-      this.Caracteristica1=caracterisitca1;
-      this.Caracteristica2 =caracteristica2;
+      this.Caracteristicas=caracterisitcas;
+      
     }
     public void setPG_enemigo(int PG) {
         this.PG_enemigo = PG;
     }
     
-   
+    public ArrayList<String> getCaracteristicas() {
+        return Caracteristicas;
+    }
+    public void setCaracteristica(String caracteristica) {
+        this.Caracteristicas.add(caracteristica);
+    }
     public String getNombre() {
         return this.Nombre;
     }
@@ -93,20 +101,66 @@ public class Enemigo {
         Descripcion_Enemigo = descripcion_Enemigo;
     }
 
-    public String getCaracteristica2() {
-        return Caracteristica2;
+   
+
+    public void recibirDanno(Danno danno){
+        if(this.Caracteristicas.contains("Ninguna")){
+            this.PG_enemigo-=danno.getCantidad();
+            return;
+        }
+        if((this.Caracteristicas.contains("No Muerto")) && danno.getTipo()==Enums.Tipo_Ataque.Expulsar){
+            this.PG_enemigo-=danno.getCantidad();
+            return;
+        }
+        if((this.Caracteristicas.contains("No Muerto")||this.Caracteristicas.contains("Inmune a Crítico")) && danno.getTipo()==Enums.Tipo_Ataque.Furtivo){
+            danno.setCantidad(0);
+        }
+        if((this.Caracteristicas.contains("Volador")) && danno.getTipo()!=Enums.Tipo_Ataque.Adistancia && danno.getTipo()!=Enums.Tipo_Ataque.Magia){
+
+            danno.setCantidad(danno.getCantidad()/2);
+        }
+        if((this.Caracteristicas.contains("Invisible"))){
+            Aleatorio= new Random();
+            if(Aleatorio.nextInt(0,2)==0){
+                danno.setCantidad(0);
+            }
+
+        }
+        this.PG_enemigo-=danno.getCantidad();
+                
     }
-    public void setCaracteristica2(String caracteristica2) {
-        Caracteristica2 = caracteristica2;
+
+    public void setCaracterBoss(int ncaracteristicas,int NivelMundo){
+        var caracteristica=Enums.Tipo_Aptitud_Boss.values()[ncaracteristicas];
+        Caracteristicas.add(caracteristica.toString());
+        switch (caracteristica) {
+            case gigantesco:
+                
+                break;
+            case con_extremidades_adicionales:
+            break;
+            case cobarde:
+                break;
+            case con_sequito:
+                break;
+            case equipado:
+                break;
+            case extremadamente_poderoso:
+                break;
+            case reanimado:
+                break;
+            case volador:
+                break;
+            case torpe:
+                break;
+            
+        }
+        }
     }
-    public String getCaracteristica1() {
-        return Caracteristica1;
-    }
-    public void setCaracteristica1(String caracteristica1) {
-        Caracteristica1 = caracteristica1;
-    }
+
+
     
-    }
+    
 
 
 

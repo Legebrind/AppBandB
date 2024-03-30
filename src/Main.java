@@ -33,6 +33,8 @@ public class Main {
          
         for (Enemigo enemigo: Mesaprincipal.getListaEnemigos()) {
             System.out.print(enemigo.getNombre());
+            System.out.print(enemigo.getPG_enemigo());
+            System.out.print(enemigo.getAtaque());
             System.out.print(enemigo.getNivel());
             System.out.print(enemigo.getDescripcion_Enemigo());
         }

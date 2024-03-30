@@ -18,7 +18,10 @@ public abstract class Jugador {
     private int NR;
     private HashMap <Integer, Integer> TablaAtaque;
     private ArrayList<Enums.Tipo_Salvacion> Salvaciones;
-    private ArrayList<Enums.Tipo_Ataque> TipoAtaque;
+   
+    private ArrayList<Enums.Tipo_Ataque> TipoAtaque_Fisico;
+    private ArrayList<Enums.Tipo_Ataque> TipoAtaque_Magico;
+    
     private boolean IsAtaqueMagico;
     
 
@@ -73,8 +76,8 @@ public abstract class Jugador {
     public int getFichas_Dano(int a){
         return this.Fichas_Dano=a;
     }
-    public abstract int atacar(Scanner input, int nivelMundo);
-
+    public abstract Danno ataque_fisico(Scanner input, int nivelMundo,ArrayList<Enemigo> horda);
+    public abstract Danno ataque_magico(Scanner input, int nivelMundo,ArrayList<Enemigo> horda);
     public Enums.Tipo_Raza getRaza(){
         return this.Raza;
     }
@@ -153,14 +156,12 @@ public abstract class Jugador {
         this.Salvaciones.add(salvacion);
     }
 
-    public ArrayList<Enums.Tipo_Ataque> getTipoAtaque() {
-        return TipoAtaque;
+    public ArrayList<Enums.Tipo_Ataque> getTipoAtaques() {
+        return TipoAtaque_Fisico;
     }
-    public void setTipoAtaque(ArrayList<Enums.Tipo_Ataque> tipoAtaque) {
-        TipoAtaque = tipoAtaque;
-    }
-    public void addTipoAtaque(Enums.Tipo_Ataque tipoAtaque){
-        this.TipoAtaque.add(tipoAtaque);
+   
+    public void addTipoAtaque_fisico(Enums.Tipo_Ataque tipoAtaque){
+        this.TipoAtaque_Fisico.add(tipoAtaque);
 
     }
     public ArrayList<Objeto> getEquipo() {
@@ -181,7 +182,24 @@ public abstract class Jugador {
     public void setBuscaTrampas(boolean buscaTrampas) {
         BuscaTrampas = buscaTrampas;
     }
+    public ArrayList<Enums.Tipo_Ataque> getTipoAtaque_Fisico() {
+        return TipoAtaque_Fisico;
+    }
+    public void setTipoAtaque_Fisico(ArrayList<Enums.Tipo_Ataque> tipoAtaque_Fisico) {
+        TipoAtaque_Fisico = tipoAtaque_Fisico;
+    }
+    public ArrayList<Enums.Tipo_Ataque> getTipoAtaque_Magico() {
+        return TipoAtaque_Magico;
+    }
+    public void setTipoAtaque_Magico(ArrayList<Enums.Tipo_Ataque> tipoAtaque_Magico) {
+        TipoAtaque_Magico = tipoAtaque_Magico;
+    }
+    public int getCantidadAtaques(boolean fisico){
+        if(fisico){
+            return TipoAtaque_Fisico.size();
+        }
+        return TipoAtaque_Magico.size();
 
-
+    }
 
 }

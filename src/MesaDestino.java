@@ -46,12 +46,13 @@ public class MesaDestino  {
     public Enemigo getBoss(int NivelMundo){
         Enemigo enemigo =getEnemigo(NivelMundo);
         int nAptitudes;
+        Aleatorio = new Random();
         switch (NivelMundo) {
             case 1:
             case 2:
             case 3:
             case 4:
-                              
+                 nAptitudes=0;             
                 break;
             case 5:
             case 6:
@@ -70,6 +71,11 @@ public class MesaDestino  {
             default:
                 nAptitudes=3;
                       
+        }
+        for(int i=0;i<nAptitudes;i++){
+            
+            enemigo.setCaracterBoss(Aleatorio.nextInt(0,Enums.Tipo_Aptitud_Boss.values().length));
+            
         }
 
       return enemigo;
@@ -90,22 +96,24 @@ public class MesaDestino  {
             // Asegúrate de que haya al menos 10 campos en el párrafo antes de intentar acceder a ellos
             for (int i = 0; i < partes.length; i += 10) {
                 if (i + 9 < partes.length) {
+                    ArrayList<String> caracteristicas =new ArrayList<>();
                     String nombre = partes[i];
                     int nivel = Integer.parseInt(partes[i + 1]);
                     int ataque = Integer.parseInt(partes[i + 2]);
                     int vida = Integer.parseInt(partes[i + 3]);
                     String putada = partes[i + 4];
-                    String caracteristica1 = partes[i + 5];
-                    String caracteristica2 = partes[i + 6];
+                    caracteristicas.add(partes[i + 5]);
+                    caracteristicas.add(partes[i + 6]);
                     String reglaCombate = partes[i + 7];
                     int nEne = Integer.parseInt(partes[i + 8]);
                     String descEnemi = partes[i + 9];
                     // Crea instancias de Enemigo con estos datos
-                    Enemigo enemigo = new Enemigo(nombre, nivel, ataque, vida, putada, reglaCombate, nEne, descEnemi, caracteristica1, caracteristica2);
+                    
+                    
+                    Enemigo enemigo = new Enemigo(nombre, nivel, ataque, vida, putada, reglaCombate, nEne, descEnemi, caracteristicas);
                     ListaEnemigos.add(enemigo);
-                } else {
-                    System.err.println("Error en el párrafo: " + contenido.toString());
-                }
+                } 
+               // else {System.err.println("Error en el párrafo: " + contenido.toString());}
             }
         } catch (IOException e) {
             e.printStackTrace();

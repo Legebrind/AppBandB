@@ -85,7 +85,11 @@ public Enemigo patearPuerta(MesaDestino Mesaprincipal,boolean isBoss,int NivelMu
 public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int NivelMundo,Descripcion_Combate Descripciones){
     //3º Combatir
     String respuesta;
-        while(enemigo.getPG_enemigo()>0){
+    ArrayList<Enemigo> horda= new ArrayList<Enemigo>();
+    for(int i=0;i<enemigo.getnEnemigos();i++){
+        horda.add(i,enemigo);
+    }
+        while(horda.size()>0){
             //fase de ataques magicos
           for (Jugador aventurero: aventureros.getJugadores()) {
             if(aventurero.isIsAtaqueMagico() && !aventurero.isHajugado() && enemigo.getPG_enemigo()>0){
@@ -99,9 +103,11 @@ public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int Nive
                     input.nextLine();
                 }//Aquí se produce un ataque
                 if(respuesta.toLowerCase()=="s"){
-                    enemigo.setPG_enemigo(enemigo.getPG_enemigo()-aventurero.ataqueMagico(NivelMundo));//Pasar HaJugado a false
+                    
+                    aventurero.ataque_magico(input, NivelMundo,horda);//Pasar HaJugado a false
                     aventurero.setHajugado(true);
                 }
+
                     
                 
             }
@@ -120,11 +126,11 @@ public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int Nive
                     input.nextLine();
                 }//Aquí se produce un ataque
                 if(respuesta.toLowerCase()=="s"){
-                    enemigo.setPG_enemigo(enemigo.getPG_enemigo()-aventurero.atacar(input,NivelMundo));//Pasar HaJugado a false
-                    aventurero.setHajugado(true);
+                    aventurero.ataque_fisico(input, NivelMundo,horda);//Pasar HaJugado a false
+                    
                 }
                 //Si decide no atacar consume turno.
-                else{aventurero.setHajugado(true);}
+                aventurero.setHajugado(true);
                 }
                 //Ya han atacado todos.  
           
