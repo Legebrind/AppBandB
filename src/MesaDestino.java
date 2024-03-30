@@ -20,14 +20,25 @@ public class MesaDestino  {
         Random Aleatorio =new Random();
 
     }
+    public ArrayList<Enemigo> getListaEnemigos(){
+        return this.ListaEnemigos;
+
+    }
+    public ArrayList<Objeto> getListaTesoro() {
+        return ListaTesoro;
+    }
+    public void setListaTesoro(ArrayList<Objeto> listaTesoro) {
+        ListaTesoro = listaTesoro;
+    }
+
   //Se obtiene un enemigo en función del nivel de Dungeon,y lo elimina de la listaEnemigos.
     public Enemigo getEnemigo(int NivelMundo){
-        List<Enemigo> auxList = ListaEnemigos.stream()
+        List<Enemigo> auxList = this.ListaEnemigos.stream()
         .filter(x->x.getNivel()==NivelMundo)
         .collect(Collectors.toList());
       int aux = Aleatorio.nextInt(0,(auxList.size())); // Corrección aquí
       Enemigo enemigo=auxList.get(aux);
-      ListaEnemigos.remove(enemigo);
+      this.ListaEnemigos.remove(enemigo);
       return enemigo;
 
 
@@ -68,22 +79,37 @@ public class MesaDestino  {
     public void ListaEnemigos(){
 
         try (BufferedReader reader = new BufferedReader(new FileReader("enemigos.txt"))) {
+            StringBuilder contenido = new StringBuilder();
             String linea;
             while ((linea = reader.readLine()) != null) {
-                String[] partes = linea.split(",");
-                String nombre = partes[0];
-                int nivel = Integer.parseInt(partes[1]);
-                int ataque = Integer.parseInt(partes[2]);
-                int vida = Integer.parseInt(partes[3]);
-                // Crea instancias de Enemigo con estos datos
-                // Agrega los enemigos a tu colección
-                Enemigo enemigo =new Enemigo(nombre,nivel,ataque,vida);
-                ListaEnemigos.add(enemigo);
+                contenido.append(linea).append("\n"); // Agrega el salto de línea
+            }
+            // Ahora 'contenido' contiene todo el párrafo. Puedes procesarlo según tus necesidades.
+            String[] partes = contenido.toString().split("/");
+
+            // Asegúrate de que haya al menos 10 campos en el párrafo antes de intentar acceder a ellos
+            for (int i = 0; i < partes.length; i += 10) {
+                if (i + 9 < partes.length) {
+                    String nombre = partes[i];
+                    int nivel = Integer.parseInt(partes[i + 1]);
+                    int ataque = Integer.parseInt(partes[i + 2]);
+                    int vida = Integer.parseInt(partes[i + 3]);
+                    String putada = partes[i + 4];
+                    String caracteristica1 = partes[i + 5];
+                    String caracteristica2 = partes[i + 6];
+                    String reglaCombate = partes[i + 7];
+                    int nEne = Integer.parseInt(partes[i + 8]);
+                    String descEnemi = partes[i + 9];
+                    // Crea instancias de Enemigo con estos datos
+                    Enemigo enemigo = new Enemigo(nombre, nivel, ataque, vida, putada, reglaCombate, nEne, descEnemi, caracteristica1, caracteristica2);
+                    ListaEnemigos.add(enemigo);
+                } else {
+                    System.err.println("Error en el párrafo: " + contenido.toString());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    
     }
-    
-    
 }

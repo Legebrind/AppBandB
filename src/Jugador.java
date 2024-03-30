@@ -9,7 +9,7 @@ import java.util.Scanner;
 public abstract class Jugador {
     private String Nombre;//Nombre del jugador
     private boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
-    private boolean HaJugado;
+    private boolean HaJugado,BuscaTrampas;
     private int Fichas_Dano,Puntos_Golpe;
     private Enums.Tipo_Clase Clase;
     private Enums.Tipo_Raza Raza;    
@@ -174,6 +174,13 @@ public abstract class Jugador {
         return EquipoMax;
     }
     public abstract int ataqueMagico(int nivelMundo);
+
+    public boolean isBuscaTrampas() {
+        return BuscaTrampas;
+    }
+    public void setBuscaTrampas(boolean buscaTrampas) {
+        BuscaTrampas = buscaTrampas;
+    }
 
 
 
