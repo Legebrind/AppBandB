@@ -19,8 +19,10 @@ public class Barbaro extends Jugador {
     
     
     public Barbaro (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(false);
         setNR(3);
+        setBuscaTrampas(false);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Barbaro);
         setTablaAtaque(new HashMap<Integer,Integer>());
@@ -112,7 +114,7 @@ public class Barbaro extends Jugador {
         String utilizarFuria="z"; //se inicia la variable en este valor para que entre en el bucle while
         //Almacenamos en estas variables el multiplicador de la furia y el valor del daño base
         Furia furia=getFuria(nivelMundo);
-        int danoBase=getAtaqueBase(nivelMundo);
+        int danoBase=getAtaqueBase(nivelMundo)+getModificador();
 
         //Preguntamos al jugador que quiere hacer y devolvemos el parametro int danno de nuestro ataque.
 
@@ -140,34 +142,11 @@ public class Barbaro extends Jugador {
 
     //Implementamos el método abstracto de la clase Jugador para indicar el daño  y tipo de nuestro ataque
 
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{
-            System.out.println("Elige el tipo de daño");
-            for(int i=0;i<=getTipoAtaque_Fisico().size();i++){
-                System.out.println(i+") "+getTipoAtaque_Fisico().get(i));
-            }
-            int tipo=input.nextInt();
-            input.nextLine();
-            while (tipo<0 || tipo>getTipoAtaque_Fisico().size()) {
-                System.out.println("Entiendo que eres un poco...ya sabes un mucho Bárbaro\nTu escoger número tipo daño y después tú matar");
-                tipo=input.nextInt();
-                input.nextLine();
-            }
-            danno.setTipo(getTipoAtaque_Fisico().get(tipo));
-        };
-        return danno;
-    }
+
     //El bárbaro no tiene ataque mágico
 
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores,Grupo aventureros) {
         // TODO Auto-generated method stub
-        return null;
+        return ;
     }
 }

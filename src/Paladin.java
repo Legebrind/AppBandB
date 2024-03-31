@@ -20,7 +20,8 @@ public class Paladin extends Jugador{
 
     public Paladin (Scanner input){
         setIsAtaqueMagico(true);
-        
+        iniciarNombre(input);
+        setBuscaTrampas(false);
         setNR(3);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Paladin);

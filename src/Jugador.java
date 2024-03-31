@@ -10,7 +10,8 @@ public abstract class Jugador {
     private String Nombre;//Nombre del jugador
     private boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
     private boolean HaJugado,BuscaTrampas;
-    private int Fichas_Dano,Puntos_Golpe;
+    private int Fichas_Dano,Puntos_Golpe, Modificador;
+
     private Enums.Tipo_Clase Clase;
     private Enums.Tipo_Raza Raza;    
     private ArrayList<Objeto> Equipo;
@@ -68,8 +69,8 @@ public abstract class Jugador {
     public int getFichas_Dano(int a){
         return this.Fichas_Dano=a;
     }
-    public abstract Danno ataque_fisico(Scanner input, int nivelMundo,ArrayList<Enemigo> horda);
-    public abstract Danno ataque_magico(Scanner input, int nivelMundo,ArrayList<Enemigo> horda);
+    public abstract int atacar(Scanner input, int nivelMundo);
+    public abstract void ataque_magico(Scanner input, int nivelMundo,ArrayList<Enemigo> horda, ArrayList<Modificador> modificadores,Grupo aventureros);
     public Enums.Tipo_Raza getRaza(){
         return this.Raza;
     }
@@ -192,5 +193,55 @@ public abstract class Jugador {
         }
         return TipoAtaque_Magico.size();
     }
+    public Enemigo elegirEnemigo(ArrayList<Enemigo> horda,Scanner input){
+        if(horda.size()==1){
+            return horda.get(0);
+        }
+        System.out.println("¿A quién quieres zurrale bien zurrao?:1-"+horda.size());
+        int objetivo = input.nextInt();
+        input.nextLine();
+        while (objetivo<0 || objetivo>horda.size()) {
+            System.out.println("Ya estamos tocando los cojones otra vez.\n Deja de beber coño ya y pon el número bien");
+            System.out.println("¿A quién quieres zurrale bien zurrao?:1-"+horda.size());
+            objetivo = input.nextInt();
+            input.nextLine();
+        }
+        return horda.get(objetivo-1);
 
+    }
+    public int getModificador() {
+        return Modificador;
+    }
+    public void setModificador(int modificador) {
+        Modificador = modificador;
+    }
+    public void aumentarModificador(int modificador){
+        Modificador+=modificador;
+    }
+    public void ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+        Danno danno = new Danno();
+        System.out.println(getNombre()+"es hora de hacer cosas");//to do: personalizar diálogos;
+        int ataque =atacar(input, nivelMundo);
+        danno.setCantidad(ataque);
+        if(getTipoAtaque_Fisico().size()==1){
+          danno.setTipo(getTipoAtaque_Fisico().get(0));
+        }
+        else{
+            System.out.println("Elige el tipo de daño");
+            for(int i=0;i<=getTipoAtaque_Fisico().size();i++){
+                System.out.println(i+") "+getTipoAtaque_Fisico().get(i));
+            }
+            int tipo=input.nextInt();
+            input.nextLine();
+            while (tipo<0 || tipo>getTipoAtaque_Fisico().size()) {
+                System.out.println("Entiendo que eres un poco...ya sabes un mucho Bárbaro\nTu escoger número tipo daño y después tú matar");
+                tipo=input.nextInt();
+                input.nextLine();
+            }
+            danno.setTipo(getTipoAtaque_Fisico().get(tipo));
+        };
+        Enemigo enemigo=elegirEnemigo(horda, input);
+        enemigo.recibirDanno(danno);
+        
+    }
 }

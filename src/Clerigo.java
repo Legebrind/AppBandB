@@ -20,7 +20,8 @@ public class Clerigo extends Jugador{
 
     public Clerigo (Scanner input){
         setIsAtaqueMagico(true);
-        
+        iniciarNombre(input);
+        setBuscaTrampas(false);
         setNR(3);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Clerigo);

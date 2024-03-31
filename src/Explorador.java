@@ -17,7 +17,9 @@ public class Explorador extends Jugador {
     
     
     public Explorador (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(false);
+        setBuscaTrampas(false);
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Explorador);

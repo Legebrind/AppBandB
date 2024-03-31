@@ -7,10 +7,11 @@ import java.util.Scanner;
 
 public class Bardo extends Jugador{
 
-    private HashMap<Integer,String> Musica_de_Bardo,Cantares;
+    private HashMap<Integer,String> Musica_de_Bardo;
     private HashMap<Integer,Integer> Infundir_Valor; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean Conocimiento_de_bardo,Portento_Musical;
+    private HashMap<Integer,Cantar> Cantar;
     
     
     
@@ -18,11 +19,13 @@ public class Bardo extends Jugador{
   
 
     public Bardo (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(true);
-        
+        setBuscaTrampas(false);
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Bardo);
+
         setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
         addSalvaciones(Enums.Tipo_Salvacion.Reflejos);
         addSalvaciones(Enums.Tipo_Salvacion.Voluntad);
@@ -83,7 +86,7 @@ public class Bardo extends Jugador{
     private void iniciarMusica_de_Bardo(){
         Musica_de_Bardo=new HashMap<>();
     
-        Musica_de_Bardo.put(1,"[1Chp] Todo el grupo gana Salvación FOR");
+        Musica_de_Bardo.put(1,"[1Chp] Todo el grupo gana Salvación elegida");
         Musica_de_Bardo.put(2,"[1Chp] Todo el grupo gana Salvación FOR");
         Musica_de_Bardo.put(3,"[1Chp] Todo el grupo gana Salvación REF / FOR");
         Musica_de_Bardo.put(4,"[1Chp] Todo el grupo gana Salvación REF / FOR");
@@ -101,10 +104,11 @@ public class Bardo extends Jugador{
     
     }
     public void iniciarCantares(){
-        Cantares=new HashMap<>();
-        Cantares.put(5,"[1Chp] Da +10 de ataque a un jugador y +5 a los jugadores adyacentes");
-        Cantares.put(10,"[1Chp] Da +20 de ataque a un jugador y +10 a los jugadores adyacentes");
-        Cantares.put(15,"[1Chp] Da +30 de ataque a un jugador y +15 a los jugadores adyacentes");
+        Cantar=new HashMap<>();
+        
+        Cantar.put(5,new Cantar("[1Chp] Da +10 de ataque a un jugador y +5 a los jugadores adyacentes",10));
+        Cantar.put(10,new Cantar("[1Chp] Da +20 de ataque a un jugador y +10 a los jugadores adyacentes",20));
+        Cantar.put(15,new Cantar("[1Chp] Da +30 de ataque a un jugador y +15 a los jugadores adyacentes",30));
         
     }
 
@@ -113,52 +117,95 @@ public class Bardo extends Jugador{
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
+ 
     
-        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-        System.out.println("Bebes 1 UBE");
-            return danoBase;
-            
-        }
-    
-    public int ataqueMagico(int nivelMundo){
-        return 0;
-    }
+    public void ataqueInfundirValor(int nivelMundo,  Grupo aventureros){
 
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
+        for (Jugador jugador : aventureros.getJugadores()) {
+            jugador.setModificador(Infundir_Valor.get(nivelMundo)+jugador.getModificador());
         }
-        else{
-            System.out.println("¿Que tipo de ataque quieres usar?");
-            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
-                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
-                }
-            ataque =input.nextInt();
+        System.out.println("Ese bardo bueno que infunde valor a sus compañeros soplandoles en la nuca");
+
+    } 
+
+    public void ataqueCantar(int nivelMundo,  Grupo aventureros, Scanner input){
+
+        System.out.println("¿Quién será el agraciado que reciba tu canción y salpique tu tonalidad a sus compañeros adyacentes?");
+        aventureros.mostrarInformacionEquipo();
+        int respuesta =input.nextInt();
+        var cantar = Cantar.get(5);
+        if(nivelMundo>9 && nivelMundo<15){cantar=Cantar.get(10); }
+        if(nivelMundo>=15){cantar=Cantar.get(15);}
+        input.nextLine();
+        while (respuesta<0||respuesta>aventureros.getJugadoresMax()) {
+            System.out.println("Mal empezamos si no atinas con un número de mielda\n\n");
+            aventureros.mostrarInformacionEquipo();
+            respuesta =input.nextInt();
             input.nextLine();
-            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
-                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
-                ataque=input.nextInt();
-                input.nextLine();
-            }
-            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
+        }
+        if (respuesta==0){
+            aventureros.getJugador(respuesta).aumentarModificador(cantar.getModificador());
+            aventureros.getJugador(respuesta+1).aumentarModificador(cantar.getModificador()/2);
+            aventureros.getJugador(aventureros.getJugadoresMax()-1).aumentarModificador(cantar.getModificador()/2);
+            return;
+        }
+        if (respuesta==aventureros.getJugadoresMax()-1){
+            aventureros.getJugador(respuesta-1).aumentarModificador(cantar.getModificador());
+            aventureros.getJugador(0).aumentarModificador(cantar.getModificador()/2);
+            aventureros.getJugador(respuesta).aumentarModificador(cantar.getModificador());
+            return;
+        }
+            aventureros.getJugador(respuesta-1).aumentarModificador(cantar.getModificador());
+            aventureros.getJugador(respuesta+1).aumentarModificador(cantar.getModificador()/2);
+            aventureros.getJugador(respuesta).aumentarModificador(cantar.getModificador());
 
-        };
-        return danno;
+        
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
-    }  
+
+    
+    public int atacar (Scanner input, int nivelMundo){
+        
+       return getAtaqueBase(nivelMundo)+getModificador();
+
+
+    }
+    
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores,Grupo aventureros) {
+        System.out.println("¿Que ataque mágico quires hacer, pequeño jublar");
+        System.out.println("0:  "+Infundir_Valor.get(nivelMundo));
+        
+        System.out.println("1:  [1 Chp] y toca tu música bardote machote");
+        if (nivelMundo>4){
+            System.out.println("2:  "+Cantar.get(nivelMundo));
+        }
+
+        int respuesta =input.nextInt();
+        input.nextLine();
+        while (!(respuesta == 0 || respuesta == 1) && !(nivelMundo > 4 && respuesta == 2)) {//posible error XD
+            System.out.println("Joder macho no das ni una, no puedes escribir ni un puto número bien");
+            System.out.println("¿Que ataque mágico quires hacer, pequeño jublar");
+            System.out.println("0:  "+Infundir_Valor.get(nivelMundo));
+            
+            System.out.println("1:  [1 Chp] y toca tu música bardote machote");
+            if (nivelMundo>4){
+                System.out.println("2:  "+Cantar.get(nivelMundo));
+            }
+            respuesta=input.nextInt();
+            input.nextLine();
+        }
+        if(respuesta==2){
+
+            ataqueCantar(nivelMundo, aventureros, input);
+
+        }
+        if(respuesta==0){
+            ataqueInfundirValor(nivelMundo, aventureros);
+        }
+        if(respuesta==1){System.out.println("Ole ese chupito bueno, asi si.");}
+    }
+
+
+   
 
     public boolean isPortento_Musical() {
         return Portento_Musical;

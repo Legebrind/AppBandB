@@ -20,7 +20,8 @@ public class Sanador extends Jugador{
 
     public Sanador (Scanner input){
         setIsAtaqueMagico(true);
-        
+        iniciarNombre(input);
+        setBuscaTrampas(false);
         setNR(1);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Sanador);

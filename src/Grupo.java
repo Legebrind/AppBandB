@@ -61,18 +61,47 @@ public class Grupo {
 
             switch (clase) {
                 case 0:
-                    Barbaro jugador= new Barbaro(input);
-                    this.jugadores.add(i-1,jugador);
+                    this.jugadores.add(i-1,new Barbaro(input));
                     break;
-            
-                default:
-                break;
+                
+                case 1:
+                    this.jugadores.add(i-1,new Bardo(input));
+                    break;
+                case 2:
+                    this.jugadores.add(i-1,new Chaman(input));
+                    break;
+                case 3:
+                    this.jugadores.add(i-1,new Clerigo(input));
+                    break;
+                case 4:
+                    this.jugadores.add(i-1,new Druida(input));
+                    break;
+                case 5:
+                    this.jugadores.add(i-1,new Explorador(input));
+                    break;
+                case 6:
+                    this.jugadores.add(i-1,new Guerrero(input));
+                    break;
+                case 7:
+                    this.jugadores.add(i-1,new Hechicero(input));
+                    break;
+                case 8:
+                    this.jugadores.add(i-1,new Paladin(input));
+                    break;
+                case 9:
+                    this.jugadores.add(i-1,new Picaro(input));
+                    break;
+                case 10:
+                    this.jugadores.add(i-1,new Sanador(input));
+                    break;
+               
             }
             j=0;
         }
     
     }
-    
-  
+
 
 }
+  
+

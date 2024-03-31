@@ -17,7 +17,9 @@ public class Hechicero extends Jugador {
     
     
     public Hechicero (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(true);
+        setBuscaTrampas(false);
         setNR(1);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Hechicero);

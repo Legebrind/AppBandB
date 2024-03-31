@@ -17,7 +17,9 @@ public class Guerrero extends Jugador {
     
     
     public Guerrero (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(false);
+        setBuscaTrampas(false);
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Guerrero);

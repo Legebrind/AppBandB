@@ -21,7 +21,8 @@ public class Druida extends Jugador{
 
     public Druida (Scanner input){
         setIsAtaqueMagico(false);
-        
+        iniciarNombre(input);
+        setBuscaTrampas(false);
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Druida);

@@ -12,11 +12,13 @@ public class Enemigo {
     private Integer nEnemigos;
     private Random Aleatorio;
     private ArrayList<String> Caracteristicas;
+    private boolean isBoss;
     
 
 
 
 
+   
     public Enemigo(String Nombre,int Nivel,int Ataque,int PG_enemigo,String Putada, String Descp,int nEne,String descp_Enemigo,ArrayList<String> caracterisitcas){
       this.Nombre=Nombre;
       this.Nivel=Nivel;
@@ -27,6 +29,7 @@ public class Enemigo {
       this.nEnemigos=nEne;
       this.Descripcion_Enemigo=descp_Enemigo;
       this.Caracteristicas=caracterisitcas;
+      this.isBoss=false;
       
     }
     public void setPG_enemigo(int PG) {
@@ -154,8 +157,16 @@ public class Enemigo {
             case torpe:
                 break;
             
+            }
         }
+
+        public boolean isBoss() {
+            return isBoss;
         }
+        public void setBoss(boolean isBoss) {
+            this.isBoss = isBoss;
+        }
+
     }
 
 

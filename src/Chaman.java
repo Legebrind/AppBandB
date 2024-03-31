@@ -19,8 +19,9 @@ public class Chaman extends Jugador{
   
 
     public Chaman (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(false);
-        
+        setBuscaTrampas(false);
         setNR(1);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Chaman);

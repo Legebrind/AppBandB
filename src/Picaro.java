@@ -18,7 +18,9 @@ public class Picaro extends Jugador {
     
 
     public Picaro (Scanner input){
+        iniciarNombre(input);
         setIsAtaqueMagico(false);
+        setBuscaTrampas(true);
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Picaro);
