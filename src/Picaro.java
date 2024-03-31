@@ -12,7 +12,7 @@ public class Picaro extends Jugador {
     private HashMap<Integer,String> Sentido_Trampas;
     private HashMap<Integer,Integer> Furtivo; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
-    private boolean BuscaTrampas;
+    
     
     
     
@@ -33,6 +33,7 @@ public class Picaro extends Jugador {
         setTablaAtaque(iniciarAtaqueBase());
         iniciarFurtivo();
         iniciarSentido_Trampas();
+        
                       
         
     }

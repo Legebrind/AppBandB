@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 
 
+
+
 public class Barbaro extends Jugador {
-    private HashMap<Integer,String> Sentido_Trampas;
+    private HashMap<Integer,String> Sentido_Trampas;//Se imprime por pantalla un String ya que es para el daño del jugador
     private HashMap<Integer,Furia> Furia; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     
@@ -73,7 +75,7 @@ public class Barbaro extends Jugador {
         this.Furia.put(15,new Furia("Furia x4",4));
     } 
     private void iniciarSentido_Trampas(){
-    //Modificar como clase Furia;
+    //Modificar ;
     this.Sentido_Trampas.put(1,"Sentido trampas 0");
     this.Sentido_Trampas.put(2,"Sentido trampas 1");
     this.Sentido_Trampas.put(3,"Sentido trampas 1");
@@ -104,12 +106,16 @@ public class Barbaro extends Jugador {
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
+    //El ataque del Bárbaro es sencillo, o ataca con furia o sin ella. Necesita el Scanner para introducir 
+    //las opciones por pantalla y el nivelMundo porque su daño es acorde a este valor
     public int atacar(Scanner input,int nivelMundo){
-        String utilizarFuria="z";
-   
+        String utilizarFuria="z"; //se inicia la variable en este valor para que entre en el bucle while
+        //Almacenamos en estas variables el multiplicador de la furia y el valor del daño base
         Furia furia=getFuria(nivelMundo);
         int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
+
+        //Preguntamos al jugador que quiere hacer y devolvemos el parametro int danno de nuestro ataque.
+
          while(utilizarFuria!="s" && utilizarFuria!="n"){
             System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
             utilizarFuria=input.nextLine();
@@ -132,7 +138,8 @@ public class Barbaro extends Jugador {
         return 0;
     }
 
-    @Override
+    //Implementamos el método abstracto de la clase Jugador para indicar el daño  y tipo de nuestro ataque
+
     public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
         Danno danno = new Danno();
         System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
@@ -141,10 +148,24 @@ public class Barbaro extends Jugador {
         if(getTipoAtaque_Fisico().size()==1){
           danno.setTipo(getTipoAtaque_Fisico().get(0));
         }
-        else{};
-        return null;
+        else{
+            System.out.println("Elige el tipo de daño");
+            for(int i=0;i<=getTipoAtaque_Fisico().size();i++){
+                System.out.println(i+") "+getTipoAtaque_Fisico().get(i));
+            }
+            int tipo=input.nextInt();
+            input.nextLine();
+            while (tipo<0 || tipo>getTipoAtaque_Fisico().size()) {
+                System.out.println("Entiendo que eres un poco...ya sabes un mucho Bárbaro\nTu escoger número tipo daño y después tú matar");
+                tipo=input.nextInt();
+                input.nextLine();
+            }
+            danno.setTipo(getTipoAtaque_Fisico().get(tipo));
+        };
+        return danno;
     }
-    @Override
+    //El bárbaro no tiene ataque mágico
+
     public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
         // TODO Auto-generated method stub
         return null;
