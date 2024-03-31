@@ -1,0 +1,202 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+
+
+public class Chaman extends Jugador{
+
+    private HashMap<Integer,String> Sanacion,Curacion,Restablecimiento;
+
+    private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
+    private HashMap<Integer,Integer> TablaAtaque;
+    private boolean PurgarInvisibilidad;//Hay que ver como establecer esta habilidad
+    
+    //Hay que introducir Ritual de batalla, Adivinaciones, Maldición vudú
+    
+ 
+  
+
+    public Chaman (Scanner input){
+        setIsAtaqueMagico(false);
+        
+        setNR(1);
+        setHajugado(false);
+        setClase(Enums.Tipo_Clase.Chaman);
+        setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
+        addSalvaciones(Enums.Tipo_Salvacion.Voluntad);
+        setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
+        addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
+        addTipoAtaque_fisico(Enums.Tipo_Ataque.Contundente);
+        setTablaAtaque(iniciarAtaqueBase());
+        iniciarCurarHeridas();
+        iniciarSanacion();
+        iniciarCuracion();
+        
+        
+        PurgarInvisibilidad=true;
+        
+        
+        
+                      
+        
+    }
+
+    private HashMap<Integer,Integer> iniciarAtaqueBase(){
+        TablaAtaque = new HashMap<Integer,Integer>();
+        TablaAtaque.put(1,2);
+        TablaAtaque.put(2,2);
+        TablaAtaque.put(3,2);
+        TablaAtaque.put(4,2);
+        TablaAtaque.put(5,3);
+        TablaAtaque.put(6,3);
+        TablaAtaque.put(7,3);
+        TablaAtaque.put(8,3);
+        TablaAtaque.put(9,4);
+        TablaAtaque.put(10,4);
+        TablaAtaque.put(11,4);
+        TablaAtaque.put(12,4);
+        TablaAtaque.put(13,5);
+        TablaAtaque.put(14,5);
+        TablaAtaque.put(15,5);
+        return TablaAtaque;
+    } 
+    
+    private void iniciarCurarHeridas(){
+        CurarHeridas = new HashMap<>();
+        CurarHeridas.put(1,2);
+        CurarHeridas.put(2,2);
+        CurarHeridas.put(3,2);
+        CurarHeridas.put(4,2);
+        CurarHeridas.put(5,5);
+        CurarHeridas.put(6,5);
+        CurarHeridas.put(7,5);
+        CurarHeridas.put(8,5);
+        CurarHeridas.put(9,8);
+        CurarHeridas.put(10,8);
+        CurarHeridas.put(11,8);
+        CurarHeridas.put(12,8);
+        CurarHeridas.put(13,11);
+        CurarHeridas.put(14,11);
+        CurarHeridas.put(15,11);
+    } 
+    private void iniciarSanacion(){
+        Sanacion=new HashMap<>();
+    
+        Sanacion.put(1,"[1UBE] Suprime estados negativos por valor de 1");
+        Sanacion.put(2,"[1UBE] Suprime estados negativos por valor de 1");
+        Sanacion.put(3,"[1UBE] Suprime estados negativos por valor de 1");
+        Sanacion.put(4,"[1UBE] Suprime estados negativos por valor de 1");
+        Sanacion.put(5,"[1UBE] Suprime estados negativos por valor de 2");
+        Sanacion.put(6,"[1UBE] Suprime estados negativos por valor de 2");
+        Sanacion.put(7,"[1UBE] Suprime estados negativos por valor de 2");
+        Sanacion.put(8,"[1UBE] Suprime estados negativos por valor de 2");
+        Sanacion.put(9,"[1UBE] Suprime estados negativos por valor de 3");
+        Sanacion.put(10,"[1UBE] Suprime estados negativos por valor de 3");
+        Sanacion.put(11,"[1UBE] Suprime estados negativos por valor de 3");
+        Sanacion.put(12,"[1UBE] Suprime estados negativos por valor de 3");
+        Sanacion.put(13,"[1UBE] Suprime estados negativos por valor de 4");
+        Sanacion.put(14,"[1UBE] Suprime estados negativos por valor de 4");
+        Sanacion.put(15,"[1UBE] Suprime estados negativos por valor de 4");
+    }
+    public void iniciarCuracion(){
+        Curacion=new HashMap<>();
+        Curacion.put(1,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
+        Curacion.put(2,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
+        Curacion.put(3,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
+        Curacion.put(4,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
+        Curacion.put(5,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
+        Curacion.put(6,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
+        Curacion.put(7,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
+        Curacion.put(8,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
+        Curacion.put(9,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
+        Curacion.put(10,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
+        Curacion.put(11,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
+        Curacion.put(12,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
+        Curacion.put(13,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
+        Curacion.put(14,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
+        Curacion.put(15,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
+
+    }
+
+    public HashMap<Integer, String> getRestablecimiento() {
+        return Restablecimiento;
+    }
+
+    public void iniciarRestablecimiento() {
+        
+        Restablecimiento = new HashMap<Integer, String>();
+       
+        Restablecimiento.put(2,"[1UBE] Permite a un Jugador ir al baño");
+        Restablecimiento.put(3,"[1UBE] Permite a un Jugador ir al baño");
+        Restablecimiento.put(4,"[1UBE] Permite a un Jugador ir al baño");
+        Restablecimiento.put(5,"[1UBE] Permite a un Jugador ir al baño");
+        Restablecimiento.put(6,"[1UBE] Permite a un Jugador ir al baño");
+        Restablecimiento.put(7,"[1UBE] Permite a dos Jugadores ir al baño");
+        Restablecimiento.put(8,"[1UBE] Permite a dos Jugadores ir al baño");
+        Restablecimiento.put(9,"[1UBE] Permite a dos Jugadores ir al baño");
+        Restablecimiento.put(10,"[1UBE] Permite a dos Jugadores ir al baño");
+        Restablecimiento.put(11,"[1UBE] Permite a dos Jugadores ir al baño");
+        Restablecimiento.put(12,"[1UBE] Permite a tres Jugadores ir al baño");
+        Restablecimiento.put(13,"[1UBE] Permite a tres Jugadores ir al baño");
+        Restablecimiento.put(14,"[1UBE] Permite a tres Jugadores ir al baño");
+        Restablecimiento.put(15,"[1UBE] Permite a tres Jugadores ir al baño");
+    }
+
+
+
+    public int getAtaqueBase(int NivelMundo) {
+        return this.TablaAtaque.get(NivelMundo);
+    }
+    public int atacar(Scanner input,int nivelMundo){
+        
+        int danoBase=getAtaqueBase(nivelMundo);
+        //Preguntas
+    
+        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
+        System.out.println("Bebes 1 UBE");
+            return danoBase;
+            
+        }
+    
+    public int ataqueMagico(int nivelMundo){
+        return 0;
+    }
+
+    @Override
+    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+        Danno danno = new Danno();
+        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
+        int ataque =atacar(input, nivelMundo);
+        danno.setCantidad(ataque);
+        if(getTipoAtaque_Fisico().size()==1){
+          danno.setTipo(getTipoAtaque_Fisico().get(0));
+        }
+        else{
+            System.out.println("¿Que tipo de ataque quieres usar?");
+            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
+                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
+                }
+            ataque =input.nextInt();
+            input.nextLine();
+            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
+                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
+                ataque=input.nextInt();
+                input.nextLine();
+            }
+            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
+
+        };
+        return danno;
+    }
+    @Override
+    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+        // TODO Auto-generated method stub
+        return null;
+    }  
+
+ 
+   
+
+}

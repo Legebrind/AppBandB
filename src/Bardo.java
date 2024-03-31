@@ -3,96 +3,109 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 
-public class Bardo{
 
-      private HashMap<Integer,String> Sentido_Trampas;
-    private HashMap<Integer,Furia> Furia; //tabla que controla los valores de las aptitudes especiales
+
+public class Bardo extends Jugador{
+
+    private HashMap<Integer,String> Musica_de_Bardo,Cantares;
+    private HashMap<Integer,Integer> Infundir_Valor; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
+    private boolean Conocimiento_de_bardo,Portento_Musical;
     
     
     
-    
+ 
+  
+
     public Bardo (Scanner input){
         setIsAtaqueMagico(true);
+        
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Bardo);
-        setTablaAtaque(new HashMap<Integer,Integer>());
-        Furia = new HashMap<>();
-        Sentido_Trampas = new HashMap<>();
         setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
-        addSalvaciones(Enums.Tipo_Salvacion.Fortaleza);
+        addSalvaciones(Enums.Tipo_Salvacion.Reflejos);
+        addSalvaciones(Enums.Tipo_Salvacion.Voluntad);
         setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
-        addTipoAtaque_fisico(Enums.Tipo_Ataque.Cortante);
+        addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
         setTablaAtaque(iniciarAtaqueBase());
-        iniciarFuria();
-        iniciarSentido_Trampas();
+        iniciarInfundir_Valor();
+        iniciarMusica_de_Bardo();
+        iniciarCantares();
+        
+        Conocimiento_de_bardo=true;
+        Portento_Musical=false;
+        
+        
+        
                       
         
     }
 
     private HashMap<Integer,Integer> iniciarAtaqueBase(){
         TablaAtaque = new HashMap<Integer,Integer>();
-        TablaAtaque.put(1,6);
-        TablaAtaque.put(2,6);
-        TablaAtaque.put(3,7);
-        TablaAtaque.put(4,7);
-        TablaAtaque.put(5,8);
-        TablaAtaque.put(6,8);
-        TablaAtaque.put(7,9);
-        TablaAtaque.put(8,9);
-        TablaAtaque.put(9,10);
-        TablaAtaque.put(10,10);
-        TablaAtaque.put(11,11);
-        TablaAtaque.put(12,11);
-        TablaAtaque.put(13,12);
-        TablaAtaque.put(14,12);
-        TablaAtaque.put(15,13);
+        TablaAtaque.put(1,4);
+        TablaAtaque.put(2,4);
+        TablaAtaque.put(3,4);
+        TablaAtaque.put(4,5);
+        TablaAtaque.put(5,5);
+        TablaAtaque.put(6,5);
+        TablaAtaque.put(7,6);
+        TablaAtaque.put(8,6);
+        TablaAtaque.put(9,6);
+        TablaAtaque.put(10,7);
+        TablaAtaque.put(11,7);
+        TablaAtaque.put(12,7);
+        TablaAtaque.put(13,8);
+        TablaAtaque.put(14,8);
+        TablaAtaque.put(15,8);
         return TablaAtaque;
     } 
     
-    private void iniciarFuria(){
-        this.Furia.put(1,new Furia("Furia x2",2));
-        this.Furia.put(2,new Furia("Furia x2",2));
-        this.Furia.put(3,new Furia("Furia x2",2));
-        this.Furia.put(4,new Furia("Furia x2",2));
-        this.Furia.put(5,new Furia("Furia x2",2));
-        this.Furia.put(6,new Furia("Furia x3",3));
-        this.Furia.put(7,new Furia("Furia x3",3));
-        this.Furia.put(8,new Furia("Furia x3",3));
-        this.Furia.put(9,new Furia("Furia x3",3));
-        this.Furia.put(10,new Furia("Furia x3",3));
-        this.Furia.put(11,new Furia("Furia x4",4));
-        this.Furia.put(12,new Furia("Furia x4",4));
-        this.Furia.put(13,new Furia("Furia x4",4));
-        this.Furia.put(14,new Furia("Furia x4",4));
-        this.Furia.put(15,new Furia("Furia x4",4));
+    private void iniciarInfundir_Valor(){
+        Infundir_Valor = new HashMap<>();
+        Infundir_Valor.put(1,1);
+        Infundir_Valor.put(2,1);
+        Infundir_Valor.put(3,1);
+        Infundir_Valor.put(4,1);
+        Infundir_Valor.put(5,2);
+        Infundir_Valor.put(6,2);
+        Infundir_Valor.put(7,2);
+        Infundir_Valor.put(8,2);
+        Infundir_Valor.put(9,3);
+        Infundir_Valor.put(10,3);
+        Infundir_Valor.put(11,3);
+        Infundir_Valor.put(12,3);
+        Infundir_Valor.put(13,4);
+        Infundir_Valor.put(14,4);
+        Infundir_Valor.put(15,4);
     } 
-    private void iniciarSentido_Trampas(){
-    //Modificar como clase Furia;
-    this.Sentido_Trampas.put(1,"Sentido trampas 0");
-    this.Sentido_Trampas.put(2,"Sentido trampas 1");
-    this.Sentido_Trampas.put(3,"Sentido trampas 1");
-    this.Sentido_Trampas.put(4,"Sentido trampas 1");
-    this.Sentido_Trampas.put(5,"Sentido trampas 1");
-    this.Sentido_Trampas.put(6,"Sentido trampas 2");
-    this.Sentido_Trampas.put(7,"Sentido trampas 2");
-    this.Sentido_Trampas.put(8,"Sentido trampas 2");
-    this.Sentido_Trampas.put(9,"Sentido trampas 2");
-    this.Sentido_Trampas.put(10,"Sentido trampas 3");
-    this.Sentido_Trampas.put(11,"Sentido trampas 3");
-    this.Sentido_Trampas.put(12,"Sentido trampas 3");
-    this.Sentido_Trampas.put(13,"Sentido trampas 3");
-    this.Sentido_Trampas.put(14,"Sentido trampas 4");
-    this.Sentido_Trampas.put(15,"Sentido trampas 4");
+    private void iniciarMusica_de_Bardo(){
+        Musica_de_Bardo=new HashMap<>();
+    
+        Musica_de_Bardo.put(1,"[1Chp] Todo el grupo gana Salvación FOR");
+        Musica_de_Bardo.put(2,"[1Chp] Todo el grupo gana Salvación FOR");
+        Musica_de_Bardo.put(3,"[1Chp] Todo el grupo gana Salvación REF / FOR");
+        Musica_de_Bardo.put(4,"[1Chp] Todo el grupo gana Salvación REF / FOR");
+        Musica_de_Bardo.put(5,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(6,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(7,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(8,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(9,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(10,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(11,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(12,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(13,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(14,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+        Musica_de_Bardo.put(15,"[1Chp] Todo el grupo gana Salvación VOL / FOR / REF");
+    
     }
-    public Furia getFuria(int nivelMundo){
-
-        return Furia.get(nivelMundo);
-    }
-    public String getSentido_Trampas(int a){
-
-        return this.Sentido_Trampas.get(a);
+    public void iniciarCantares(){
+        Cantares=new HashMap<>();
+        Cantares.put(5,"[1Chp] Da +10 de ataque a un jugador y +5 a los jugadores adyacentes");
+        Cantares.put(10,"[1Chp] Da +20 de ataque a un jugador y +10 a los jugadores adyacentes");
+        Cantares.put(15,"[1Chp] Da +30 de ataque a un jugador y +15 a los jugadores adyacentes");
+        
     }
 
 
@@ -101,29 +114,16 @@ public class Bardo{
         return this.TablaAtaque.get(NivelMundo);
     }
     public int atacar(Scanner input,int nivelMundo){
-        String utilizarFuria="z";
-   
-        Furia furia=getFuria(nivelMundo);
+        
         int danoBase=getAtaqueBase(nivelMundo);
         //Preguntas
-         while(utilizarFuria!="s" && utilizarFuria!="n"){
-            System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
-            utilizarFuria=input.nextLine();
-            input.nextLine();
-        }
-        switch (utilizarFuria) {
-            case "s":
-                System.out.println("Bebes 1 UBE y 1 chupito");
-                System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*furia.getMultiplicador()+" daño"));
-            return danoBase*furia.getMultiplicador();        
-        
-            default:
-                System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-                System.out.println("Bebes 1 UBE");
+    
+        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
+        System.out.println("Bebes 1 UBE");
             return danoBase;
             
         }
-    }
+    
     public int ataqueMagico(int nivelMundo){
         return 0;
     }
@@ -131,19 +131,44 @@ public class Bardo{
     @Override
     public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
         Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
+        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
         int ataque =atacar(input, nivelMundo);
         danno.setCantidad(ataque);
         if(getTipoAtaque_Fisico().size()==1){
           danno.setTipo(getTipoAtaque_Fisico().get(0));
         }
-        else{};
-        return null;
+        else{
+            System.out.println("¿Que tipo de ataque quieres usar?");
+            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
+                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
+                }
+            ataque =input.nextInt();
+            input.nextLine();
+            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
+                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
+                ataque=input.nextInt();
+                input.nextLine();
+            }
+            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
+
+        };
+        return danno;
     }
     @Override
     public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
         // TODO Auto-generated method stub
         return null;
     }  
+
+    public boolean isPortento_Musical() {
+        return Portento_Musical;
+    }
+
+    public void setPortento_Musical(boolean portento_Musical) {
+        Portento_Musical = portento_Musical;
+    }
+    public boolean isConocimiento_de_bardo() {
+        return Conocimiento_de_bardo;
+    }
 
 }
