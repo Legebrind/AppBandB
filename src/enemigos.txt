@@ -1,12 +1,3 @@
-Kobols/1/1/3/
-¡Son unos cobardes! 
-El jugador más bajito debe dar 3 vueltas alrededor de la sala para escapar. 
-No podrá participar en el combate o puede quedarse y Golpetazo 1/Ninguna/Ninguna/
-Para poder atacar a un Kobold, el jugador debe beder sus UBEs,Chp y Vass en cuclillas/5/
-Que monos los cinco Kobolitos con sus cinco minicuchillos relucientes y afilados.
-No cabe duda de que os van a rajar si no le dais lo que lleváis en los bolsillos./Esqueleto/1/1/4/¡Buscan carne fresca! 
-El jugador que más pese debe dar 3 vueltas alrededor de la sala para escapar.
-No podrá participar en el combate o puede quedarse y recibir 3 GOLPETAZOS. Golpetazo: 1(x3)/No Muerto/Inmune a Criticos/
-Daño afilado o cortante daña la mitad/3/Son tres esqueletos ochenteros, con sus gorrita puestas del revés y 
-collares de oro colgados del cuellon se mueven a ritmo de rap con unos alfarjones afiladicoh y resulientes 
+Kobols/1/1/3/¡Son unos cobardes!El jugador más bajito debe dar 3 vueltas alrededor de la sala para escapar. No podrá participar en el combate o puede quedarse y Golpetazo 1/Ninguna/Ninguna/Para poder atacar a un Kobold, el jugador debe beder sus UBEs,Chp y Vass en cuclillas/5/Que monos los cinco Kobolitos con sus cinco minicuchillos relucientes y afilados.No cabe duda de que os van a rajar si no le dais lo que lleváis en los bolsillos./
+Esqueleto/1/1/4/¡Buscan carne fresca! El jugador que más pese debe dar 3 vueltas alrededor de la sala para escapar.No podrá participar en el combate o puede quedarse y recibir 3 GOLPETAZOS. Golpetazo: 1(x3)/No Muerto/Inmune a Criticos/Daño afilado o cortante daña la mitad/3/Son tres esqueletos ochenteros, con sus gorrita puestas del revés y collares de oro colgados del cuellon se mueven a ritmo de rap con unos alfarjones afiladicoh y resulientes 
 que ya quisiera el Rafu./

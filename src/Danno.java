@@ -7,6 +7,9 @@ public class Danno {
         this.cantidad = cantidad;
         this.tipo = tipo;
     }
+    public Danno(){
+        
+    }
 
     public int getCantidad() {
         return cantidad;

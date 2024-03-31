@@ -1,26 +1,22 @@
-//Para poder determinar los PG de la clase es necesario
-//crear una clase TablaPG en la mesa y llamar al metodo
-//Barbaro.iniciarPG("TablaPG.getPg(Nivel_de_Mundo,NR)")
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 
+public class Bardo{
 
-public class Barbaro extends Jugador {
-    private HashMap<Integer,String> Sentido_Trampas;
+      private HashMap<Integer,String> Sentido_Trampas;
     private HashMap<Integer,Furia> Furia; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     
     
     
     
-    public Barbaro (Scanner input){
-        setIsAtaqueMagico(false);
-        setNR(3);
+    public Bardo (Scanner input){
+        setIsAtaqueMagico(true);
+        setNR(2);
         setHajugado(false);
-        setClase(Enums.Tipo_Clase.Barbaro);
+        setClase(Enums.Tipo_Clase.Bardo);
         setTablaAtaque(new HashMap<Integer,Integer>());
         Furia = new HashMap<>();
         Sentido_Trampas = new HashMap<>();
@@ -148,5 +144,6 @@ public class Barbaro extends Jugador {
     public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
         // TODO Auto-generated method stub
         return null;
-    }
+    }  
+
 }

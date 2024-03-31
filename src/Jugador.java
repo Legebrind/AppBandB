@@ -54,15 +54,7 @@ public abstract class Jugador {
     public void setJefe(boolean a){
         this.Is_Jefe=a;
     }
-    public void setDebilitado(Boolean b){
-        this.Debilitado=b;
-    };
-    public void setEnvenedado(Boolean b){
-        this.Envenenado=b;
-    };
-    public void setPerdida_de_Nivel(Boolean b){
-        this.Perdida_de_Nivel=b;
-    };
+
     public void setFichas_Dano(int a){
         this.Fichas_Dano=a;
     }
@@ -174,7 +166,7 @@ public abstract class Jugador {
     public int getEquipoMax() {
         return EquipoMax;
     }
-    public abstract int ataqueMagico(int nivelMundo);
+    
 
     public boolean isBuscaTrampas() {
         return BuscaTrampas;
@@ -199,7 +191,6 @@ public abstract class Jugador {
             return TipoAtaque_Fisico.size();
         }
         return TipoAtaque_Magico.size();
-
     }
 
 }
