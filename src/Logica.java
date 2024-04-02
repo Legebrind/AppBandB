@@ -24,28 +24,40 @@ public class Logica {
     }
 
 //Métodos para gestionar el turno, abarca desde secuencia1 hasta secuencia 4
-    public void buscarTrampas(ArrayList<Jugador> aventureros, MesaDestino mesa,Scanner input,int NivelMundo){
+    public void buscarTrampas(ArrayList<Jugador> aventureros, MesaDestino mesa,Scanner input,int NivelMundo, Jugador jugador_inicial){
 
         //1ºMirar si hay trampa
+        //Comprueba si hay pj que puedan buscar trampa
+        int contador=0;
         for (int i=0;i<=aventureros.size();i++) {
+            
             if(aventureros.get(i).isBuscaTrampas()){
                 System.out.println(i+") "+aventureros.get(i).getNombre());
+                contador++;
             }
-            System.out.println("99) Si nadie tiene huevos");
+            if(contador!=0){System.out.println("99) Si nadie tiene huevos");}
         
         }
-        System.out.println("¿Quién de los nombrados se sacrifica por el equipo y busca trampas\n Si nadie tiene huevos a buscar una trampa sufreréis las consecuencias, panda de pijosprogre");
-        int jugador=input.nextInt();
-        input.nextLine();
-        while (jugador!=99 && (jugador<0 || jugador>aventureros.size())) {
-            System.out.println("Venga no me toquéis los huevos que no tengo todo el día, escribir el nombre del héroe o el de nadie");
-            jugador=input.nextInt();
-            input.nextLine();            
-        }
+        
+        int jugador=-1;
+        boolean pasa=false;
+        do{
+            System.out.println("¿Quién de los nombrados se sacrifica por el equipo y busca trampas\n Si nadie tiene huevos a buscar una trampa sufreréis las consecuencias, panda de pijosprogre");
+            try{
+                jugador=input.nextInt();
+                pasa=true;
+            }catch(Exception e){
+                System.out.println("enga no me toquéis los huevos que no tengo todo el día, escribir el nombre del héroe o el de nadie");
+            }
+
+        }while(!pasa || (jugador<0 || ((jugador>contador)&&(jugador!=99))));
+
         switch (jugador) {
             case 99:
                 System.out.println("Panda de desgraciaos cobardes y borrachos mediocres\n Pues ahora toca comprobar si hay trampa y hace ¡¡¡¡booooom!!!!");
-                trampa(NivelMundo);
+                //Hay que llamar aquí al jugador inicial
+                System.out.println(jugador_inicial.getNombre()+"te toca buscar trampa en cueros");
+                trampa(NivelMundo); //to do.
                 break;
         
             default:
@@ -78,7 +90,7 @@ public class Logica {
     }
        
 
-    public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int NivelMundo,Descripcion_Combate Descripciones){
+    public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int NivelMundo,Descripcion_Combate Descripciones,Jugador jugador_inicial){
         //3º Combatir
         
         String respuesta;
@@ -87,7 +99,7 @@ public class Logica {
             horda.add(i,enemigo);
         }
         while(horda.size()>0){
-            ArrayList<Modificador> modificadores;
+            ArrayList<Modificador> modificadores=new ArrayList<>();
             //fase de ataques magicos
             for (Jugador aventurero: aventureros.getJugadores()) {
                 if(aventurero.isIsAtaqueMagico() && !aventurero.isHajugado() && enemigo.getPG_enemigo()>0){
@@ -135,8 +147,13 @@ public class Logica {
         }
     System.out.println("Pin pan muerto\n Cawen dioh que no os morís\n Curaos pedazo de pus tumurosa");
     }
-    public void limpieza(){
+    public void limpieza(Grupo aventureros){
             //4º Limpieza.
+            //Hay que eliminar todas las ventajas al finalizar el combate
+            //Druida:
+                for (Jugador pj : aventureros.getJugadores()) {
+                   pj.quitarbeneficios();
+                }
             //Mostrar los jugadores que pueden curar, sus costes de curación
             //Si es boss indicar el botín
     }

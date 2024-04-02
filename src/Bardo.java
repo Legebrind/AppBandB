@@ -132,17 +132,19 @@ public class Bardo extends Jugador{
 
         System.out.println("¿Quién será el agraciado que reciba tu canción y salpique tu tonalidad a sus compañeros adyacentes?");
         aventureros.mostrarInformacionEquipo();
-        int respuesta =input.nextInt();
+        int respuesta=-1;
         var cantar = Cantar.get(5);
         if(nivelMundo>9 && nivelMundo<15){cantar=Cantar.get(10); }
         if(nivelMundo>=15){cantar=Cantar.get(15);}
-        input.nextLine();
-        while (respuesta<0||respuesta>aventureros.getJugadoresMax()) {
-            System.out.println("Mal empezamos si no atinas con un número de mielda\n\n");
-            aventureros.mostrarInformacionEquipo();
-            respuesta =input.nextInt();
+        do{
+            try{
+                respuesta =input.nextInt();
+            }catch(Exception e){
+            System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
             input.nextLine();
-        }
+            }
+        }while (respuesta<0||respuesta>aventureros.getJugadoresMax()-1); //Comprobar la condición
+        
         if (respuesta==0){
             aventureros.getJugador(respuesta).aumentarModificador(cantar.getModificador());
             aventureros.getJugador(respuesta+1).aumentarModificador(cantar.getModificador()/2);
@@ -163,9 +165,9 @@ public class Bardo extends Jugador{
     }
 
     
-    public int atacar (Scanner input, int nivelMundo){
+    public int atacar (Scanner input, int nivelMundo,ArrayList<Enemigo>horda){
         
-       return getAtaqueBase(nivelMundo)+getModificador();
+       return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
 
 
     }
@@ -216,6 +218,11 @@ public class Bardo extends Jugador{
     }
     public boolean isConocimiento_de_bardo() {
         return Conocimiento_de_bardo;
+    }
+
+    @Override
+    public void quitarbeneficios() {
+       
     }
 
 }

@@ -7,17 +7,12 @@ import java.util.Scanner;
 
 public class Paladin extends Jugador{
 
-    private HashMap<Integer,String> Sanacion,Curacion,Restablecimiento;
-
+    private HashMap<Integer,String> Restablecimiento;
+    private HashMap<Integer,Integer>Tabla_MD;
+    private int Contador_MD;
     private HashMap<Integer,Integer> Imposicion_Manos; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque,Expulsar_NM;
-    private boolean PurgarInvisibilidad;//Hay que ver como establecer esta habilidad
-    
-    //Hay que introducir fuerza de toro y proteccion.
-    
- 
-  
-
+           
     public Paladin (Scanner input){
         setIsAtaqueMagico(true);
         iniciarNombre(input);
@@ -32,42 +27,26 @@ public class Paladin extends Jugador{
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Contundente);
         setTablaAtaque(iniciarAtaqueBase());
         iniciarImposicion_Manos();
-        iniciarSanacion();
-        iniciarCuracion();
         iniciarExpulsar_NM();
-        
-        
-        PurgarInvisibilidad=true;
-        
-        
-        
-                      
-        
+        iniciarTabla_MD();
+         
     }
 
     private void iniciarExpulsar_NM() {
-        
-        
             Expulsar_NM = new HashMap<Integer,Integer>();
-            Expulsar_NM.put(1,10);
-            Expulsar_NM.put(2,10);
-            Expulsar_NM.put(3,15);
-            Expulsar_NM.put(4,15);
-            Expulsar_NM.put(5,20);
-            Expulsar_NM.put(6,20);
-            Expulsar_NM.put(7,25);
-            Expulsar_NM.put(8,25);
-            Expulsar_NM.put(9,30);
-            Expulsar_NM.put(10,30);
-            Expulsar_NM.put(11,35);
-            Expulsar_NM.put(12,35);
-            Expulsar_NM.put(13,40);
-            Expulsar_NM.put(14,40);
-            Expulsar_NM.put(15,45);
-            
+            Expulsar_NM.put(4,10);
+            Expulsar_NM.put(5,10);
+            Expulsar_NM.put(6,10);
+            Expulsar_NM.put(7,10);
+            Expulsar_NM.put(8,20);
+            Expulsar_NM.put(9,20);
+            Expulsar_NM.put(10,20);
+            Expulsar_NM.put(11,20);
+            Expulsar_NM.put(12,30);
+            Expulsar_NM.put(13,30);
+            Expulsar_NM.put(14,30);
+            Expulsar_NM.put(15,30);
     } 
-    
-
     private HashMap<Integer,Integer> iniciarAtaqueBase(){
         TablaAtaque = new HashMap<Integer,Integer>();
         TablaAtaque.put(1,4);
@@ -106,44 +85,8 @@ public class Paladin extends Jugador{
         Imposicion_Manos.put(14,7);
         Imposicion_Manos.put(15,8);
     } 
-    private void iniciarSanacion(){
-        Sanacion=new HashMap<>();
-    
-        
-        Sanacion.put(2,"[1UBE] Suprime estados negativos por valor de 1");
-        Sanacion.put(3,"[1UBE] Suprime estados negativos por valor de 1");
-        Sanacion.put(4,"[1UBE] Suprime estados negativos por valor de 1");
-        Sanacion.put(5,"[1UBE] Suprime estados negativos por valor de 2");
-        Sanacion.put(6,"[1UBE] Suprime estados negativos por valor de 2");
-        Sanacion.put(7,"[1UBE] Suprime estados negativos por valor de 2");
-        Sanacion.put(8,"[1UBE] Suprime estados negativos por valor de 2");
-        Sanacion.put(9,"[1UBE] Suprime estados negativos por valor de 2");
-        Sanacion.put(10,"[1UBE] Suprime estados negativos por valor de 3");
-        Sanacion.put(11,"[1UBE] Suprime estados negativos por valor de 3");
-        Sanacion.put(12,"[1UBE] Suprime estados negativos por valor de 3");
-        Sanacion.put(13,"[1UBE] Suprime estados negativos por valor de 3");
-        Sanacion.put(14,"[1UBE] Suprime estados negativos por valor de 4");
-        Sanacion.put(15,"[1UBE] Suprime estados negativos por valor de 4");
-    }
-    public void iniciarCuracion(){
-        Curacion=new HashMap<>();
-        Curacion.put(1,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(2,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(3,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(4,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(5,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(6,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(7,"[1Chp] Invocas comida, una rica e insuficiente Bolsa de Snacks");
-        Curacion.put(8,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(9,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(10,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(11,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(12,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(13,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(14,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
-        Curacion.put(15,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
+  
 
-    }
 
     public String getRestablecimiento(int nivelMundo) {
         return Restablecimiento.get(nivelMundo);
@@ -168,60 +111,96 @@ public class Paladin extends Jugador{
         Restablecimiento.put(14,"[1UBE] Permite a un Jugador ir al baño");
         Restablecimiento.put(15,"[1UBE] Permite a un Jugador ir al baño");
     }
+    public void iniciarTabla_MD(){
+        Tabla_MD = new HashMap<Integer,Integer>();
+        Tabla_MD.put(1,4);
+        Tabla_MD.put(2,4);
+        Tabla_MD.put(3,5);
+        Tabla_MD.put(4,5);
+        Tabla_MD.put(5,5);
+        Tabla_MD.put(6,5);
+        Tabla_MD.put(7,6);
+        Tabla_MD.put(8,6);
+        Tabla_MD.put(9,6);
+        Tabla_MD.put(10,6);
+        Tabla_MD.put(11,7);
+        Tabla_MD.put(12,7);
+        Tabla_MD.put(13,7);
+        Tabla_MD.put(14,7);
+        Tabla_MD.put(15,8);
+        
 
+    }
 
 
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-    
-        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-        System.out.println("Bebes 1 UBE");
-            return danoBase;
-            
-        }
-    
-    public int ataqueMagico(int nivelMundo){
-        return 0;
-    }
-
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{
-            System.out.println("¿Que tipo de ataque quieres usar?");
-            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
-                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        boolean chivato=false;//me dice si hay demonios en la horda
+        int respuesta=-1;
+        if(Tabla_MD.get(nivelMundo)>getContador_MD()){
+            for (Enemigo enemigo : horda) {
+                for (String x : enemigo.getCaracteristicas()) {
+                    if(x=="Demonio"){
+                        System.out.println(enemigo.getNombre()+"es un demonio, lo que quiere decir que\n")
+                        System.out.println("hay un demonio con vida y puedes castigarle ¿Castigamos? \n0)=Si\n1)=No");
+                        do{
+                            try{
+                                respuesta =input.nextInt();
+                            }catch(Exception e){//comprobar que no afecte respuesta del if anterior
+                            System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                            input.nextLine();
+                            }
+                        }while((respuesta<0|| respuesta>1));
+                        if(respuesta==0){
+                            aumentarModificador((nivelMundo/2)+1);
+                            setContador_MD(getContador_MD()+1);
+                            return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
+                        }
+                    }
                 }
-            ataque =input.nextInt();
-            input.nextLine();
-            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
-                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
-                ataque=input.nextInt();
-                input.nextLine();
             }
-            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
-
-        };
-        return danno;
+        }
+        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
-    }  
+        
+    public int getContador_MD() {
+        return Contador_MD;
+    }
+
+    public void setContador_MD(int contador_MD) {
+        Contador_MD = contador_MD;
+    }
+    public void expulsar_NM(ArrayList<Enemigo> horda, int nivelMundo){
+        if(nivelMundo>=4){
+            Danno danno =new Danno();
+            danno.setCantidad(Expulsar_NM.get(nivelMundo));
+            danno.setTipo(Enums.Tipo_Ataque.Expulsar);
+            for (Enemigo enemigo : horda) {
+                enemigo.recibirDanno(danno);
+            }
+        }
+    }
 
  
-   
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+       System.out.println("Muy bien señorito, expulsas muy bine");
+       expulsar_NM(horda, nivelMundo);
+    }
+
+  
+    public void quitarbeneficios() {
+        setContador_MD(0);
+    }
+    public HashMap<Integer, Integer> getTabla_MD() {
+        return Tabla_MD;
+    }
+
+    public void setTabla_MD(HashMap<Integer, Integer> tabla_MD) {
+        Tabla_MD = tabla_MD;
+    }
+
 
 }

@@ -52,11 +52,12 @@ public class Main {
             }
 
             for(int sala=1;sala<5;sala++){
-                Reglas.buscarTrampas(Aventureros.getJugadores(), Mesaprincipal, input, NivelMundo); //1_Secuencia de busqueda de trampas
-                boolean isBoss=sala==4;
+                //Hay que establecer el jugador inicial en cada sala
+                Reglas.buscarTrampas(Aventureros.getJugadores(), Mesaprincipal, input, NivelMundo,jugador_inicial); //1_Secuencia de busqueda de trampas
+                boolean isBoss=sala==4;//revisar
                 Enemigo enemigo=Reglas.patearPuerta(Mesaprincipal,isBoss,NivelMundo);//2_Secuencia, crea un boss, se lee la putada y se combate.
-                Reglas.combatir(enemigo,Aventureros,input,NivelMundo,descripciones_Combate);//3_Secuencia, el combate.
-                Reglas.limpieza();//4_Limpieza, esta fase es para curarse. Como el programa no lleva las heridas de los pj imprimirá por pantalla
+                Reglas.combatir(enemigo,Aventureros,input,NivelMundo,descripciones_Combate,jugador_inicial);//3_Secuencia, el combate.
+                Reglas.limpieza(Aventureros);//4_Limpieza, esta fase es para curarse. Como el programa no lleva las heridas de los pj imprimirá por pantalla
                 //cada personaje con la habilidad de curar, el coste de la habilidad y su efecto. Preguntará a los jugadores que indiquen cuando estén listos para ir a la siguiente sala.
                               
             }

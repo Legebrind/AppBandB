@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 
 public class Guerrero extends Jugador {
-    private HashMap<Integer,Integer> Ataque_Poderoso;
+    private HashMap<Integer,Integer> Ataque_Poderoso,Ataque_Poderoso_mejorado;
    
     private HashMap<Integer,Integer> TablaAtaque;
-    private boolean EstiloAtaque_Poderoso;
+    private boolean EstiloAtaque_Poderoso,Acorazado;
     
     
     
@@ -30,8 +30,9 @@ public class Guerrero extends Jugador {
         setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Cortante);
         setTablaAtaque(iniciarAtaqueBase());
-        iniciarDos_Armas();
         iniciarAtaque_Poderoso();
+        Acorazado=false;
+        EstiloAtaque_Poderoso=false;
         
                       
         
@@ -81,55 +82,79 @@ public class Guerrero extends Jugador {
     Ataque_Poderoso.put(15,6);
 
   }
+  private void iniciarAtaque_Poderoso_mejorado(){
+    Ataque_Poderoso_mejorado = new HashMap<>();
+    addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
+    //Este bonificador solo se aplica cuando bebe un UBE, añade esta cantidad al ataque base
+   
+    Ataque_Poderoso.put(6,6);
+    Ataque_Poderoso.put(7,7);
+    Ataque_Poderoso.put(8,8);
+    Ataque_Poderoso.put(9,10);
+    Ataque_Poderoso.put(10,11);
+    Ataque_Poderoso.put(11,12);
+    Ataque_Poderoso.put(12,13);
+    Ataque_Poderoso.put(13,15);
+    Ataque_Poderoso.put(14,16);
+    Ataque_Poderoso.put(15,17);
+
+  }
     
    
 
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        String utilizarFuria="z";
-   
-        Furia furia=getFuria(nivelMundo);
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-         while(utilizarFuria!="s" && utilizarFuria!="n"){
-            System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
-            utilizarFuria=input.nextLine();
-            input.nextLine();
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        int respuesta=-1;
+        boolean atqpoderoso=false;
+        System.out.println("¿Quieres darle al enemigo pa que la sienta en el pecho? \n(1)Si\n(2)No");
+            do{
+                try{
+                    respuesta=input.nextInt();
+
+                }catch(Exception e){
+                    System.out.println("¡¡¡¡Di 1 o 2!!!!!Alma de Hokague");
+                    input.nextInt();
+                } //comprobar
+            }while (respuesta!=1 && respuesta!=2);
+        if(respuesta==1){
+            atqpoderoso=true;
+            iniciarAtaque_Poderoso_mejorado();
+            respuesta=-1;}
+        respuesta=-1;
+        if(nivelMundo>=6 && (Acorazado==false&&EstiloAtaque_Poderoso==false)){
+            System.out.println("Muy bien machote, ahora tienes que elegir pa los restos si pegar chuki de Cieza(1)\n como un armadillo(2) con una falsa sensación de protección");
+            do{
+                try{
+                    respuesta=input.nextInt();
+
+                }catch(Exception e){
+                    System.out.println("¡¡¡¡Di 1 o 2!!!!!Alma de Hokague");
+                    input.nextInt();
+                } //comprobar
+            }while (respuesta!=1 && respuesta!=2);
+            if(respuesta==2){
+                Acorazado=true;
+            }
+            else{ EstiloAtaque_Poderoso=true;}
         }
-        switch (utilizarFuria) {
-            case "s":
-                System.out.println("Bebes 1 UBE y 1 chupito");
-                System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*furia.getMultiplicador()+" daño"));
-            return danoBase*furia.getMultiplicador();        
-        
-            default:
-                System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-                System.out.println("Bebes 1 UBE");
-            return danoBase;
+        if(Acorazado){
+            if(atqpoderoso){
+                aumentarModificador(Ataque_Poderoso.get(nivelMundo));
+            }
             
         }
-    }
-    public int ataqueMagico(int nivelMundo){
-        return 0;
-    }
-
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
+        if(atqpoderoso){
+            aumentarModificador(Ataque_Poderoso_mejorado.get(nivelMundo));
         }
-        else{};
-        return null;
+        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+        return;
+    }
+    public void quitarbeneficios() {
+       
     }
 }

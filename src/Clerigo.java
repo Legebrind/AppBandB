@@ -37,8 +37,6 @@ public class Clerigo extends Jugador{
         iniciarExpulsar_NM();
         
         
-        PurgarInvisibilidad=true;
-        
         
         
                       
@@ -174,53 +172,113 @@ public class Clerigo extends Jugador{
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
     
-        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-        System.out.println("Bebes 1 UBE");
-            return danoBase;
+
+
+    public int atacar (Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
+       
             
         }
+
+
     
-    public int ataqueMagico(int nivelMundo){
-        return 0;
-    }
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+        
+        int respuesta = -1;
 
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{
-            System.out.println("¿Que tipo de ataque quieres usar?");
-            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
-                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
+                if(nivelMundo>=2 && nivelMundo<4){
+                    System.out.println("¿Que ataque mágico quires hacer cura con porra");
+                    System.out.println("0: Expulsar No Muertos [1 Chp, Enciendes las luces del garito y vas echando a los NM]");
+                    System.out.println("1:  Fuerza de toro [1UBE Otorgas a un jugador un bonificador de ataque]");
+                    do{
+                        try{
+                            respuesta =input.nextInt();
+                        }catch(Exception e){
+                        System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                        input.nextLine();
+                        }
+                    }while((respuesta<0|| respuesta>1));
+                    switch (respuesta) {
+                        case 0:
+                            expulsar_NM(horda, nivelMundo);
+                            break;
+                        case 1:
+                            fuerza_de_Toro(aventureros, input,nivelMundo);
+                            break;
+                    }
                 }
-            ataque =input.nextInt();
-            input.nextLine();
-            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
-                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
-                ataque=input.nextInt();
-                input.nextLine();
-            }
-            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
+                
+                if(nivelMundo>=4){
+                    System.out.println("2: Protección, otorgas a un jugador dureza");
+                    do{
+                        try{
+                            respuesta =input.nextInt();
+                        }catch(Exception e){
+                        System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                        input.nextLine();
+                        }
+                    }while((respuesta<0|| respuesta>2));
+                    switch (respuesta) {
+                        case 0:
+                            expulsar_NM(horda, nivelMundo);
+                            break;
+                        case 1:
+                            fuerza_de_Toro(aventureros, input,nivelMundo);
+                            break;
+                        case 2:
+                        if(nivelMundo<9){
+                            System.out.println("Pones to duro a un jugador y obtiene dureza 1");
+                        }
+                        if(nivelMundo>=9 && nivelMundo<14){
+                            System.out.println("Te esfuerzas mucho mas que antes y pones to duro a un jugador que obtiene dureza 2");
+                        }
+                        if(nivelMundo>=14){
+                            System.out.println("Virgen santa, ahora si que pones durísimo a un jugador con dureza 3");
+                        }
+                        break;
+                        
+                    }
 
-        };
-        return danno;
-    }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
+                }
+                else{
+                    expulsar_NM(horda, nivelMundo); 
+                }
+
     }  
+    public void expulsar_NM(ArrayList<Enemigo> horda, int nivelMundo){
+        Danno danno =new Danno();
+        danno.setCantidad(Expulsar_NM.get(nivelMundo));
+        danno.setTipo(Enums.Tipo_Ataque.Expulsar);
+        for (Enemigo enemigo : horda) {
+            enemigo.recibirDanno(danno);
+        }
+    }
+    public void fuerza_de_Toro(Grupo aventureros, Scanner input,int nivelMundo){
+        System.out.println("¿Quién será el agraciado que reciba tu sermón motivador?");
+        aventureros.mostrarInformacionEquipo();
+        int respuesta=-1;
+        int fuerza=4;
+        if(nivelMundo>=10 && nivelMundo<14){fuerza=6;}
+        if(nivelMundo>=14){fuerza=7;}
+        do{
+            try{
+                respuesta =input.nextInt();
+            }catch(Exception e){
+            System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+            input.nextLine();
+            }
+        }while (respuesta<0||respuesta>aventureros.getJugadoresMax()-1); //Comprobar la condición
+        
+        aventureros.getJugador(respuesta).setModificador_toda_la_sala(fuerza);
+        System.out.println(aventureros.getJugador(respuesta).getNombre()+"ahora tienes un +" +fuerza+ " de daño, puedes besar al clérigo para agradecerselo");
+    }
 
+    
+    public void quitarbeneficios() {
+    
+    }
  
    
 

@@ -12,10 +12,13 @@ public class Explorador extends Jugador {
     private HashMap<Integer,Integer> Arco;
     private HashMap<Integer,Integer> Dos_Armas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
-    private boolean EstiloArco;
+    private boolean EstiloArco,Ataque_doble;
     
     
     
+    
+
+
     public Explorador (Scanner input){
         iniciarNombre(input);
         setIsAtaqueMagico(false);
@@ -31,8 +34,9 @@ public class Explorador extends Jugador {
         setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Cortante);
         setTablaAtaque(iniciarAtaqueBase());
-        iniciarDos_Armas();
         iniciarArco();
+        EstiloArco=false;
+        Ataque_doble=false;
         
                       
         
@@ -105,49 +109,74 @@ public class Explorador extends Jugador {
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        String utilizarFuria="z";
-   
-        Furia furia=getFuria(nivelMundo);
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-         while(utilizarFuria!="s" && utilizarFuria!="n"){
-            System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
-            utilizarFuria=input.nextLine();
-            input.nextLine();
-        }
-        switch (utilizarFuria) {
-            case "s":
-                System.out.println("Bebes 1 UBE y 1 chupito");
-                System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*furia.getMultiplicador()+" daño"));
-            return danoBase*furia.getMultiplicador();        
-        
-            default:
-                System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-                System.out.println("Bebes 1 UBE");
-            return danoBase;
-            
-        }
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        int respuesta=-1;
+               
+        if(nivelMundo>=2){
+            if(Ataque_doble==false&&EstiloArco==false){
+                System.out.println("Muy bien machote, ahora tienes que elegir pa los restos si pegar con dos armas(1)\ncomo un guerrero o con arco(2) como un jipi");
+                do{
+                    try{
+                        respuesta=input.nextInt();
+    
+                    }catch(Exception e){
+                        System.out.println("¡¡¡¡Di 1 o 2!!!!!Alma de Hokague");
+                        input.nextInt();
+                    } //comprobar
+                }while (respuesta!=1 && respuesta!=2);
+    
+                if(respuesta==2){
+                    EstiloArco=true;addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
+                }
+                EstiloArco=false;
+            }
+            if(EstiloArco){
+                return getAtaqueBase(nivelMundo);
+            }
+            System.out.println("Te tomas [1UBE] y pegas dos veces haciendo un poquito menos de daño\n Sinceramente te compensa\n1)Si\n2)no");
+            do{
+                try{
+                    respuesta=input.nextInt();
+
+                }catch(Exception e){
+                    System.out.println("¡¡¡¡Di 1 o 2!!!!!Alma de Hokague");
+                    input.nextInt();
+                } //comprobar
+            }while (respuesta!=1 && respuesta!=2);
+            if(respuesta==1){
+                return Dos_Armas.get(nivelMundo)*2;
+            }
+            return getAtaqueBase(nivelMundo);
+
+            }
+        return getAtaqueBase(nivelMundo);
     }
-    public int ataqueMagico(int nivelMundo){
-        return 0;
+       
+       
+       
+            
+        
+    
+   
+
+ 
+
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+       
+        return;
     }
 
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{};
-        return null;
+
+    public void quitarbeneficios() {
+       
+       return;
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
+    public boolean isAtaque_doble() {
+        return Ataque_doble;
+    }
+
+    public void setAtaque_doble(boolean Ataque_doble) {
+        Ataque_doble = Ataque_doble;
     }
 }

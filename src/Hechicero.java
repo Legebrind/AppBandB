@@ -12,7 +12,7 @@ public class Hechicero extends Jugador {
     private HashMap<Integer,Integer> Energia_Arcana;
    
     private HashMap<Integer,Integer> TablaAtaque;
-    private boolean EstiloEnergia_Arcana;
+    private boolean Canalizacion;
     
     
     
@@ -30,9 +30,8 @@ public class Hechicero extends Jugador {
         setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Contundente);
         setTablaAtaque(iniciarAtaqueBase());
-        iniciarDos_Armas();
         Energia_Arcana();
-        
+        Canalizacion=false;
                       
         
     }
@@ -87,49 +86,186 @@ public class Hechicero extends Jugador {
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        String utilizarFuria="z";
-   
-        Furia furia=getFuria(nivelMundo);
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-         while(utilizarFuria!="s" && utilizarFuria!="n"){
-            System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
-            utilizarFuria=input.nextLine();
-            input.nextLine();
-        }
-        switch (utilizarFuria) {
-            case "s":
-                System.out.println("Bebes 1 UBE y 1 chupito");
-                System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*furia.getMultiplicador()+" daño"));
-            return danoBase*furia.getMultiplicador();        
-        
-            default:
-                System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-                System.out.println("Bebes 1 UBE");
-            return danoBase;
-            
-        }
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }
-    public int ataqueMagico(int nivelMundo){
-        return 0;
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores, Grupo aventureros) {
+                int respuesta = -1;
+
+                if(nivelMundo<3){
+                    System.out.println("¿Que ataque mágico quires hacer Hechicerdo?");
+                    System.out.println("0: Energía arcana [1 Chp, y le enchufas con un cable pelao trifásico]");
+                    System.out.println("1:  Purgar invisibilidad [1UBE Otorgas luz a esta sala para pegar agusto]");
+                    do{
+                        try{
+                            respuesta =input.nextInt();
+                        }catch(Exception e){
+                        System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                        input.nextLine();
+                        }
+                    }while((respuesta<0|| respuesta>1));
+                    switch (respuesta) {
+                        case 0:
+                            Danno danno =new Danno();
+                            danno.setCantidad(Energia_Arcana.get(nivelMundo));
+                            danno.setTipo(Enums.Tipo_Ataque.Magia);
+                            if(horda.size()==1){
+                                horda.getFirst().recibirDanno(danno);
+                                return;
+                            }
+                            else{
+                                System.out.println("¿A que enemigo le vas a enchufar?");
+                                for(int i=0;i<=horda.size();i++){
+                                    System.out.println(i+") "+horda.get(i).getNombre());
+                                }
+                                do{
+                                    try{
+                                        respuesta =input.nextInt();
+                                    }catch(Exception e){//comprobar que no afecte respuesta del if anterior
+                                    System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                                    input.nextLine();
+                                    }
+                                }while((respuesta<0|| respuesta>horda.size()));
+                                horda.get(respuesta).recibirDanno(danno);
+                                return;
+                            }
+
+                        case 1:
+                             //Comprobar si Invisible se aplica al array características del enemigo
+                             for (Enemigo enemigo : horda) {
+                                for (String x : enemigo.getCaracteristicas()) {
+                                    if(x=="Invisible"){x="Ninguna";}
+                                }    
+                            }
+                            break;
+                    }
+                }
+                
+                System.out.println("¿Que ataque mágico quires hacer Hechicerdo?");
+                System.out.println("0: Energía arcana [1 Chp, y le enchufas con un cable pelao trifásico]");
+                System.out.println("1:  Purgar invisibilidad [1UBE Otorgas luz a esta sala para pegar agusto]");
+                System.out.println("2: Daño en area [1 Chp+1UBE, y le enchufas con un cable pelao trifásico a unos cuantos]");
+                do{
+                    try{
+                        respuesta =input.nextInt();
+                    }catch(Exception e){
+                    System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                    input.nextLine();
+                    }
+                }while((respuesta<0|| respuesta>2));
+                switch (respuesta) {
+                    case 0:
+                        Danno danno =new Danno();
+                        danno.setCantidad(Energia_Arcana.get(nivelMundo));
+                        danno.setTipo(Enums.Tipo_Ataque.Magia);
+                        if(horda.size()==1){
+                            horda.getFirst().recibirDanno(danno);
+                            return;
+                        }
+                        else{
+                            System.out.println("¿A que enemigo le vas a enchufar?");
+                            for(int i=0;i<=horda.size();i++){
+                                System.out.println(i+") "+horda.get(i).getNombre());
+                            }
+                            do{
+                                try{
+                                    respuesta =input.nextInt();
+                                }catch(Exception e){//comprobar que no afecte respuesta del if anterior
+                                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                                input.nextLine();
+                                }
+                            }while((respuesta<0|| respuesta>horda.size()));
+                            horda.get(respuesta).recibirDanno(danno);
+                            return;
+                        }
+                        
+
+                    case 1:
+                     //Comprobar si Invisible se aplica al array características del enemigo
+                        for (Enemigo enemigo : horda) {
+                            for (String x : enemigo.getCaracteristicas()) {
+                                if(x=="Invisible"){x="Ninguna";}
+                            }    
+                        }
+                        break;
+                    case 2:
+                        Danno danno1 =new Danno();
+                        danno1.setCantidad(Energia_Arcana.get(nivelMundo));
+                        danno1.setTipo(Enums.Tipo_Ataque.Magia);
+                        if(horda.size()==1){
+                            horda.getFirst().recibirDanno(danno1);
+                            return;
+                        }
+                        else{
+                            System.out.println("¿A que enemigo le vas a enchufar?");
+                            HashMap<Integer,Boolean> chivato =new HashMap<>();
+                            int j=0;
+                            int danno_en_area=0;
+                            if(nivelMundo<7){danno_en_area=1;}
+                            if(nivelMundo>=7&&nivelMundo<11){danno_en_area=2;}
+                            if(nivelMundo>=11&&nivelMundo<15){danno_en_area=3;}
+                            if(nivelMundo==15){danno_en_area=4;}
+                            for(int c=1;c<=danno_en_area;c++){
+                                for(int i=0;i<=horda.size();i++){
+                                    System.out.println(i+") "+horda.get(i).getNombre());
+                                }
+                                do{
+                                    try{
+                                        respuesta =input.nextInt();
+                                    }catch(Exception e){//comprobar que no afecte respuesta del if anterior
+                                    System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                                    input.nextLine();
+                                    }
+                                }while((respuesta<0|| respuesta>horda.size()));
+                                horda.get(respuesta).recibirDanno(danno1);
+                                while(chivato.containsKey(respuesta)){
+                                    System.out.println("No seas listo, a este bicho ya le has atizao con el cable pelao");
+                                    do{
+                                        try{
+                                            respuesta =input.nextInt();
+                                        }catch(Exception e){//comprobar que no afecte respuesta del if anterior
+                                        System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                                        input.nextLine();
+                                        }
+                                    }while((respuesta<0|| respuesta>horda.size()));
+                                }
+                                chivato.put(j,true);
+                                j++;
+                                horda.get(respuesta).recibirDanno(danno1);
+                            }
+                        }
+                        return;
+                }
+    }
+                
+    
+
+    public void quitarbeneficios() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'quitarbeneficios'");
     }
 
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{};
-        return null;
+    public HashMap<Integer, Integer> getEnergia_Arcana() {
+        return Energia_Arcana;
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
+
+    public void setEnergia_Arcana(HashMap<Integer, Integer> energia_Arcana) {
+        Energia_Arcana = energia_Arcana;
+    }
+
+    public HashMap<Integer, Integer> getTablaAtaque() {
+        return TablaAtaque;
+    }
+
+    public void setTablaAtaque(HashMap<Integer, Integer> tablaAtaque) {
+        TablaAtaque = tablaAtaque;
+    }
+
+    public boolean isCanalizacion() {
+        return Canalizacion;
+    }
+
+    public void setCanalizacion(boolean canalizacion) {
+        Canalizacion = canalizacion;
     }
 }

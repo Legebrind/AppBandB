@@ -11,16 +11,20 @@ public class Chaman extends Jugador{
 
     private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
-    private boolean PurgarInvisibilidad;//Hay que ver como establecer esta habilidad
+    private HashMap<Integer,Ritual_Brujo> Ritual_Brujo;
+    private HashMap<Integer,Maldicion_vudu> Maldicion_vudu;
+    private boolean patearPuerta=true;
+    private boolean despuesdePatear=true;
+   
     
-    //Hay que introducir Ritual de batalla, Adivinaciones, Maldición vudú
+    //Hay que introducir Adivinaciones.
     
  
   
 
     public Chaman (Scanner input){
         iniciarNombre(input);
-        setIsAtaqueMagico(false);
+        setIsAtaqueMagico(true);
         setBuscaTrampas(false);
         setNR(1);
         setHajugado(false);
@@ -34,9 +38,11 @@ public class Chaman extends Jugador{
         iniciarCurarHeridas();
         iniciarSanacion();
         iniciarCuracion();
+        iniciarRitual();
+        iniciarMaldicion_vudu();
         
         
-        PurgarInvisibilidad=true;
+        
         
         
         
@@ -150,54 +156,171 @@ public class Chaman extends Jugador{
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-    
-        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        int danoBase=getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
         System.out.println("Bebes 1 UBE");
             return danoBase;
-            
         }
     
     public int ataqueMagico(int nivelMundo){
         return 0;
     }
 
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{
-            System.out.println("¿Que tipo de ataque quieres usar?");
-            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
-                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
-                }
-            ataque =input.nextInt();
-            input.nextLine();
-            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
-                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
-                ataque=input.nextInt();
-                input.nextLine();
-            }
-            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
+  
+ 
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+                int respuesta = -1;
+                System.out.println("¿Que ataque mágico quires hacer, pequeño jublar");
+                System.out.println("0:  Purgar invisibilidad[1 UBE, enciendes la linterna para ver al enemigo mucho mejor]");
+                System.out.println("1:  Ritual de batalla [1UBE por pj y te restriegas con ellos, pa suberles el ataque,ya tu sabeh]");
+                
+                
+                if(nivelMundo>=6){
+                    System.out.println("2 Maldición vudú [1 Chp fresquito, le bajas daño y le quitas vida al estilo vudú]");
+                    do{
+                        try{
+                            respuesta =input.nextInt();
+                        }catch(Exception e){
+                        System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                        input.nextLine();
+                        }
+                    }while((respuesta<0|| respuesta>2));
+                    switch (respuesta) {
+                        case 0:
+                            //Comprobar si Invisible se aplica al array características del enemigo
+                            for (Enemigo enemigo : horda) {
+                                for (String x : enemigo.getCaracteristicas()) {
+                                    if(x=="Invisible"){x="Ninguna";}
+                                }    
+                            }
+                            break;
+                        case 1:
+                        Ritual_Brujo(nivelMundo, aventureros, input);
+                        break;
+                        case 2:
+                        maldicion_vudu(input, nivelMundo, horda);
+                        break;
+                        
+                    }
 
-        };
-        return danno;
-    }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
+                }
+                else{
+                    do{
+                        try{
+                            respuesta =input.nextInt();
+                        }catch(Exception e){
+                        System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                        input.nextLine();
+                        }
+                    }while((respuesta<0|| respuesta>1));
+                    switch (respuesta) {
+                        case 0:
+                            //Comprobar si Invisible se aplica al array características del enemigo
+                            for (Enemigo enemigo : horda) {
+                                for (String x : enemigo.getCaracteristicas()) {
+                                    if(x=="Invisible"){x="Ninguna";}
+                                }    
+                            }
+                            break;
+                        case 1:
+                        Ritual_Brujo(nivelMundo, aventureros, input);
+                        break;
+                    }
+                }
     }  
 
- 
-   
+    public void iniciarRitual(){
+        Ritual_Brujo=new HashMap<>();
+        Ritual_Brujo.put(1,new Ritual_Brujo("[1UBE x PJ]: Otorga +1 al ataque durante el próximo encuentro",1));
+        Ritual_Brujo.put(2,new Ritual_Brujo("[1UBE x PJ]: Otorga +1 al ataque durante el próximo encuentro",1));
+        Ritual_Brujo.put(3,new Ritual_Brujo("[1UBE x PJ]: Otorga +2 al ataque durante el próximo encuentro",2));
+        Ritual_Brujo.put(4,new Ritual_Brujo("[1UBE x PJ]: Otorga +2 al ataque durante el próximo encuentro",2));
+        Ritual_Brujo.put(5,new Ritual_Brujo("[1UBE x PJ]: Otorga +3 al ataque durante el próximo encuentro",3));
+        Ritual_Brujo.put(6,new Ritual_Brujo("[1UBE x PJ]: Otorga +3 al ataque durante el próximo encuentro",3));
+        Ritual_Brujo.put(7,new Ritual_Brujo("[1UBE x PJ]: Otorga +4 al ataque durante el próximo encuentro",4));
+        Ritual_Brujo.put(8,new Ritual_Brujo("[1UBE x PJ]: Otorga +4 al ataque durante el próximo encuentro",4));
+        Ritual_Brujo.put(9,new Ritual_Brujo("[1UBE x PJ]: Otorga +5 al ataque durante el próximo encuentro",5));
+        Ritual_Brujo.put(10,new Ritual_Brujo("[1UBE x PJ]: Otorga +5 al ataque durante el próximo encuentro",5));
+        Ritual_Brujo.put(11,new Ritual_Brujo("[1UBE x PJ]: Otorga +6 al ataque durante el próximo encuentro",6));
+        Ritual_Brujo.put(12,new Ritual_Brujo("[1UBE x PJ]: Otorga +6 al ataque durante el próximo encuentro",6));
+        Ritual_Brujo.put(13,new Ritual_Brujo("[1UBE x PJ]: Otorga +7 al ataque durante el próximo encuentro",7));
+        Ritual_Brujo.put(14,new Ritual_Brujo("[1UBE x PJ]: Otorga +7 al ataque durante el próximo encuentro",7));
+        Ritual_Brujo.put(15,new Ritual_Brujo("[1UBE x PJ]: Otorga +8 al ataque durante el próximo encuentro",8));
+    }
+    public void Ritual_Brujo(int nivelMundo,  Grupo aventureros, Scanner input){
+        System.out.println("¿Cuantos UBES vas a beber antes de frotar tu aceite ritualítico a tus compañeros fornidos");
+        int njugadores=-1;
+        do{
+            try{
+                njugadores =input.nextInt();
+                
+            }catch(Exception e){
+                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                input.nextLine();
+            }
+        }while((njugadores<=0||njugadores>aventureros.getJugadoresMax()));
+        System.out.println("¿Quién será el agraciado que reciba tus aceites ritualiticos?");
+        aventureros.mostrarInformacionEquipo();
+        while (njugadores!=0) {
+            int respuesta=0;
+            do{
+                try{
+                    respuesta =input.nextInt();
+                }catch(Exception e){
+                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                input.nextLine();
+                }
+            }while((respuesta<0||respuesta>aventureros.getJugadoresMax()));
+            
+            njugadores--;
+            aventureros.getJugador(respuesta).setModificador_toda_la_sala(Ritual_Brujo.get(nivelMundo).getModificador());
+        }
+        
+        
+    }
+    public void iniciarMaldicion_vudu(){
+        Maldicion_vudu =new HashMap<>();
+        Maldicion_vudu.put(6,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
+        Maldicion_vudu.put(7,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
+        Maldicion_vudu.put(8,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
+        Maldicion_vudu.put(9,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
+        Maldicion_vudu.put(10,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
+        Maldicion_vudu.put(11,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
+        Maldicion_vudu.put(12,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
+        Maldicion_vudu.put(13,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
+        Maldicion_vudu.put(14,new Maldicion_vudu("-3 Ataque & 30 Daño a un monstruo",-3,30));
+        Maldicion_vudu.put(15,new Maldicion_vudu("-3 Ataque & 30 Daño a un monstruo",-3,30));
+       
 
+    }
+    
+    public void maldicion_vudu(Scanner input, int nivelMundo, ArrayList<Enemigo> horda){
+        System.out.println("Elige al enemigo que quieres maldecir con tu mirada sesi,zalamera y sobre todo vizca");
+        for(int i=0;i<=horda.size();i++){
+            System.out.println(i+")  "+horda.get(i).getNombre());
+        }
+        int respuesta=0;
+            do{
+                try{
+                    respuesta =input.nextInt();
+                }catch(Exception e){
+                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                input.nextLine();
+                }
+            }while((respuesta<0||respuesta>horda.size()));
+            //Modifica el ataque del enemigo
+            horda.get(respuesta).setAtaque(horda.get(respuesta).getAtaque() - Maldicion_vudu.get(nivelMundo).getModificador());
+            //Hace daño al enemigo
+            Danno danno= new Danno();
+            danno.setCantidad(Maldicion_vudu.get(nivelMundo).getDanno());
+            danno.setTipo(Enums.Tipo_Ataque.Magia);
+            horda.get(respuesta).recibirDanno(danno);
+
+    }
+
+    @Override
+    public void quitarbeneficios() {
+       
+    }
 }

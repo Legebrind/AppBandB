@@ -110,11 +110,11 @@ public class Barbaro extends Jugador {
     }
     //El ataque del Bárbaro es sencillo, o ataca con furia o sin ella. Necesita el Scanner para introducir 
     //las opciones por pantalla y el nivelMundo porque su daño es acorde a este valor
-    public int atacar(Scanner input,int nivelMundo){
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
         String utilizarFuria="z"; //se inicia la variable en este valor para que entre en el bucle while
         //Almacenamos en estas variables el multiplicador de la furia y el valor del daño base
         Furia furia=getFuria(nivelMundo);
-        int danoBase=getAtaqueBase(nivelMundo)+getModificador();
+        int danoBase=getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
 
         //Preguntamos al jugador que quiere hacer y devolvemos el parametro int danno de nuestro ataque.
 
@@ -148,5 +148,10 @@ public class Barbaro extends Jugador {
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores,Grupo aventureros) {
         // TODO Auto-generated method stub
         return ;
+    }
+
+    @Override
+    public void quitarbeneficios() {
+       
     }
 }

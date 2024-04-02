@@ -11,15 +11,12 @@ public class Druida extends Jugador{
 
     private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
-    private HashMap<Integer,CambiaFormas> CambiaFormas;
-    private boolean PurgarInvisibilidad;//Hay que ver como establecer esta habilidad
+    private HashMap<Integer,Integer> CambiaFormas;
+    private boolean isCambiaFormas,isCompaSalvaje;
     
-    //Hay que introducir fuerza de toro y proteccion.
-    
- 
-  
 
-    public Druida (Scanner input){
+
+        public Druida (Scanner input){
         setIsAtaqueMagico(false);
         iniciarNombre(input);
         setBuscaTrampas(false);
@@ -33,12 +30,12 @@ public class Druida extends Jugador{
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Contundente);
         setTablaAtaque(iniciarAtaqueBase());
         iniciarCurarHeridas();
-        iniciarSanacion();
         iniciarBuenasBayas();
         iniciarCambiaFormas();
+        isCambiaFormas=false;
+        isCompaSalvaje=false;
         
-        
-        PurgarInvisibilidad=true;
+       
         
         
         
@@ -49,22 +46,18 @@ public class Druida extends Jugador{
     private void iniciarCambiaFormas() {
         
         
-            CambiaFormas = new HashMap<Integer,CambiaFormas>();
-            CambiaFormas.put(1,10);
-            CambiaFormas.put(2,10);
-            CambiaFormas.put(3,15);
-            CambiaFormas.put(4,15);
-            CambiaFormas.put(5,20);
-            CambiaFormas.put(6,20);
-            CambiaFormas.put(7,25);
-            CambiaFormas.put(8,25);
-            CambiaFormas.put(9,30);
-            CambiaFormas.put(10,30);
-            CambiaFormas.put(11,35);
-            CambiaFormas.put(12,35);
-            CambiaFormas.put(13,40);
-            CambiaFormas.put(14,40);
-            CambiaFormas.put(15,45);
+            CambiaFormas = new HashMap<Integer,Integer>();
+            CambiaFormas.put(5,9);
+            CambiaFormas.put(6,9);
+            CambiaFormas.put(7,10);
+            CambiaFormas.put(8,10);
+            CambiaFormas.put(9,12);
+            CambiaFormas.put(10,13);
+            CambiaFormas.put(11,13);
+            CambiaFormas.put(12,13);
+            CambiaFormas.put(13,16);
+            CambiaFormas.put(14,16);
+            CambiaFormas.put(15,16);
             
     } 
     
@@ -157,54 +150,220 @@ public class Druida extends Jugador{
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
+    public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
+        String respuesta="z";
+        int CompaSalvaje=2;
+        //Se comprueba si tiene activao el compañero animal y se le pregunta si quiere activarlo
+        if(!isCompaSalvaje){
+            System.out.println("[1Chp] pa que venga un amigo muy especial a pegar contigo\n¿Te lo tomas?(S/N)");
+            do{   
+                try{
+                    respuesta=input.nextLine();
+
+                }catch(Exception e){
+                    System.out.println("¡¡¡¡Di si o nó!!!!!Alma de Hokague");
+                    input.nextLine();
+                } //comprobar
+            }while (respuesta.toLowerCase()!="s"&&respuesta.toLowerCase()!="n");
+            if(respuesta=="s"){
+                setCompaSalvaje(true); //Se activa el compañero animal y se reinicia la variable respuesta
+                respuesta="z";
+            }
+        }
+       //Si tiene compañero animal se le pregunta si quiere que ataque y se le añade el modificador del compañero al ataque
+        if(isCompaSalvaje){
+            System.out.println("¿Quieres que tu amigo salvaje le saque los ojos al malo? (S/N)");
+            do{
+                try{
+                    respuesta=input.nextLine();
+
+                }catch(Exception e){
+                    System.out.println("¡¡¡¡Di si o nó!!!!!Alma de Hokague");
+                    input.nextLine();
+                } //comprobar
+            }while (respuesta.toLowerCase()!="s"&&respuesta.toLowerCase()!="n");
         
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-    
-        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-        System.out.println("Bebes 1 UBE");
-            return danoBase;
+            if(respuesta=="s"){
+                if(nivelMundo>=4&&nivelMundo<7){
+                    CompaSalvaje=4;
+                }
+                if(nivelMundo>=7&&nivelMundo<10){
+                    CompaSalvaje=6;
+                }
+                if(nivelMundo>=10&&nivelMundo<13){
+                    CompaSalvaje=8;
+                }
+                if(nivelMundo>=13){
+                    CompaSalvaje=10;
+                }
+                aumentarModificador(CompaSalvaje);
+            }
+        }
+        //A partir de este nivel puede transformarse
+        if(nivelMundo>=4){
+            //Si está transformado se aplica el daño directamente
+            if(isCambiaFormas()){
+            return CambiaFormas.get(nivelMundo)+getModificador()+getModificador_toda_la_sala();
+            }
+            //Si no está transformado se le pregunta si quiere transformarse
+            System.out.println("¿Estás cómodo con esa piel? ¿No prefieres cambiarte ;)? [1UBE y pega como una lagartija grande]\n(S/N)");
+            do{
+
+                try{
+                    respuesta=input.nextLine();
+
+                }catch(Exception e){
+                    System.out.println("¡¡¡¡Di si o nó!!!!!Alma de Hokague");
+                    input.nextLine();
+                } //comprobar
+            }while (respuesta.toLowerCase()!="s"&&respuesta.toLowerCase()!="n");
+            if(respuesta=="s"){
+                setCambiaFormas(true);
+                return CambiaFormas.get(nivelMundo)+getModificador()+getModificador_toda_la_sala();
+            }
             
         }
-    
-    public int ataqueMagico(int nivelMundo){
-        return 0;
+        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }
 
-    @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
+            
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores, Grupo aventureros) {
+        int respuesta = -1;
+        System.out.println("¿Que ataque mágico quires hacer jipi (si, he dicho jipi)");
+        if(nivelMundo<3){return;}
+        if(nivelMundo>=3 && nivelMundo<8){
+            System.out.println("Bien, te tomas [1UBE] y le espolvoreas un poco de serrín para que gane 1 de dureza");
         }
-        else{
-            System.out.println("¿Que tipo de ataque quieres usar?");
-            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
-                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
-                }
-            ataque =input.nextInt();
-            input.nextLine();
-            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
-                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
-                ataque=input.nextInt();
+        
+        if(nivelMundo>=8&&nivelMundo<=13){
+            System.out.println("0: [1 UBE] Piel robliza de calidad(2(3 si eres de nivel 12) de dureza a un jugador)");
+            System.out.println("1: [1 Chp] Tormenta fina (20 Daño a todos los enemigos)");
+            do{
+                try{
+                    respuesta =input.nextInt();
+                }catch(Exception e){
+                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
                 input.nextLine();
+                }
+            }while((respuesta<0 || respuesta>1));
+            switch (respuesta) {
+                case 0:
+                System.out.println("Bien, te tomas [1UBE] y le espolvoreas un poco de serrín de calidad para que gane 2 de dureza");
+                    break;
+                case 1:
+                    Danno danno =new Danno();
+                    danno.setCantidad(20);
+                    danno.setTipo(Enums.Tipo_Ataque.Magia);
+                    for (Enemigo x : horda) {
+                        x.recibirDanno(danno);
+                    }
+                    break;
             }
-            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
+        }
+        if(nivelMundo>13){
+            System.out.println("0: [1 UBE] Piel robliza de calidad(3 de dureza a un jugador)");
+            System.out.println("1: [1 Chp] Tormenta fina (30 Daño a todos los enemigos)");
+            do{
+                try{
+                    respuesta =input.nextInt();
+                }catch(Exception e){
+                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                input.nextLine();
+                }
+            }while((respuesta<0 || respuesta>1));
+            switch (respuesta) {
+                case 0:
+                System.out.println("Bien, te tomas [1UBE] y le espolvoreas serrín de calidad y en cantidad para que gane 3 de dureza");
+                    break;
+                case 1:
+                    Danno danno =new Danno();
+                    danno.setCantidad(30);
+                    danno.setTipo(Enums.Tipo_Ataque.Magia);
+                    for (Enemigo x : horda) {
+                        x.recibirDanno(danno);
+                    }
+                    break;
+            }
+        }
 
-        };
-        return danno;
+
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
+                 
+                
+
+    
+
+    public HashMap<Integer, String> getSanacion() {
+        return Sanacion;
+    }
+
+    public void setSanacion(HashMap<Integer, String> sanacion) {
+        Sanacion = sanacion;
+    }
+
+    public HashMap<Integer, String> getBuenasBayas() {
+        return BuenasBayas;
+    }
+
+    public void setBuenasBayas(HashMap<Integer, String> buenasBayas) {
+        BuenasBayas = buenasBayas;
+    }
+
+    public HashMap<Integer, String> getRestablecimiento() {
+        return Restablecimiento;
+    }
+
+    public void setRestablecimiento(HashMap<Integer, String> restablecimiento) {
+        Restablecimiento = restablecimiento;
+    }
+
+    public HashMap<Integer, Integer> getCurarHeridas() {
+        return CurarHeridas;
+    }
+
+    public void setCurarHeridas(HashMap<Integer, Integer> curarHeridas) {
+        CurarHeridas = curarHeridas;
+    }
+
+    public HashMap<Integer, Integer> getTablaAtaque() {
+        return TablaAtaque;
+    }
+
+    public void setTablaAtaque(HashMap<Integer, Integer> tablaAtaque) {
+        TablaAtaque = tablaAtaque;
+    }
+
+    public HashMap<Integer, Integer> getCambiaFormas() {
+        return CambiaFormas;
+    }
+
+    public void setCambiaFormas(HashMap<Integer, Integer> cambiaFormas) {
+        CambiaFormas = cambiaFormas;
+    }
+
+    public boolean isCambiaFormas() {
+        return isCambiaFormas;
+    }
+
+    public void setCambiaFormas(boolean isCambiaFormas) {
+        this.isCambiaFormas = isCambiaFormas;
     }  
 
- 
+    public boolean isCompaSalvaje() {
+        return isCompaSalvaje;
+    }
+
+    public void setCompaSalvaje(boolean isCompaSalvaje) {
+        this.isCompaSalvaje = isCompaSalvaje;
+    }
+
+
+    public void quitarbeneficios() {
+        
+       isCambiaFormas=false;
+       isCompaSalvaje=false;
+        
+    }
    
 
 }

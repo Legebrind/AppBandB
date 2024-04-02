@@ -8,21 +8,28 @@ import java.util.Scanner;
 
 public abstract class Jugador {
     private String Nombre;//Nombre del jugador
+    //Estados del jugador
     private boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
     private boolean HaJugado,BuscaTrampas;
-    private int Fichas_Dano,Puntos_Golpe, Modificador;
-
-    private Enums.Tipo_Clase Clase;
-    private Enums.Tipo_Raza Raza;    
-    private ArrayList<Objeto> Equipo;
-    private final int EquipoMax=4;
-    private int NR;
-    private HashMap <Integer, Integer> TablaAtaque;
     private ArrayList<Enums.Tipo_Salvacion> Salvaciones;
-   
+    //Control de daños, vida y modificadores temporales
+    private int Fichas_Dano,Puntos_Golpe, Modificador,Modificador_toda_la_sala;
+    //Listado de clases y razas
+    private Enums.Tipo_Clase Clase;
+    private Enums.Tipo_Raza Raza; //to do: por implementar
+    //Bolsa de equipo    
+    private ArrayList<Objeto> Equipo; // to do: por implementar
+    private final int EquipoMax=4;
+    //Parámetro que indica la resistencia del heróe y afecta directamente al PG a través de la TablaPg.java
+    private int NR;
+    //Tabla donde se indica el daño base, depende de cada clase.
+    private HashMap <Integer, Integer> TablaAtaque;
+    
+   //Diferentes tipos de daño que puede realizar el jugador dependiendo de su clase.
     private ArrayList<Enums.Tipo_Ataque> TipoAtaque_Fisico;
     private ArrayList<Enums.Tipo_Ataque> TipoAtaque_Magico;
-    
+    // Para indicar si el ataque es mágico ya que el turno distingue entre ataques mágicos(van primero)
+    //y ataques físicos para después
     private boolean IsAtaqueMagico;
     
 
@@ -47,7 +54,7 @@ public abstract class Jugador {
         IsAtaqueMagico = isAtaqueMagico;
     }
     public void iniciarNombre(Scanner input){
-        System.out.println("Introduce tu nombre");
+        System.out.println("\nIntroduce tu nombre");
         String Nom;
         Nom= input.nextLine();
         this.Nombre=Nom;
@@ -55,10 +62,7 @@ public abstract class Jugador {
     public void setJefe(boolean a){
         this.Is_Jefe=a;
     }
-
-    public void setFichas_Dano(int a){
-        this.Fichas_Dano=a;
-    }
+    
     public String getNombre(){
         return this.Nombre;
     }
@@ -66,10 +70,18 @@ public abstract class Jugador {
         return this.Is_Jefe;
     }
     
+    //Metodos no implementados para la versión 1.0
+    public void setFichas_Dano(int a){
+        this.Fichas_Dano=a;
+    }
     public int getFichas_Dano(int a){
         return this.Fichas_Dano=a;
     }
-    public abstract int atacar(Scanner input, int nivelMundo);
+    
+    public abstract int atacar(Scanner input, int nivelMundo,ArrayList<Enemigo>horda);//he tenido que añadir horda para que el paladin pueda castigar el mal
+    //cada clase implementa el modo atar con sus particulares para obtener la cantidad de daño.
+    //Este método se llama dentro del metod ataque_fisico.
+
     public abstract void ataque_magico(Scanner input, int nivelMundo,ArrayList<Enemigo> horda, ArrayList<Modificador> modificadores,Grupo aventureros);
     public Enums.Tipo_Raza getRaza(){
         return this.Raza;
@@ -218,30 +230,50 @@ public abstract class Jugador {
     public void aumentarModificador(int modificador){
         Modificador+=modificador;
     }
+    public int getModificador_toda_la_sala() {
+        return Modificador_toda_la_sala;
+    }
+    public void setModificador_toda_la_sala(int modificador) {
+        Modificador_toda_la_sala = modificador;
+    }
+    public void aumentarModificador_toda_la_sala(int modificador){
+        Modificador_toda_la_sala+=modificador;
+    }
     public void ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+        //Este método es común a todos los personajes. Sirve para calcular el ataque físico base
         Danno danno = new Danno();
         System.out.println(getNombre()+"es hora de hacer cosas");//to do: personalizar diálogos;
-        int ataque =atacar(input, nivelMundo);
+        int ataque =atacar(input, nivelMundo,horda);
         danno.setCantidad(ataque);
         if(getTipoAtaque_Fisico().size()==1){
           danno.setTipo(getTipoAtaque_Fisico().get(0));
         }
         else{
+            boolean pasa=false;
+            int tipo =-1;
             System.out.println("Elige el tipo de daño");
             for(int i=0;i<=getTipoAtaque_Fisico().size();i++){
                 System.out.println(i+") "+getTipoAtaque_Fisico().get(i));
-            }
-            int tipo=input.nextInt();
-            input.nextLine();
-            while (tipo<0 || tipo>getTipoAtaque_Fisico().size()) {
-                System.out.println("Entiendo que eres un poco...ya sabes un mucho Bárbaro\nTu escoger número tipo daño y después tú matar");
-                tipo=input.nextInt();
-                input.nextLine();
-            }
+                }
+            //Revisar el bucle para evitar un error si no es un int en el System.in
+            do{
+                try{
+                    tipo=input.nextInt();
+                    pasa=true;
+                }catch(Exception e){
+                    System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                    input.nextLine();
+                }
+            }while((tipo<0||tipo>getTipoAtaque_Fisico().size())||!pasa);
+           
             danno.setTipo(getTipoAtaque_Fisico().get(tipo));
         };
         Enemigo enemigo=elegirEnemigo(horda, input);
         enemigo.recibirDanno(danno);
         
     }
+    public abstract void quitarbeneficios();//este método lo tiene que implementar cada clase para quitarse las aptitudes
+    //activadas durante el combate y que deban quitarse al finalizar el combate como el cambiaformas del druida.
+
+    
 }
