@@ -11,12 +11,8 @@ public class Clerigo extends Jugador{
 
     private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque,Expulsar_NM;
-    private boolean PurgarInvisibilidad;//Hay que ver como establecer esta habilidad
     
-    //Hay que introducir fuerza de toro y proteccion.
-    
- 
-  
+
 
     public Clerigo (Scanner input){
         setIsAtaqueMagico(true);

@@ -12,7 +12,7 @@ public class Bardo extends Jugador{
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean Conocimiento_de_bardo,Portento_Musical;
     private HashMap<Integer,Cantar> Cantar;
-    
+  
     
     
  
@@ -224,5 +224,43 @@ public class Bardo extends Jugador{
     public void quitarbeneficios() {
        
     }
+
+    public HashMap<Integer, String> getMusica_de_Bardo() {
+        return Musica_de_Bardo;
+    }
+
+    public void setMusica_de_Bardo(HashMap<Integer, String> musica_de_Bardo) {
+        Musica_de_Bardo = musica_de_Bardo;
+    }
+
+    public HashMap<Integer, Integer> getInfundir_Valor() {
+        return Infundir_Valor;
+    }
+
+    public void setInfundir_Valor(HashMap<Integer, Integer> infundir_Valor) {
+        Infundir_Valor = infundir_Valor;
+    }
+
+    public HashMap<Integer, Integer> getTablaAtaque() {
+        return TablaAtaque;
+    }
+
+    public void setTablaAtaque(HashMap<Integer, Integer> tablaAtaque) {
+        TablaAtaque = tablaAtaque;
+    }
+
+    public void setConocimiento_de_bardo(boolean conocimiento_de_bardo) {
+        Conocimiento_de_bardo = conocimiento_de_bardo;
+    }
+
+    public HashMap<Integer, Cantar> getCantar() {
+        return Cantar;
+    }
+
+    public void setCantar(HashMap<Integer, Cantar> cantar) {
+        Cantar = cantar;
+    }
+
+ 
 
 }

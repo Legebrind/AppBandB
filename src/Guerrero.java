@@ -13,9 +13,7 @@ public class Guerrero extends Jugador {
    
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean EstiloAtaque_Poderoso,Acorazado;
-    
-    
-    
+
     public Guerrero (Scanner input){
         iniciarNombre(input);
         setIsAtaqueMagico(false);

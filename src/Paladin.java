@@ -12,7 +12,9 @@ public class Paladin extends Jugador{
     private int Contador_MD;
     private HashMap<Integer,Integer> Imposicion_Manos; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque,Expulsar_NM;
-           
+    
+
+
     public Paladin (Scanner input){
         setIsAtaqueMagico(true);
         iniciarNombre(input);

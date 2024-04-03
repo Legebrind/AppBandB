@@ -13,11 +13,6 @@ public class Explorador extends Jugador {
     private HashMap<Integer,Integer> Dos_Armas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean EstiloArco,Ataque_doble;
-    
-    
-    
-    
-
 
     public Explorador (Scanner input){
         iniciarNombre(input);

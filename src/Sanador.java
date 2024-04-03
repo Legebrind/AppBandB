@@ -8,10 +8,12 @@ import java.util.Scanner;
 public class Sanador extends Jugador{
 
     private HashMap<Integer,String> Sanacion,Curacion,Restablecimiento;
+    
+
 
     private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque,Expulsar_NM;
-    private boolean PurgarInvisibilidad;//Hay que ver como establecer esta habilidad
+    
     
     //Hay que introducir fuerza de toro y proteccion.
     
@@ -36,7 +38,7 @@ public class Sanador extends Jugador{
         iniciarExpulsar_NM();
         
         
-        PurgarInvisibilidad=true;
+  
         
         
         
@@ -173,52 +175,95 @@ public class Sanador extends Jugador{
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
+
+ 
+    public int atacar(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+       return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
+    }
+
+ 
     
-        System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-        System.out.println("Bebes 1 UBE");
-            return danoBase;
-            
-        }
-    
-    public int ataqueMagico(int nivelMundo){
-        return 0;
+    public void quitarbeneficios() {
+      return;
     }
 
     @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas de esas de bardo");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{
-            System.out.println("¿Que tipo de ataque quieres usar?");
-            for (int i=0; i<=getTipoAtaque_Fisico().size();i++) {
-                    System.out.println(i+")"+getTipoAtaque_Fisico().get(i));
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+                int respuesta = -1;
+                if(nivelMundo<5){
+                    return;
                 }
-            ataque =input.nextInt();
-            input.nextLine();
-            while (ataque<0 || ataque>getTipoAtaque_Fisico().size()) {
-                System.out.println("No me toques los cojones y pon el número bien, que no es tan difícil pijo en dioh");
-                ataque=input.nextInt();
-                input.nextLine();
-            }
-            danno.setTipo(getTipoAtaque_Fisico().get(ataque));
-
-        };
-        return danno;
+                System.out.println("¿Que ataque mágico quires hacer chupapiedras homeopático");
+                Danno danno =new Danno();
+                if(nivelMundo>=5 && nivelMundo<9){
+                    System.out.println("Bien, con astucia y elegancia te tomas [1 Chp] y le pegas, un chorrillo homeopático tuyo, al enemigo");
+                    System.out.println("¿Quién será el agraciado?");
+                    for(int i=0;i<horda.size();i++){
+                        System.out.println(i+")"+horda.get(i).getNombre());
+                    }
+                    do{
+                        try{
+                            respuesta=input.nextInt();
+                        }catch(Exception e){
+                            System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                            input.nextLine();
+                        }
+                    }while((respuesta<0 || respuesta>horda.size()));
+                    danno.setCantidad(10);
+                    danno.setTipo(Enums.Tipo_Ataque.Magia);
+                    if((horda.get(respuesta).getCaracteristicas().get(0)=="Demonio" || horda.get(respuesta).getCaracteristicas().get(0)=="No Muerto") ||(horda.get(respuesta).getCaracteristicas().get(1)=="Demonio" || horda.get(respuesta).getCaracteristicas().get(1)=="No Muerto")){
+                        danno.setCantidad(danno.getCantidad()*2);
+                    } 
+                    horda.get(respuesta).recibirDanno(danno);
+                }
+                
+                if(nivelMundo>=9 && nivelMundo<13){
+                    System.out.println("Bien, con astucia y elegancia te tomas [1 Chp] y le pegas, un chorrazo homeopático tuyo, al enemigo");
+                    System.out.println("¿Quién será el agraciado?");
+                    for(int i=0;i<horda.size();i++){
+                        System.out.println(i+")"+horda.get(i).getNombre());
+                    }
+                    do{
+                        try{
+                            respuesta=input.nextInt();
+                        }catch(Exception e){
+                            System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                            input.nextLine();
+                        }
+                    }while((respuesta<0 || respuesta>horda.size()));
+                    danno.setCantidad(20);
+                    danno.setTipo(Enums.Tipo_Ataque.Magia);
+                    if((horda.get(respuesta).getCaracteristicas().get(0)=="Demonio" || horda.get(respuesta).getCaracteristicas().get(0)=="No Muerto") ||(horda.get(respuesta).getCaracteristicas().get(1)=="Demonio" || horda.get(respuesta).getCaracteristicas().get(1)=="No Muerto")){
+                        danno.setCantidad(danno.getCantidad()*2);
+                    } 
+                    horda.get(respuesta).recibirDanno(danno);
+                }
+                if(nivelMundo>13){
+                    System.out.println("Bien, con astucia y elegancia te tomas [1 Chp] y le pegas un buen chorrazo homeopático tuyo, al enemigo");
+                    System.out.println("¿Quién será el agraciado?");
+                    for(int i=0;i<horda.size();i++){
+                        System.out.println(i+")"+horda.get(i).getNombre());
+                    }
+                    do{
+                        try{
+                            respuesta=input.nextInt();
+                        }catch(Exception e){
+                            System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
+                            input.nextLine();
+                        }
+                    }while((respuesta<0 || respuesta>horda.size()));
+                    danno.setCantidad(30);
+                    danno.setTipo(Enums.Tipo_Ataque.Magia);
+                    if((horda.get(respuesta).getCaracteristicas().get(0)=="Demonio" || horda.get(respuesta).getCaracteristicas().get(0)=="No Muerto") ||(horda.get(respuesta).getCaracteristicas().get(1)=="Demonio" || horda.get(respuesta).getCaracteristicas().get(1)=="No Muerto")){
+                        danno.setCantidad(danno.getCantidad()*2);
+                    } 
+                    horda.get(respuesta).recibirDanno(danno);
+                }
     }
-    @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
-    }  
+    
+
+
 
  
    

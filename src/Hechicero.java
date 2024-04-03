@@ -13,9 +13,8 @@ public class Hechicero extends Jugador {
    
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean Canalizacion;
-    
-    
-    
+
+
     public Hechicero (Scanner input){
         iniciarNombre(input);
         setIsAtaqueMagico(true);

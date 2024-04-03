@@ -31,8 +31,15 @@ public abstract class Jugador {
     // Para indicar si el ataque es mágico ya que el turno distingue entre ataques mágicos(van primero)
     //y ataques físicos para después
     private boolean IsAtaqueMagico;
+    private boolean Ha_bebido;
     
 
+    public boolean isHa_bebido() {
+        return Ha_bebido;
+    }
+    public void setHa_bebido(boolean ha_bebido) {
+        Ha_bebido = ha_bebido;
+    }
     public int getNR() {
         return NR;
     }

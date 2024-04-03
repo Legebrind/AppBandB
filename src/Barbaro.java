@@ -14,10 +14,8 @@ public class Barbaro extends Jugador {
     private HashMap<Integer,String> Sentido_Trampas;//Se imprime por pantalla un String ya que es para el daño del jugador
     private HashMap<Integer,Furia> Furia; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
-    
-    
-    
-    
+
+
     public Barbaro (Scanner input){
         iniciarNombre(input);
         setIsAtaqueMagico(false);

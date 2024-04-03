@@ -13,8 +13,7 @@ public class Druida extends Jugador{
     private HashMap<Integer,Integer> TablaAtaque;
     private HashMap<Integer,Integer> CambiaFormas;
     private boolean isCambiaFormas,isCompaSalvaje;
-    
-
+ 
 
         public Druida (Scanner input){
         setIsAtaqueMagico(false);

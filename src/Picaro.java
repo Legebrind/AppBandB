@@ -12,10 +12,18 @@ public class Picaro extends Jugador {
     private HashMap<Integer,String> Sentido_Trampas;
     private HashMap<Integer,Integer> Furtivo; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
+    private boolean Ha_bebido;
+    //Falta implementar ataque furtivo
     
     
-    
-    
+
+    public boolean isHa_bebido() {
+        return Ha_bebido;
+    }
+
+    public void setHa_bebido(boolean ha_bebido) {
+        Ha_bebido = ha_bebido;
+    }
 
     public Picaro (Scanner input){
         iniciarNombre(input);
@@ -33,7 +41,7 @@ public class Picaro extends Jugador {
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Cortante);
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
         setTablaAtaque(iniciarAtaqueBase());
-        iniciarFurtivo();
+   
         iniciarSentido_Trampas();
         
                       
@@ -60,24 +68,7 @@ public class Picaro extends Jugador {
         return TablaAtaque;
     } 
     
-    private void iniciarFurtivo(){
-        Furtivo=new HashMap<>();
-        this.Furtivo.put(1,4);
-        this.Furtivo.put(2,4);
-        this.Furtivo.put(3,4);
-        this.Furtivo.put(4,5);
-        this.Furtivo.put(5,10);
-        this.Furtivo.put(6,10);
-        this.Furtivo.put(7,12);
-        this.Furtivo.put(8,12);
-        this.Furtivo.put(9,18);
-        this.Furtivo.put(10,21);
-        this.Furtivo.put(11,21);
-        this.Furtivo.put(12,21);
-        this.Furtivo.put(13,32);
-        this.Furtivo.put(14,32);
-        this.Furtivo.put(15,32);
-    } 
+  
     private void iniciarSentido_Trampas(){
     //Modificar como clase Furtivo;
     this.Sentido_Trampas.put(1,"Sentido trampas 1");
@@ -96,72 +87,29 @@ public class Picaro extends Jugador {
     this.Sentido_Trampas.put(14,"Sentido trampas 5");
     this.Sentido_Trampas.put(15,"Sentido trampas 5");
     }
-    public Furtivo getFurtivo(int nivelMundo){
-
-        return Furtivo.get(nivelMundo);
-    }
-    public String getSentido_Trampas(int a){
-
-        return this.Sentido_Trampas.get(a);
-    }
 
 
 
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
-    public int atacar(Scanner input,int nivelMundo){
-        String utilizarFurtivo="z";
-   
-        Furtivo Furtivo=getFurtivo(nivelMundo);
-        int danoBase=getAtaqueBase(nivelMundo);
-        //Preguntas
-         while(utilizarFurtivo!="s" && utilizarFurtivo!="n"){
-            System.out.println("¿Quieres usar Furtivo?: "+danoBase+Furtivo.getDescripcion()+"(s/n)");
-            utilizarFurtivo=input.nextLine();
-            input.nextLine();
-        }
-        switch (utilizarFurtivo) {
-            case "s":
-                System.out.println("Bebes 1 UBE y 1 chupito");
-                System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*Furtivo.getMultiplicador()+" daño"));
-            return danoBase*Furtivo.getMultiplicador();        
-        
-            default:
-                System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
-                System.out.println("Bebes 1 UBE");
-            return danoBase;
-            
-        }
-    }
-    public int ataqueMagico(int nivelMundo){
-        return 0;
+
+  
+
+    @Override
+    public int atacar(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
+       return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }
 
     @Override
-    public Danno ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas bárbaras");
-        int ataque =atacar(input, nivelMundo);
-        danno.setCantidad(ataque);
-        if(getTipoAtaque_Fisico().size()==1){
-          danno.setTipo(getTipoAtaque_Fisico().get(0));
-        }
-        else{};
-        return null;
+    public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
+            ArrayList<Modificador> modificadores, Grupo aventureros) {
+      return;
     }
+
     @Override
-    public Danno ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public boolean isBuscaTrampas() {
-        return BuscaTrampas;
-    }
-
-    public void setBuscaTrampas(boolean buscaTrampas) {
-        BuscaTrampas = buscaTrampas;
+    public void quitarbeneficios() {
+       return;
     }
 
 }
