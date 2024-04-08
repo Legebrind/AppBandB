@@ -1,123 +1,9 @@
-import java.util.ArrayList;
-
-import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Random;
-
-public class MesaDestino  {
-
-    private ArrayList<Enemigo> ListaEnemigos;
-    private ArrayList<Objeto> ListaTesoro;
-    private Random Aleatorio;
-    public MesaDestino(){
-       ListaEnemigos = new ArrayList <Enemigo>();
-        ListaTesoro =new ArrayList <Objeto>();
-        Random Aleatorio =new Random();
-
-    }
-    public ArrayList<Enemigo> getListaEnemigos(){
-        return this.ListaEnemigos;
-
-    }
-    public ArrayList<Objeto> getListaTesoro() {
-        return ListaTesoro;
-    }
-    public void setListaTesoro(ArrayList<Objeto> listaTesoro) {
-        ListaTesoro = listaTesoro;
-    }
-
-  //Se obtiene un enemigo en funciÃ³n del nivel de Dungeon,y lo elimina de la listaEnemigos.
-    public Enemigo getEnemigo(int NivelMundo){
-        List<Enemigo> auxList = this.ListaEnemigos.stream()
-        .filter(x->x.getNivel()==NivelMundo)
-        .collect(Collectors.toList());
-      int aux = Aleatorio.nextInt(0,(auxList.size())); // CorrecciÃ³n aquÃ­
-      Enemigo enemigo=auxList.get(aux);
-      this.ListaEnemigos.remove(enemigo);
-      return enemigo;
-
-
-    }
-    public Enemigo getBoss(int NivelMundo){
-        Enemigo enemigo =getEnemigo(NivelMundo);
-        int nAptitudes;
-        Aleatorio = new Random();
-        switch (NivelMundo) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                 nAptitudes=0;             
-                break;
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-              nAptitudes=1;
-              break;
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-                nAptitudes=2;
-                break;
-            default:
-                nAptitudes=3;
-                      
-        }
-        for(int i=0;i<nAptitudes;i++){
-            
-            enemigo.setCaracterBoss(Aleatorio.nextInt(0,Enums.Tipo_Aptitud_Boss.values().length));
-            
-        }
-
-      return enemigo;
-
-
-    }
-    public void ListaEnemigos(){
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("enemigos.txt"))) {
-            StringBuilder contenido = new StringBuilder();
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                contenido.append(linea).append("\n"); // Agrega el salto de lÃ­nea
-            }
-            // Ahora 'contenido' contiene todo el pÃ¡rrafo. Puedes procesarlo segÃºn tus necesidades.
-            String[] partes = contenido.toString().split("/");
-
-            // AsegÃºrate de que haya al menos 10 campos en el pÃ¡rrafo antes de intentar acceder a ellos
-            for (int i = 0; i < partes.length; i += 10) {
-                if (i + 9 < partes.length) {
-                    ArrayList<String> caracteristicas =new ArrayList<>();
-                    String nombre = partes[i];
-                    int nivel = Integer.parseInt(partes[i + 1]);
-                    int ataque = Integer.parseInt(partes[i + 2]);
-                    int vida = Integer.parseInt(partes[i + 3]);
-                    String putada = partes[i + 4];
-                    caracteristicas.add(partes[i + 5]);
-                    caracteristicas.add(partes[i + 6]);
-                    String reglaCombate = partes[i + 7];
-                    int nEne = Integer.parseInt(partes[i + 8]);
-                    String descEnemi = partes[i + 9];
-                    // Crea instancias de Enemigo con estos datos
-                    
-                    
-                    Enemigo enemigo = new Enemigo(nombre, nivel, ataque, vida, putada, reglaCombate, nEne, descEnemi, caracteristicas);
-                    ListaEnemigos.add(enemigo);
-                } 
-               // else {System.err.println("Error en el pÃ¡rrafo: " + contenido.toString());}
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    
-    }
-}
+ú×À6–Ñz]ë¼?Ôİä¡úJN˜ç³&6º}j0–wÀ#G­ë¹äÔòAñÇKÈV‚òº…NAÖrÀø•ÎCL¡ŒDß=Ê£—%?XÖ­}—r=ÚFT½U´Z)"?B÷î/É]y{#3¾>İYé½ÊÜ_Ÿc`©]­ÖÜ*”ªc¿ë§(~G¯ãø²{>‹Šô=ãë–Å¿Xá'Ë4	Í¦¦ï-³1ØéÔÿèÒ	éLÒ ¹Çhš©šÀÈîØ­}{yÕÎ9[$•®û©–Rã7¶ùÂÚ·ß>ªÆò©©„>46PĞ­2X±Y5äÍèUğÏVQúîåuAÔ‚6õ$Cb‡­r«ùcÇ^Ù”ìd¨ FŞNÊ¾ïLïˆËª©ğ-ú:Şg•	ƒ­"i‚*®ØA_Ã=İWè"Áq4ö‰õ#½ÆÛyÎ"qïT²Ó#øäÖÉ75ÏÆ
+jøl,)~ïf(ÖûGÇ4Ñ6˜Ú$™D¥Çuü<ú®Â[-`@ïJLo—ø³¨­½ú6çıÓvËûF}-éM=›~ön¸b^e´Ühî+ä494-']×a«ã×7ñ\2¨rÿ]ôÙFG\"ÇÎ(e-Ï¯Qz`â—7ú9c;úw'k­0®ÃN¦3Îšİb3ºæ¡ni¶}×²»{›ÕµÌ”6;-—ä5¼iuüJÓZHÒ•3ïímíİI½®õæœ.<z¸aOÖi—VÌZ&äP¤Øw.9~ó³•T§Òg«][˜n/fÇ’ÄŸÊ¶§([W™Š¨U•8PRõ~ŠûÉŒh¨ÍCÛ†•^JÕêåŞN9µrŸ—×oıXACŸµ >¬¨>T˜ÿpZ¥AØ)ŸŞ˜ë q¡ŞâÌíf×Kšwn¦>®z¢{â”©v™‰(oñ¸ù;M¾VÇ\Ëıòç¯³¶©ã¬Ñ+4Ö6ŸÈHÚV¾u2ù¿¶<[í½š^Dn¯úşåÕæáıM–	ÎğZûä#¦øBx‹™ìå8¿Ñ©OG÷H¸ïz¹nóê±›©Vş\ñ‘0léxÃŠ š×x}ROd¶šk-»n-¬Ç6Ø{İTFÆLbp²9Sø‚{­h-[b|l—VÕ_†ˆÃO‡*Drªét:½îÊáçÿM²£
+u}ú±ÄÃÕãÄ	Ü
+€Ğmy!Ğ,AHx—ÂFêIiÄ>`@kBt€ÎÄqä0™'Ë¯`¨ÑcOçĞTiuÁ^ƒızÜ+À¹×‚}¢±ˆ%q<	‰#DÇQñ!Ÿ4‘äşšZ.ÆZ_Ó^ÕN}Û…„RyX¾¢_JôŸó¼ œşkŞr?üêfÓ†UóP2‘ÓÀNí÷kğ‰+
+à‚Çˆ¿´Vÿ;å~dÖ´idó™qÅ~?.nåÙ”Ñr,…R"oZpv<ıĞ»À6qg	^ß}g”Ó•}¤;­”G6ıL?tÁ²{ë5Õ¯n0íñ@r!‚4K;g(Ö 1høY:¹*Yã¨ˆ:]„OäÅ=PvĞ3£1Ïvê]oèôï2·…Â386º·Î½‰—yâ»ì¼¹»ÊÁÜ‚P÷«şŸÖ`O–„.ìÊû}_6®]½)ü’FÙkŞ[l™(EÎ2Âø@Æ§£F÷fUîÎ]‰Ûµcüi¾„--Òã0¤·8îv!¨]À}>ÊWÛk(üLî»‚¾,fÖ?×c*ã&a©»ŠÉ:(¬nG¬6àA¼Ğk,é‡eÛ ^HùdJï–Â2ÛÙŒ6Ç#U]ÒÛ[¯Ëœ³u~tÚÛæ`Ót²¿µyü¬ÅõÚ)å@‘òt™yÈş)æcÎß}dqF©€Ù÷ÖRÅ«{¾éØ¿rJ:«Y!ÎÜ 9Ñ-Ä`ÛÎÍîc[C(›s¨çgä³6„[í›®33”//²"î©=uSX«½cQÏ›{ÃzÕTKQÃ²ŒÈŞ›M$oÎ"A´Œ¼ç2öÛ%‚E%„ÏyiIO–­:aWdXúk‡v½>”œhDµzÉ¯¿tëÚ#ÂÒÇß`ÏÉï9Jëzòº#·2<®RÿÚ'U©ŸƒfSPËñÏ§&–—ej6fŠ—©U~{™Â+v©vÜßëâÖYàÑ¥Ö¥#$ûógŠçôã5¹2/9üÓ¢JÆlÅÚ‰•5—¤¶7*={Vëúäˆš5[~‹õ]æş³}qK9ßıæ‚šÔ…ãìß­Xıãë†&Élµã¼!Éé	eo‹ååd¤§%z3Ol<şÂøb¯˜-ÜQ(R¥ß’Ã÷àÔ<d^^ĞÍOÇŠSğÂí_¯D]Kvğ¾ºôâ‘ëx	·éŒÇ“&o³ò÷Xt–‹ñJwû”·xÉ¿>z±(¿Œİˆ¬—éfË¥Ìò¯ëV`jg<t=‹'6úª²êÀÀqp¯=Ö|‰—oıåÓÉ;õ'V™¶Ş¢{÷ÕK¬ñƒZ.§RåOûw‰öl•,=ä ôheæ›ªû¯~Ú™Ô-V‹Ï›ÙşS¦»Õ[&G·`T'\‘İı8íd‘~^Ñ2&ºö!­\zh[å×‘ëJ"»d²TNŸäğ´áo°ëñ–Âü:ZÛ'Îwï´¢Ğ šÅÕV•¬køE‰=[Õ÷gèeş(iŞi°r{ ï<Ô[í|6BŠ§~¤ï¬ØÖ.¬şv +]GBnµÌ©§Î­„¼ÿS`mËİk]z“=_Ÿ‡îsĞ¢8ÏN“ƒ»é³‰ñèº€Ï: ‰=†‘t]@K*Õ"#v]üÈLÎ&zåa¬3xAO²Ò!·SÀ{¿„ÎZ®QPõ8T=-,ò±nNĞ
+n%#_¶“'Ö¾‡2@ğ~Rs\sm)©FîÈaš¸K-0yõ5’—„æúY…¹¹÷KºHtiŸÎTÎ¾—i&$ôuÄÚøÕ'}î©1ûéëH)e¶IfVÒå2e’>&ÏC„„›jÇ²ã;Ÿ¾kÊÜt©UÁZ¯ğÇıTs}ä$r¦tc½—Îù•WZ™Áœğ§w÷Yéåz¤Ÿ.Ê»÷¶Ã¾(|Ä8'lÔõjßÕDŞ˜—î‘Lï’½­»±ÂµŒ$D€^&¤‡„kğÙü6§IüXéûÃwñíûà¶åy¯$|¤€~9Pİô¾ÌºoUgE¾ÆÆ™Š¿š‡>é´ıÉı~ÖªıÊº½ß.F­“Áj‡YÆ¤\J`lébR6œ>Ë\Øë»?ejÖG‘ÓŸ½”æ¡°óäaÊ<”à¶»(7µèÑ©WBï\( Şeæ>4;üöñRÑíi‡z^P ›‘ì€,Ÿ_è­VãåNskAÿ™ìáÄ¢u9QŠsÉÏ*¯“pÓÑš-âÇ™[”ËO
+Ö˜‰ÅÈ ô^ „k õs-¿fï¹¾ÔÜ4+BÃé˜òõÈñ²î}î¥%t.°·)îºöNÖèüÑWÃ£Ñè‡\ám³]C¬ÊOpxmÙõfœï»û¸ÉØXÏ»<Ï)&r'Ç÷Kğh­i^^Wéa3·²mº“îOJ ÿvˆ²lŒìİ>[5£ø.7Y'’qË¹¸wÂÀê­¸æ\øKKnI…éq™™‰íYªŸ‹^øËaî3^­)‰y6Ô.|me$2(À<)òQj£|8]©@Uª¥Ñ½œ;-Sö#Ï(Ï®…”¬wÍ°.QPs‘”®8ÔŞq`B&Mõ|»,³~	ºÁ¬W2şh¨"5Š(UÓLJ6½ÓïİwVüîÒ¬öp¶XFŒM—bzÍ¾IS¶CL‹ºçëºµ²í×Ô¶éÍºŒÙa>FÉDñ†Íl•=ıÅ¶#óÂ¤ó¢»Ãñ’æ)÷±ñÑÊâŒêå»5­ª£Zcå+nÏC”<ÅiØ2ızé>Û¦ÜÑ5g.)8a>Á$(QCé¹é{‡–E‰ßÔı­…ë³ÃşĞ¬~şÕàĞÑÈOò¸ ~B‚uƒÛ™Ü—{÷ÿ~¬Ú'Ã³¡¬§×wéş3±k/¾íYİ™'
+ÜtŞ­t¸¡çÕqS©—©*jQê-Çnf{Õt=T3•§×†lÖ}9…Éİì<öOd>wŞ¤ã´ıñ#ií?§0QiÌ¼a·C¼¯®­‹"S-Lï³¹‘íx2¤\òôŸz½òô×ñu‰·*ò—vH”Óx+Ÿ›Ö‰9BÔi‰ß'·û+ç·†áß7lc…¨²gŠÏR
+·`>­~ñ¤iŸp{+*É?ì¡ûãX{2îùŠÙ)¶ƒJ¹æü‚ûWİ‚X[^‰ÔTYaH3J<?Zô‚»TÙ»RDKû•Ó5§?åj.ø¸«=Îfßî•“D÷P#¡Û]ŸõyÊ_¿u\“†¯9µïñ#.·>]Œ-ºâD×İâM8v®]èÚNóú°²Ôl«RSì`ïØæ÷+M?Ëò3tdéÍúßù
