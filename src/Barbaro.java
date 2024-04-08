@@ -33,7 +33,6 @@ public class Barbaro extends Jugador {
         setTablaAtaque(iniciarAtaqueBase());
         iniciarFuria();
         iniciarSentido_Trampas();
-                      
         
     }
 
@@ -100,56 +99,60 @@ public class Barbaro extends Jugador {
 
         return this.Sentido_Trampas.get(a);
     }
-
-
-
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
     //El ataque del Bárbaro es sencillo, o ataca con furia o sin ella. Necesita el Scanner para introducir 
     //las opciones por pantalla y el nivelMundo porque su daño es acorde a este valor
     public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
-        String utilizarFuria="z"; //se inicia la variable en este valor para que entre en el bucle while
+        int utilizarFuria=-1; //se inicia la variable en este valor para que entre en el bucle while
         //Almacenamos en estas variables el multiplicador de la furia y el valor del daño base
         Furia furia=getFuria(nivelMundo);
         int danoBase=getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
 
         //Preguntamos al jugador que quiere hacer y devolvemos el parametro int danno de nuestro ataque.
-
-         while(utilizarFuria!="s" && utilizarFuria!="n"){
-            System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(s/n)");
-            utilizarFuria=input.nextLine();
+        do{
+            try{
+                utilizarFuria=input.nextInt();
+            }catch(Exception e){
+                System.out.println("Se que tú ser Bárbaro, y no saber leer\n Tú decir 1 Si, 2 No (Tontico)");
+            }
             input.nextLine();
-        }
-        switch (utilizarFuria) {
-            case "s":
+        }while(utilizarFuria<1||utilizarFuria>2);
+        
+        if (utilizarFuria==1) {
+            
                 System.out.println("Bebes 1 UBE y 1 chupito");
                 System.out.println("Con toda tu rabia golpeas brutalmente las partes íntimas del enemigo\nHaciendo un total de "+(danoBase*furia.getMultiplicador()+" daño"));
             return danoBase*furia.getMultiplicador();        
         
-            default:
+        }
                 System.out.println("Te rajas por no beber un chupito y golpeas sin usar todo tu potencial\nHaces "+danoBase+" de daño (paupérrimo)");
                 System.out.println("Bebes 1 UBE");
             return danoBase;
             
         }
-    }
-    public int ataqueMagico(int nivelMundo){
-        return 0;
-    }
-
-    //Implementamos el método abstracto de la clase Jugador para indicar el daño  y tipo de nuestro ataque
-
-
+    
     //El bárbaro no tiene ataque mágico
 
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores,Grupo aventureros) {
-        // TODO Auto-generated method stub
+        
         return ;
     }
 
-    @Override
+  
     public void quitarbeneficios() {
-       
+       return;
+    }
+
+   
+    public void fase_limpieza(int nivelMundo) {
+       return;
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
     }
 }

@@ -17,9 +17,7 @@ public class MesaDestino  {
     public MesaDestino(){
        ListaEnemigos = new ArrayList <Enemigo>();
         ListaTesoro =new ArrayList <Objeto>();
-        Random Aleatorio =new Random();
-
-    }
+     }
     public ArrayList<Enemigo> getListaEnemigos(){
         return this.ListaEnemigos;
 
@@ -36,52 +34,14 @@ public class MesaDestino  {
         List<Enemigo> auxList = this.ListaEnemigos.stream()
         .filter(x->x.getNivel()==NivelMundo)
         .collect(Collectors.toList());
-      int aux = Aleatorio.nextInt(0,(auxList.size())); // Corrección aquí
-      Enemigo enemigo=auxList.get(aux);
-      this.ListaEnemigos.remove(enemigo);
+      Random aux = new Random();
+      int aleatorio=aux.nextInt(0,(auxList.size())); // Corrección aquí
+      Enemigo enemigo=auxList.get(aleatorio);
       return enemigo;
-
-
     }
-    public Enemigo getBoss(int NivelMundo){
-        Enemigo enemigo =getEnemigo(NivelMundo);
-        int nAptitudes;
-        Aleatorio = new Random();
-        switch (NivelMundo) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                 nAptitudes=0;             
-                break;
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-              nAptitudes=1;
-              break;
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 14:
-                nAptitudes=2;
-                break;
-            default:
-                nAptitudes=3;
-                      
-        }
-        for(int i=0;i<nAptitudes;i++){
-            
-            enemigo.setCaracterBoss(Aleatorio.nextInt(0,Enums.Tipo_Aptitud_Boss.values().length));
-            
-        }
-
-      return enemigo;
-
-
-    }
+    public void eliminar_enemigo_lista(Enemigo enemigo){
+        ListaEnemigos.remove(enemigo);
+    }    
     public void ListaEnemigos(){
 
         try (BufferedReader reader = new BufferedReader(new FileReader("enemigos.txt"))) {

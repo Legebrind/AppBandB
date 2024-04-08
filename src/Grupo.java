@@ -34,30 +34,56 @@ public class Grupo {
 
     // Método que solo se invoca una vez para crear el grupo de jugadores y sus clases
     public void setJugador(Scanner input){
-        int clase;
+        int clase=-1;
         int j=0;
-        int njugadores;
+        int njugadores=-1;
         //j es para el bucle que muestra las clases de pj.
         System.out.println("¿Cuantos son los cabestros que van darlo todo por nada mas que diversión inmunda?");
-        njugadores = input.nextInt();
-        input.nextLine();
+        do{
+
+            try{
+             
+                njugadores=input.nextInt();
+                
+                if(njugadores<=0){
+                    System.out.println("No metas números negativos ¿Eres fascista?");
+                     
+                }
+            }catch(Exception e){
+                System.out.println("Venga coño que no has bebido nada y ya estas tocando los cojones");
+                System.out.println("Escribe el número de jugadores");
+               
+            }
+            input.nextLine();
+        }while(njugadores<=0);
+      
         for (int i = 1; i <= njugadores; i++) {
-            
         
             System.out.println("Jugador nº"+i+ "¿Que clase quieres jugar?\n");
             for (Enums.Tipo_Clase s : Enums.Tipo_Clase.values()) {
                 System.out.println(j+")"+s);
                 j++;
             }
-            clase = input.nextInt();
-            input.nextLine();
 
-            while(clase>j || clase<0){
-                System.out.println("No te pases de listo elige tu clase con el número tal y como aparece ");
+            do{
+
+                try{
+                 
+                    clase=input.nextInt();
+                    
+                    if(clase<=0){
+                        System.out.println("No metas números negativos ¿Eres fascista?");
+                    }
+                    if(clase>j){
+                        System.out.println("Esa clase todavía no está implementada, esperaté al DLC\nPuto gnomo de los cojones");
+                    }
+                }catch(Exception e){
+                    System.out.println("No te pases de listo elige tu clase con el número tal y como aparece ");
                 System.out.println("Jugador nº"+i+ " ¿Que clase quieres jugar?\n");
-                clase = input.nextInt();
+                   
+                }
                 input.nextLine();
-            }
+            }while(clase<0||clase>j);
 
             switch (clase) {
                 case 0:
@@ -100,8 +126,92 @@ public class Grupo {
         }
     
     }
-
-
-}
+//Método para establecer el jugador inicial y reordenar la lista
+    public void set_siguiente_jugador_inicial(int nivelMundo){
+            for (Jugador jugador : jugadores) {//Se busca quién es el jugador inicial 
+                if(jugador.isJugador_inicial()){
+                    jugador.setJugador_inicial(false);//una vez se encuentra, se le quita ese estado
+                    int posicion =jugadores.indexOf(jugador);
+                    if(posicion==jugadores.size()){//se establece al jugador incial siguiente
+                        jugadores.get(0).setJugador_inicial(true);
+                        return;
+                    }
+                    else{
+                        int contador=1;
+                        ArrayList<Jugador> lista_auxiliar=new ArrayList<>();
+                        jugadores.get(posicion+1).setJugador_inicial(true);
+                        for(int i=1;i<=jugadores.size()-posicion;i++){
+                        lista_auxiliar.add(i-1, jugadores.get(posicion+i));
+                        contador++;                                                
+                        }
+                        for(int i=contador;i<=jugadores.size();i++){
+                            lista_auxiliar.add(i-1, jugadores.get(posicion-i));
+                        }
+                        this.jugadores=lista_auxiliar;
+                        lista_auxiliar.clear();
+                        
+                        return;
+                    }
+                }
+            }
+        }
   
+    public Jugador getJugador_inicial(){
+        for (Jugador jugador : jugadores) {
+            if(jugador.isJugador_inicial()){
+                return jugador;
+            }
+        }
+        return null;
+
+    }
+    public boolean getEvasion(Enemigo enemigo, Scanner input){
+        int respuesta=-1;
+        int contador=0;
+        for (Jugador jugador : jugadores) {
+            switch (jugador.getClase()) {
+                case Enums.Tipo_Clase.Picaro:
+                    System.out.println(jugador.getNombre()+" como buen pícaro, puede hacer bomba de humo y evadir el combate");
+                    contador++;
+                    break;
+                case Enums.Tipo_Clase.Chaman:
+                    System.out.println(jugador.getNombre()+ " como chamán puedes evitar el combate");
+                    contador++;
+                    break;
+                case Enums.Tipo_Clase.Explorador:
+                    if(enemigo.getCaracteristicas().contains("Animal")){
+                        System.out.println("El enemigo es de tipo animal y por fortuna tenéis un explorador\nEl explorador, puede darle cariño al animal y mientras vosotros huir");}
+                    contador++;
+                        break;
+                case Enums.Tipo_Clase.Paladin:
+                    if(enemigo.getCaracteristicas().contains("Diablo")){
+                        System.out.println("¡Qué lástimaaaaa!Este enemigo se iba a ir una vez hecha la putada\n Pero hay un palaca en grupo así que os va a frotar la cara");
+                        return false;
+                    }
+                default:
+                   
+            }           
+                    
+        }
+        if(contador!=0){
+            System.out.println("¿Vais a 'evadir' (Huir como gitanos del agua)?\n1)Si\n2)No");
+            do{
+                try{
+                    respuesta=input.nextInt();
+                    
+                }catch(Exception e){
+                    System.out.println("Chachos, si no queréis evadir, decirlo pijo en dieh");
+                    input.nextLine();
+                }
+            }while(respuesta<1||respuesta>2);
+            if(respuesta==1){
+                return true;
+            }
+            return false;
+            }
+        return false;
+    }
+}
+
+
 

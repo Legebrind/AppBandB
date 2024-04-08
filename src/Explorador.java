@@ -174,4 +174,15 @@ public class Explorador extends Jugador {
     public void setAtaque_doble(boolean Ataque_doble) {
         Ataque_doble = Ataque_doble;
     }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+    return;    
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+    }
 }

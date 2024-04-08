@@ -3,8 +3,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 
-
-
 public class Bardo extends Jugador{
 
     private HashMap<Integer,String> Musica_de_Bardo;
@@ -13,11 +11,6 @@ public class Bardo extends Jugador{
     private boolean Conocimiento_de_bardo,Portento_Musical;
     private HashMap<Integer,Cantar> Cantar;
   
-    
-    
- 
-  
-
     public Bardo (Scanner input){
         iniciarNombre(input);
         setIsAtaqueMagico(true);
@@ -25,7 +18,6 @@ public class Bardo extends Jugador{
         setNR(2);
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Bardo);
-
         setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
         addSalvaciones(Enums.Tipo_Salvacion.Reflejos);
         addSalvaciones(Enums.Tipo_Salvacion.Voluntad);
@@ -38,10 +30,6 @@ public class Bardo extends Jugador{
         
         Conocimiento_de_bardo=true;
         Portento_Musical=false;
-        
-        
-        
-                      
         
     }
 
@@ -111,14 +99,9 @@ public class Bardo extends Jugador{
         Cantar.put(15,new Cantar("[1Chp] Da +30 de ataque a un jugador y +15 a los jugadores adyacentes",30));
         
     }
-
-
-
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
- 
-    
     public void ataqueInfundirValor(int nivelMundo,  Grupo aventureros){
 
         for (Jugador jugador : aventureros.getJugadores()) {
@@ -127,7 +110,6 @@ public class Bardo extends Jugador{
         System.out.println("Ese bardo bueno que infunde valor a sus compañeros soplandoles en la nuca");
 
     } 
-
     public void ataqueCantar(int nivelMundo,  Grupo aventureros, Scanner input){
 
         System.out.println("¿Quién será el agraciado que reciba tu canción y salpique tu tonalidad a sus compañeros adyacentes?");
@@ -163,15 +145,12 @@ public class Bardo extends Jugador{
 
         
     }
-
-    
     public int atacar (Scanner input, int nivelMundo,ArrayList<Enemigo>horda){
         
        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
 
 
     }
-    
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores,Grupo aventureros) {
         System.out.println("¿Que ataque mágico quires hacer, pequeño jublar");
         System.out.println("0:  "+Infundir_Valor.get(nivelMundo));
@@ -205,60 +184,56 @@ public class Bardo extends Jugador{
         }
         if(respuesta==1){System.out.println("Ole ese chupito bueno, asi si.");}
     }
-
-
-   
-
     public boolean isPortento_Musical() {
         return Portento_Musical;
     }
-
     public void setPortento_Musical(boolean portento_Musical) {
         Portento_Musical = portento_Musical;
     }
     public boolean isConocimiento_de_bardo() {
         return Conocimiento_de_bardo;
     }
-
-    @Override
     public void quitarbeneficios() {
-       
+      return; 
     }
-
     public HashMap<Integer, String> getMusica_de_Bardo() {
         return Musica_de_Bardo;
     }
-
     public void setMusica_de_Bardo(HashMap<Integer, String> musica_de_Bardo) {
         Musica_de_Bardo = musica_de_Bardo;
     }
-
     public HashMap<Integer, Integer> getInfundir_Valor() {
         return Infundir_Valor;
     }
-
     public void setInfundir_Valor(HashMap<Integer, Integer> infundir_Valor) {
         Infundir_Valor = infundir_Valor;
     }
-
     public HashMap<Integer, Integer> getTablaAtaque() {
         return TablaAtaque;
     }
-
     public void setTablaAtaque(HashMap<Integer, Integer> tablaAtaque) {
         TablaAtaque = tablaAtaque;
     }
-
     public void setConocimiento_de_bardo(boolean conocimiento_de_bardo) {
         Conocimiento_de_bardo = conocimiento_de_bardo;
     }
-
     public HashMap<Integer, Cantar> getCantar() {
         return Cantar;
     }
-
     public void setCantar(HashMap<Integer, Cantar> cantar) {
         Cantar = cantar;
+    }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'fase_limpieza'");
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
     }
 
  

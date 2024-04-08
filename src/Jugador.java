@@ -9,7 +9,8 @@ import java.util.Scanner;
 public abstract class Jugador {
     private String Nombre;//Nombre del jugador
     //Estados del jugador
-    private boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel;
+    private boolean Is_Jefe,Debilitado,Envenenado,Perdida_de_Nivel,jugador_inicial;
+
     private boolean HaJugado,BuscaTrampas;
     private ArrayList<Enums.Tipo_Salvacion> Salvaciones;
     //Control de daños, vida y modificadores temporales
@@ -281,6 +282,13 @@ public abstract class Jugador {
     }
     public abstract void quitarbeneficios();//este método lo tiene que implementar cada clase para quitarse las aptitudes
     //activadas durante el combate y que deban quitarse al finalizar el combate como el cambiaformas del druida.
-
+    public boolean isJugador_inicial() {
+        return jugador_inicial;
+    }
+    public void setJugador_inicial(boolean jugador_inicial) {
+        this.jugador_inicial = jugador_inicial;
+    }
+    public abstract void fase_limpieza(int nivelMundo);
+    protected abstract void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input);
     
 }

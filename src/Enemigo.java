@@ -7,17 +7,10 @@ public class Enemigo {
 
     private String Nombre;
     private int Ataque,Nivel,PG_enemigo;
-    private ArrayList<Enums> Tipo_Aptitud_Boss; 
     private String Putada,Regla_de_Combate,Descripcion_Enemigo;
     private Integer nEnemigos;
     private Random Aleatorio;
     private ArrayList<String> Caracteristicas;
-    private boolean isBoss;
-    
-
-
-
-
    
     public Enemigo(String Nombre,int Nivel,int Ataque,int PG_enemigo,String Putada, String Descp,int nEne,String descp_Enemigo,ArrayList<String> caracterisitcas){
       this.Nombre=Nombre;
@@ -29,8 +22,11 @@ public class Enemigo {
       this.nEnemigos=nEne;
       this.Descripcion_Enemigo=descp_Enemigo;
       this.Caracteristicas=caracterisitcas;
-      this.isBoss=false;
+     
       
+    }
+    public Enemigo(){
+        
     }
     public void setPG_enemigo(int PG) {
         this.PG_enemigo = PG;
@@ -59,13 +55,6 @@ public class Enemigo {
         return this.Nivel;
     }
 
-    public ArrayList<Enums> getTipo_Aptitud_Boss() {
-        return Tipo_Aptitud_Boss;
-    }
-
-    public void setTipo_Aptitud_Boss(ArrayList<Enums> tipo_Aptitud_Boss) {
-        Tipo_Aptitud_Boss = tipo_Aptitud_Boss;
-    }
 
     public String getPutada() {
         return Putada;
@@ -133,45 +122,12 @@ public class Enemigo {
                 
     }
 
-    public void setCaracterBoss(int ncaracteristicas,int NivelMundo){
-        var caracteristica=Enums.Tipo_Aptitud_Boss.values()[ncaracteristicas];
-        Caracteristicas.add(caracteristica.toString());
-        switch (caracteristica) {
-            case gigantesco:
-                
-                break;
-            case con_extremidades_adicionales:
-            break;
-            case cobarde:
-                break;
-            case con_sequito:
-                break;
-            case equipado:
-                break;
-            case extremadamente_poderoso:
-                break;
-            case reanimado:
-                break;
-            case volador:
-                break;
-            case torpe:
-                break;
-            
-            }
-        }
-
-        public boolean isBoss() {
-            return isBoss;
-        }
-        public void setBoss(boolean isBoss) {
-            this.isBoss = isBoss;
-        }
-
-    }
+}
 
 
     
     
+
 
 
 

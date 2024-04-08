@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Chaman extends Jugador{
 
     private HashMap<Integer,String> Sanacion,Curacion,Restablecimiento;
-
     private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private HashMap<Integer,Ritual_Brujo> Ritual_Brujo;
@@ -35,16 +34,7 @@ public class Chaman extends Jugador{
         iniciarCuracion();
         iniciarRitual();
         iniciarMaldicion_vudu();
-        
-        
-        
-        
-        
-        
-                      
-        
     }
-
     private HashMap<Integer,Integer> iniciarAtaqueBase(){
         TablaAtaque = new HashMap<Integer,Integer>();
         TablaAtaque.put(1,2);
@@ -64,7 +54,6 @@ public class Chaman extends Jugador{
         TablaAtaque.put(15,5);
         return TablaAtaque;
     } 
-    
     private void iniciarCurarHeridas(){
         CurarHeridas = new HashMap<>();
         CurarHeridas.put(1,2);
@@ -121,11 +110,9 @@ public class Chaman extends Jugador{
         Curacion.put(15,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
 
     }
-
     public HashMap<Integer, String> getRestablecimiento() {
         return Restablecimiento;
     }
-
     public void iniciarRestablecimiento() {
         
         Restablecimiento = new HashMap<Integer, String>();
@@ -145,9 +132,6 @@ public class Chaman extends Jugador{
         Restablecimiento.put(14,"[1UBE] Permite a tres Jugadores ir al baño");
         Restablecimiento.put(15,"[1UBE] Permite a tres Jugadores ir al baño");
     }
-
-
-
     public int getAtaqueBase(int NivelMundo) {
         return this.TablaAtaque.get(NivelMundo);
     }
@@ -156,20 +140,11 @@ public class Chaman extends Jugador{
         System.out.println("Bebes 1 UBE");
             return danoBase;
         }
-    
-    public int ataqueMagico(int nivelMundo){
-        return 0;
-    }
-
-  
- 
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
             ArrayList<Modificador> modificadores, Grupo aventureros) {
                 int respuesta = -1;
                 System.out.println("¿Que ataque mágico quires hacer, pequeño jublar");
                 System.out.println("0:  Purgar invisibilidad[1 UBE, enciendes la linterna para ver al enemigo mucho mejor]");
-                System.out.println("1:  Ritual de batalla [1UBE por pj y te restriegas con ellos, pa suberles el ataque,ya tu sabeh]");
-                
                 
                 if(nivelMundo>=6){
                     System.out.println("2 Maldición vudú [1 Chp fresquito, le bajas daño y le quitas vida al estilo vudú]");
@@ -178,8 +153,9 @@ public class Chaman extends Jugador{
                             respuesta =input.nextInt();
                         }catch(Exception e){
                         System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                        input.nextLine();
+                        
                         }
+                        input.nextLine();
                     }while((respuesta<0|| respuesta>2));
                     switch (respuesta) {
                         case 0:
@@ -206,9 +182,10 @@ public class Chaman extends Jugador{
                             respuesta =input.nextInt();
                         }catch(Exception e){
                         System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                        input.nextLine();
+                        
                         }
-                    }while((respuesta<0|| respuesta>1));
+                        input.nextLine();
+                    }while((respuesta<0 || respuesta>1));
                     switch (respuesta) {
                         case 0:
                             //Comprobar si Invisible se aplica al array características del enemigo
@@ -252,8 +229,9 @@ public class Chaman extends Jugador{
                 
             }catch(Exception e){
                 System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                input.nextLine();
+                
             }
+            input.nextLine();
         }while((njugadores<=0||njugadores>aventureros.getJugadoresMax()));
         System.out.println("¿Quién será el agraciado que reciba tus aceites ritualiticos?");
         aventureros.mostrarInformacionEquipo();
@@ -264,8 +242,9 @@ public class Chaman extends Jugador{
                     respuesta =input.nextInt();
                 }catch(Exception e){
                 System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                input.nextLine();
+                
                 }
+                input.nextLine();
             }while((respuesta<0||respuesta>aventureros.getJugadoresMax()));
             
             njugadores--;
@@ -314,8 +293,12 @@ public class Chaman extends Jugador{
 
     }
 
-    @Override
+  
     public void quitarbeneficios() {
        
+    }
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+    System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo));   
     }
 }

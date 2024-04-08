@@ -275,6 +275,17 @@ public class Clerigo extends Jugador{
     public void quitarbeneficios() {
     
     }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+    }
  
    
 

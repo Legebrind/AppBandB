@@ -145,7 +145,7 @@ public class Paladin extends Jugador{
             for (Enemigo enemigo : horda) {
                 for (String x : enemigo.getCaracteristicas()) {
                     if(x=="Demonio"){
-                        System.out.println(enemigo.getNombre()+"es un demonio, lo que quiere decir que\n")
+                        System.out.println(enemigo.getNombre()+"es un demonio, lo que quiere decir que\n");
                         System.out.println("hay un demonio con vida y puedes castigarle ¿Castigamos? \n0)=Si\n1)=No");
                         do{
                             try{
@@ -202,6 +202,17 @@ public class Paladin extends Jugador{
 
     public void setTabla_MD(HashMap<Integer, Integer> tabla_MD) {
         Tabla_MD = tabla_MD;
+    }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+        System.out.println("\n"+getNombre()+"\n\t"+Imposicion_Manos.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
     }
 
 

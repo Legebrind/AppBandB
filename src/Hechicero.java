@@ -267,4 +267,15 @@ public class Hechicero extends Jugador {
     public void setCanalizacion(boolean canalizacion) {
         Canalizacion = canalizacion;
     }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+    return;  
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+    }
 }

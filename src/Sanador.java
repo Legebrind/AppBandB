@@ -146,10 +146,6 @@ public class Sanador extends Jugador{
 
     }
 
-    public String getRestablecimiento(int nivelMundo) {
-        return Restablecimiento.get(nivelMundo);
-    }
-
     public void iniciarRestablecimiento() {
         
         Restablecimiento = new HashMap<Integer, String>();
@@ -261,8 +257,20 @@ public class Sanador extends Jugador{
                     horda.get(respuesta).recibirDanno(danno);
                 }
     }
-    
 
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'fase_limpieza'");
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+    }
+    
+    
 
 
  

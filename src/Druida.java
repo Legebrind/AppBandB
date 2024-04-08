@@ -150,39 +150,41 @@ public class Druida extends Jugador{
         return this.TablaAtaque.get(NivelMundo);
     }
     public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
-        String respuesta="z";
+        int respuesta=-1;
         int CompaSalvaje=2;
         //Se comprueba si tiene activao el compañero animal y se le pregunta si quiere activarlo
         if(!isCompaSalvaje){
-            System.out.println("[1Chp] pa que venga un amigo muy especial a pegar contigo\n¿Te lo tomas?(S/N)");
+            System.out.println("[1Chp] pa que venga un amigo muy especial a pegar contigo\n¿Te lo tomas?\n1)Si\n2)No");
             do{   
                 try{
-                    respuesta=input.nextLine();
+                    respuesta=input.nextInt();
 
                 }catch(Exception e){
                     System.out.println("¡¡¡¡Di si o nó!!!!!Alma de Hokague");
-                    input.nextLine();
+                    
                 } //comprobar
-            }while (respuesta.toLowerCase()!="s"&&respuesta.toLowerCase()!="n");
-            if(respuesta=="s"){
+                input.nextLine();
+            }while (respuesta<1&&respuesta>2);
+            if(respuesta==1){
                 setCompaSalvaje(true); //Se activa el compañero animal y se reinicia la variable respuesta
-                respuesta="z";
+                respuesta=-1;
             }
         }
        //Si tiene compañero animal se le pregunta si quiere que ataque y se le añade el modificador del compañero al ataque
         if(isCompaSalvaje){
-            System.out.println("¿Quieres que tu amigo salvaje le saque los ojos al malo? (S/N)");
+            System.out.println("¿Quieres que tu amigo salvaje le saque los ojos al malo? \n1)Si\\n2)No");
             do{
                 try{
-                    respuesta=input.nextLine();
+                    respuesta=input.nextInt();
 
                 }catch(Exception e){
                     System.out.println("¡¡¡¡Di si o nó!!!!!Alma de Hokague");
-                    input.nextLine();
+                 
                 } //comprobar
-            }while (respuesta.toLowerCase()!="s"&&respuesta.toLowerCase()!="n");
+                input.nextLine();
+            }while (respuesta<1&&respuesta>2);
         
-            if(respuesta=="s"){
+            if(respuesta==1){
                 if(nivelMundo>=4&&nivelMundo<7){
                     CompaSalvaje=4;
                 }
@@ -205,18 +207,18 @@ public class Druida extends Jugador{
             return CambiaFormas.get(nivelMundo)+getModificador()+getModificador_toda_la_sala();
             }
             //Si no está transformado se le pregunta si quiere transformarse
-            System.out.println("¿Estás cómodo con esa piel? ¿No prefieres cambiarte ;)? [1UBE y pega como una lagartija grande]\n(S/N)");
+            System.out.println("¿Estás cómodo con esa piel? ¿No prefieres cambiarte ;)? [1UBE y pega como una lagartija grande]\n1)Si\n2)No");
             do{
 
                 try{
-                    respuesta=input.nextLine();
+                    respuesta=input.nextInt();
 
                 }catch(Exception e){
                     System.out.println("¡¡¡¡Di si o nó!!!!!Alma de Hokague");
                     input.nextLine();
                 } //comprobar
-            }while (respuesta.toLowerCase()!="s"&&respuesta.toLowerCase()!="n");
-            if(respuesta=="s"){
+            }while (respuesta<1&&respuesta>2);
+            if(respuesta==1){
                 setCambiaFormas(true);
                 return CambiaFormas.get(nivelMundo)+getModificador()+getModificador_toda_la_sala();
             }
@@ -242,8 +244,9 @@ public class Druida extends Jugador{
                     respuesta =input.nextInt();
                 }catch(Exception e){
                 System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                input.nextLine();
+                
                 }
+                input.nextLine();
             }while((respuesta<0 || respuesta>1));
             switch (respuesta) {
                 case 0:
@@ -267,8 +270,8 @@ public class Druida extends Jugador{
                     respuesta =input.nextInt();
                 }catch(Exception e){
                 System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                input.nextLine();
                 }
+                input.nextLine();
             }while((respuesta<0 || respuesta>1));
             switch (respuesta) {
                 case 0:
@@ -362,6 +365,17 @@ public class Druida extends Jugador{
        isCambiaFormas=false;
        isCompaSalvaje=false;
         
+    }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+BuenasBayas.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
     }
    
 

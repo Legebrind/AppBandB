@@ -13,18 +13,7 @@ public class Picaro extends Jugador {
     private HashMap<Integer,Integer> Furtivo; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean Ha_bebido;
-    //Falta implementar ataque furtivo
     
-    
-
-    public boolean isHa_bebido() {
-        return Ha_bebido;
-    }
-
-    public void setHa_bebido(boolean ha_bebido) {
-        Ha_bebido = ha_bebido;
-    }
-
     public Picaro (Scanner input){
         iniciarNombre(input);
         setIsAtaqueMagico(false);
@@ -44,7 +33,6 @@ public class Picaro extends Jugador {
    
         iniciarSentido_Trampas();
         
-                      
         
     }
 
@@ -101,7 +89,7 @@ public class Picaro extends Jugador {
        return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }
 
-    @Override
+    
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
             ArrayList<Modificador> modificadores, Grupo aventureros) {
       return;
@@ -110,6 +98,24 @@ public class Picaro extends Jugador {
     @Override
     public void quitarbeneficios() {
        return;
+    }
+
+    @Override
+    public void fase_limpieza(int nivelMundo) {
+    return;  
+    }
+    public boolean isHa_bebido() {
+        return Ha_bebido;
+    }
+
+    public void setHa_bebido(boolean ha_bebido) {
+        Ha_bebido = ha_bebido;
+    }
+
+    @Override
+    protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
     }
 
 }
