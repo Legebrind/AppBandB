@@ -132,7 +132,7 @@ public class Grupo {
                 if(jugador.isJugador_inicial()){
                     jugador.setJugador_inicial(false);//una vez se encuentra, se le quita ese estado
                     int posicion=jugadores.indexOf(jugador);
-                    if(posicion==jugadores.size()){
+                    if(posicion==jugadores.size()-1){
                         jugadores.get(0).setJugador_inicial(true);
                         return;
                     }
@@ -151,14 +151,15 @@ public class Grupo {
         if(posicion>0&&posicion<jugadores.size()){
             int contador=0;
             ArrayList<Jugador> lista_auxiliar=new ArrayList<>();
-            for(int i=0;i<=jugadores.size()-posicion;i++){
+            for(int i=0;i<jugadores.size()-posicion;i++){
             lista_auxiliar.add(i, jugadores.get(posicion+contador));
             contador++;                                                
             }//hasta aquí la lista auxiliar está ordenada hasta el último elemento
             for(int i=0;i<posicion;i++){
-                lista_auxiliar.add(i-1, jugadores.get(i));
+                lista_auxiliar.add(contador+i, jugadores.get(i));
             }//aqui se añaden los elementos que faltaban
-            this.jugadores=lista_auxiliar;
+            jugadores.removeAll(jugadores);
+            jugadores.addAll(lista_auxiliar);
             lista_auxiliar.clear();
             
         return;

@@ -362,7 +362,7 @@ public class Logica {
             aventureros.getJugador(respuesta).setJugador_inicial(true);
             aventureros.ordenarJugadores();
             
-            System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador(respuesta).getNombre());
+            System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador_inicial());
 
         }
         else{
