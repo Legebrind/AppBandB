@@ -33,20 +33,17 @@ public class Logica {
         //Comprueba si hay pj que puedan buscar trampa
         int contador=0;
         for (Jugador jugador : aventureros.getJugadores()) {
-                               
             if(jugador.isBuscaTrampas()){
                 System.out.println(contador+") "+jugador.getNombre());
-               
+                contador++;
             }
-            contador++;
             if(contador!=0){System.out.println("99) Si nadie tiene huevos");}
         
         }
         
         int jugador=-1;
-        
+        System.out.println("\n¿Quién de los nombrados se sacrifica por el equipo y busca trampas\n Si nadie tiene huevos a buscar una trampa sufreréis las consecuencias, panda de pijosprogre");
         do{
-            System.out.println("¿Quién de los nombrados se sacrifica por el equipo y busca trampas\n Si nadie tiene huevos a buscar una trampa sufreréis las consecuencias, panda de pijosprogre");
             try{
                 jugador=input.nextInt();
                 
@@ -63,7 +60,6 @@ public class Logica {
                 System.out.println(aventureros.getJugador_inicial()+"te toca buscar trampa en cueros");
                 trampa(NivelMundo); //to do.
                 break;
-        
             default:
                 System.out.println("Ole tú coño moreno"+jugador+",bébete ese UBE bueno para evitar la trampa");
                 break;
@@ -97,7 +93,7 @@ public class Logica {
        
         //2ºPatear la puerta
        Enemigo enemigo;
-       System.out.println("¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
+       System.out.println(aventureros.getJugador_inicial().getNombre()+"\n¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
        
         enemigo=Mesaprincipal.getEnemigo(NivelMundo);
         System.out.println("Veamos que tenemos aquí\n\n");
@@ -340,6 +336,8 @@ public class Logica {
             for (Jugador pj : aventureros.getJugadores()) {
                 pj.fase_limpieza(nivelMundo);
             }
+            aventureros.set_siguiente_jugador_inicial();
+            aventureros.ordenarJugadores();
     }
     //Establecer jefe de grupo
     public void jefeDeGrupo(Grupo aventureros, int NivelMundo, Scanner input){
@@ -349,19 +347,21 @@ public class Logica {
             System.out.println("Aquellos que lo desean pueden beber un VASO en vez de un UBE.");
             System.out.println("Los personajes que beban el VASO serán considerados Pretendientes y entre ellos estará el futuro Jefe de Grupo.");
             System.out.println("En caso de que un sólo jugador beba un VASO, este será el Jefe de Grupo.\n      En caso de que ningún jugador beba un VASO, no habrá Jefe de Grupo y todas las Cartas de Tesoro serán retiradas del Juego (“no jefes no comiercio”).\n      El Jugador Inicial de la primera Sala será el jugador de mayor edad.\n      En caso de que varios jugadores beban un VASO, cada uno de los pretendientes al título deberán lanzar un breve discurso de 30 segundos empezando por el jugador de más edad.\n\nUna vez han acabado de hablar, los No Pretendientes votarán a quien desean tener como Jefe de Grupo.\n\n    Votación: A la de tres, todos señalan a quien desean. El jugador que tenga más compañeros señalándole, será el elegido.");
-            System.out.println("Muy bien ¿Que jugador será el ávaro MasterLuuuter");
+            System.out.println("Muy bien ¿Que jugador será el ávaro MasterLuuuter?\n");
             aventureros.mostrarInformacionEquipo();
             int respuesta=-1;
             do{
                 try{
                     respuesta=input.nextInt();
                 }catch(Exception e){
-                    System.out.println("Di s o n ¡¡¡Pijo en dioh!!!");
+                    System.out.println("Elige a un jugador¡¡¡Pijo en dioh!!!");
                 }
                 input.nextLine();
-            }while(respuesta<0||respuesta>aventureros.getJugadoresMax());
-            
+            }while(respuesta<0||respuesta>aventureros.getJugadoresMax()-1);
             aventureros.getJugador(respuesta).setJefe(true);
+            aventureros.getJugador(respuesta).setJugador_inicial(true);
+            aventureros.ordenarJugadores();
+            
             System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador(respuesta).getNombre());
 
         }
@@ -379,11 +379,13 @@ public class Logica {
                 try{
                     respuesta=input.nextInt();
                 }catch(Exception e){
-                    System.out.println("Di s o n ¡¡¡Pijo en dioh!!!");
+                    System.out.println("Elige a un jugador¡¡¡Pijo en dioh!!!");
                 }
                 input.nextLine();
             }while(respuesta<0||respuesta>aventureros.getJugadoresMax());
             aventureros.getJugador(respuesta).setJefe(true);
+            aventureros.getJugador(respuesta).setJugador_inicial(true);
+            aventureros.ordenarJugadores();
             System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador(respuesta).getNombre());
 
         }

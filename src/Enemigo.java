@@ -5,14 +5,14 @@ import java.util.Random;
 //También tiene dos campos para la putada y descripcion
 public class Enemigo {
 
-    private String Nombre;
-    private int Ataque,Nivel,PG_enemigo;
+    private String Nombre,Ataque;
+    private int Nivel,PG_enemigo;
     private String Putada,Regla_de_Combate,Descripcion_Enemigo;
     private Integer nEnemigos;
     private Random Aleatorio;
     private ArrayList<String> Caracteristicas;
    
-    public Enemigo(String Nombre,int Nivel,int Ataque,int PG_enemigo,String Putada, String Descp,int nEne,String descp_Enemigo,ArrayList<String> caracterisitcas){
+    public Enemigo(String Nombre,int Nivel,String Ataque,int PG_enemigo,String Putada, String Descp,int nEne,String descp_Enemigo,ArrayList<String> caracterisitcas){
       this.Nombre=Nombre;
       this.Nivel=Nivel;
       this.Ataque=Ataque;
@@ -71,10 +71,10 @@ public class Enemigo {
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
-    public int getAtaque() {
+    public String getAtaque() {
         return Ataque;
     }
-    public void setAtaque(int ataque) {
+    public void setAtaque(String ataque) {
         Ataque = ataque;
     }
     public void setNivel(int nivel) {

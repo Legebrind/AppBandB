@@ -127,35 +127,55 @@ public class Grupo {
     
     }
 //Método para establecer el jugador inicial y reordenar la lista
-    public void set_siguiente_jugador_inicial(int nivelMundo){
+    public void set_siguiente_jugador_inicial(){
             for (Jugador jugador : jugadores) {//Se busca quién es el jugador inicial 
                 if(jugador.isJugador_inicial()){
                     jugador.setJugador_inicial(false);//una vez se encuentra, se le quita ese estado
-                    int posicion =jugadores.indexOf(jugador);
-                    if(posicion==jugadores.size()){//se establece al jugador incial siguiente
+                    int posicion=jugadores.indexOf(jugador);
+                    if(posicion==jugadores.size()){
                         jugadores.get(0).setJugador_inicial(true);
                         return;
                     }
                     else{
-                        int contador=1;
-                        ArrayList<Jugador> lista_auxiliar=new ArrayList<>();
                         jugadores.get(posicion+1).setJugador_inicial(true);
-                        for(int i=1;i<=jugadores.size()-posicion;i++){
-                        lista_auxiliar.add(i-1, jugadores.get(posicion+i));
-                        contador++;                                                
-                        }
-                        for(int i=contador;i<=jugadores.size();i++){
-                            lista_auxiliar.add(i-1, jugadores.get(posicion-i));
-                        }
-                        this.jugadores=lista_auxiliar;
-                        lista_auxiliar.clear();
-                        
-                        return;
                     }
                 }
             }
         }
-  
+    public void ordenarJugadores(){
+        
+        int posicion =jugadores.indexOf(getJugador_inicial());
+        if(posicion==0){//si el jugador inicial es el 0 la lista está ordenada
+            return;
+        }
+        if(posicion>0&&posicion<jugadores.size()){
+            int contador=0;
+            ArrayList<Jugador> lista_auxiliar=new ArrayList<>();
+            for(int i=0;i<=jugadores.size()-posicion;i++){
+            lista_auxiliar.add(i, jugadores.get(posicion+contador));
+            contador++;                                                
+            }//hasta aquí la lista auxiliar está ordenada hasta el último elemento
+            for(int i=0;i<posicion;i++){
+                lista_auxiliar.add(i-1, jugadores.get(i));
+            }//aqui se añaden los elementos que faltaban
+            this.jugadores=lista_auxiliar;
+            lista_auxiliar.clear();
+            
+        return;
+        }
+        if(posicion==jugadores.size()){
+            ArrayList<Jugador> lista_auxiliar=new ArrayList<>();
+            lista_auxiliar.add(0,jugadores.get(posicion));
+            for(int i=1;i<=jugadores.size();i++){
+                lista_auxiliar.add(i,jugadores.get(i-1));
+            }
+            this.jugadores=lista_auxiliar;
+            lista_auxiliar.clear();
+        }
+        }
+        
+
+    
     public Jugador getJugador_inicial(){
         for (Jugador jugador : jugadores) {
             if(jugador.isJugador_inicial()){

@@ -253,16 +253,16 @@ public class Chaman extends Jugador{
     }
     public void iniciarMaldicion_vudu(){
         Maldicion_vudu =new HashMap<>();
-        Maldicion_vudu.put(6,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
-        Maldicion_vudu.put(7,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
-        Maldicion_vudu.put(8,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
-        Maldicion_vudu.put(9,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo",-1,10));
-        Maldicion_vudu.put(10,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
-        Maldicion_vudu.put(11,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
-        Maldicion_vudu.put(12,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
-        Maldicion_vudu.put(13,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo",-2,20));
-        Maldicion_vudu.put(14,new Maldicion_vudu("-3 Ataque & 30 Daño a un monstruo",-3,30));
-        Maldicion_vudu.put(15,new Maldicion_vudu("-3 Ataque & 30 Daño a un monstruo",-3,30));
+        Maldicion_vudu.put(6,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo","-1",10));
+        Maldicion_vudu.put(7,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo","-1",10));
+        Maldicion_vudu.put(8,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo","-1",10));
+        Maldicion_vudu.put(9,new Maldicion_vudu("-1 Ataque & 10 Daño a un monstruo","-1",10));
+        Maldicion_vudu.put(10,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo","-2",20));
+        Maldicion_vudu.put(11,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo","-2",20));
+        Maldicion_vudu.put(12,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo","-2",20));
+        Maldicion_vudu.put(13,new Maldicion_vudu("-2 Ataque & 20 Daño a un monstruo","-2",20));
+        Maldicion_vudu.put(14,new Maldicion_vudu("-3 Ataque & 30 Daño a un monstruo","-3",30));
+        Maldicion_vudu.put(15,new Maldicion_vudu("-3 Ataque & 30 Daño a un monstruo","-3",30));
        
 
     }
@@ -282,7 +282,7 @@ public class Chaman extends Jugador{
                 }
             }while((respuesta<0||respuesta>horda.size()));
             //Modifica el ataque del enemigo
-            horda.get(respuesta).setAtaque(horda.get(respuesta).getAtaque() - Maldicion_vudu.get(nivelMundo).getModificador());
+            horda.get(respuesta).setAtaque((horda.get(respuesta).getAtaque()) + " "+ Maldicion_vudu.get(nivelMundo).getModificador());
             //Hace daño al enemigo
             Danno danno= new Danno();
             danno.setCantidad(Maldicion_vudu.get(nivelMundo).getDanno());

@@ -1,9 +1,9 @@
 public class Maldicion_vudu {
     
-    private String Descripcion;
-    private int Modificador,Danno;
+    private String Descripcion,Modificador;
+    private int Danno;
 
-    public Maldicion_vudu(String descripcion, int modificador,int danno)
+    public Maldicion_vudu(String descripcion, String modificador,int danno)
     {
         this.Descripcion=descripcion;
         this.Modificador=modificador;
@@ -13,7 +13,7 @@ public class Maldicion_vudu {
     public String getDescripcion(){
         return Descripcion;
     }
-    public int getModificador(){
+    public String getModificador(){
         return Modificador;
     }
     public int getDanno() {

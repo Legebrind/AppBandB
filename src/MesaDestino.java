@@ -56,7 +56,7 @@ public class MesaDestino  {
                     ArrayList<String> caracteristicas =new ArrayList<>();
                     String nombre = partes[i];
                     int nivel = Integer.parseInt(partes[i + 1]);
-                    int ataque = Integer.parseInt(partes[i + 2]);
+                    String ataque = partes[i + 2];
                     int vida = Integer.parseInt(partes[i + 3]);
                     String putada = partes[i + 4];
                     caracteristicas.add(partes[i + 5]);
