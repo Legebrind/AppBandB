@@ -12,8 +12,6 @@ public class Chaman extends Jugador{
     private HashMap<Integer,Integer> TablaAtaque;
     private HashMap<Integer,Ritual_Brujo> Ritual_Brujo;
     private HashMap<Integer,Maldicion_vudu> Maldicion_vudu;
-    private boolean patearPuerta;
-    private boolean despuesdePatear;
 
 
     public Chaman (Scanner input){

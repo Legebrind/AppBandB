@@ -119,7 +119,10 @@ public class Explorador extends Jugador {
                         input.nextInt();
                     } //comprobar
                 }while (respuesta!=1 && respuesta!=2);
-    
+                if(respuesta==1){
+                    this.iniciarDos_Armas();
+                    Ataque_doble=true;
+                }
                 if(respuesta==2){
                     EstiloArco=true;addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
                 }
@@ -170,19 +173,12 @@ public class Explorador extends Jugador {
     public boolean isAtaque_doble() {
         return Ataque_doble;
     }
-
-    public void setAtaque_doble(boolean Ataque_doble) {
-        Ataque_doble = Ataque_doble;
-    }
-
-    @Override
     public void fase_limpieza(int nivelMundo) {
     return;    
     }
 
-    @Override
     protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+      
+       return;
     }
 }

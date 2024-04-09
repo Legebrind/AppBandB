@@ -139,7 +139,7 @@ public class Paladin extends Jugador{
         return this.TablaAtaque.get(NivelMundo);
     }
     public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
-        boolean chivato=false;//me dice si hay demonios en la horda
+       
         int respuesta=-1;
         if(Tabla_MD.get(nivelMundo)>getContador_MD()){
             for (Enemigo enemigo : horda) {
@@ -152,8 +152,8 @@ public class Paladin extends Jugador{
                                 respuesta =input.nextInt();
                             }catch(Exception e){//comprobar que no afecte respuesta del if anterior
                             System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                            input.nextLine();
                             }
+                            input.nextLine();
                         }while((respuesta<0|| respuesta>1));
                         if(respuesta==0){
                             aumentarModificador((nivelMundo/2)+1);

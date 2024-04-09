@@ -4,8 +4,7 @@ public class ataque_Atfurtivo {
     private HashMap<Integer,Integer> Atfurtivo;
 
     public ataque_Atfurtivo(){
-        Atfurtivo = new HashMap<>();
-
+       
     }
 
     public int atfurtivo (int nivelMundo,int modificador){
