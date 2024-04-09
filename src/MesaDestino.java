@@ -1,8 +1,5 @@
 import java.util.ArrayList;
-
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +10,7 @@ public class MesaDestino  {
 
     private ArrayList<Enemigo> ListaEnemigos;
     private ArrayList<Objeto> ListaTesoro;
-    private Random Aleatorio;
+    
     public MesaDestino(){
        ListaEnemigos = new ArrayList <Enemigo>();
         ListaTesoro =new ArrayList <Objeto>();

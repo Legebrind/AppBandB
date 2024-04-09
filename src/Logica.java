@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import javax.lang.model.type.NullType;
+
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -295,52 +295,36 @@ public class Logica {
                 //Ya han atacado todos.  
             }
             
-            if(atacan_todos==0 && aventureros.getJugadores().contains(Enums.Tipo_Clase.Picaro)){
-                System.out.println("Chachos, le habéis pegao bien y encima podéis hacer furtivo\n¿Se anima el pícaro a tomar [1UBE]?\n1)Si,vamos a darle duro\n2)No, soy un ablanda brevas");
-                int furtivo=-1;
-                do{
-                    try{
-                        furtivo=input.nextInt();
-                    }catch(Exception e){
-                        System.out.println("El ataque furtivo es muy serio, di si o no pijoteras");
-                        input.nextLine();
-                    }
-                }while(furtivo!=1 && furtivo!=2);
-                if(furtivo==1){
-                    ataque_Atfurtivo atfuritvo= new ataque_Atfurtivo();
-                    for (Jugador modificador : aventureros.getJugadores()) {
-                        if(modificador.getClase()==Enums.Tipo_Clase.Picaro){
-                            System.out.println(modificador.getNombre()+"¿Furtiveas?");
-                            furtivo=-1;
-                            do{
-                                try{
-                                    furtivo=input.nextInt();
-                                }catch(Exception e){
-                                    System.out.println("El ataque furtivo es muy serio, di si o no pijoteras");
-                                    input.nextLine();
-                                }
-                            }while(furtivo!=1 && furtivo!=2);
-                            if(furtivo==1){
-                                Danno danno =new Danno();
-                                danno.setCantidad(atfuritvo.atfurtivo(NivelMundo, modificador.getModificador()));
-                                danno.setTipo(Enums.Tipo_Ataque.Furtivo);
-                                modificador.elegirEnemigo(horda, input).recibirDanno(danno);                                
+            if(atacan_todos==0){
+                for (Jugador pj : aventureros.getJugadores()) {
+                    if(pj.getClase()==Enums.Tipo_Clase.Picaro){
+                        System.out.println("Chachos, le habéis pegao bien y encima podéis hacer furtivo\n¿Se anima "+pj.getNombre()+" a tomar [1UBE]?\n1)Si,vamos a darle duro\n2)No, soy un ablanda brevas");
+                        int furtivo=-1;
+                        do{
+                            try{
+                                furtivo=input.nextInt();
+                            }catch(Exception e){
+                                System.out.println("El ataque furtivo es muy serio, di si o no pijoteras");
+                                input.nextLine();
                             }
+                        }while(furtivo!=1 && furtivo!=2);
+                        if(furtivo==1){
+                            ataque_Atfurtivo atfuritvo= new ataque_Atfurtivo();
+                            Danno danno =new Danno();
+                            danno.setCantidad(atfuritvo.atfurtivo(NivelMundo, pj.getModificador()));
+                            danno.setTipo(Enums.Tipo_Ataque.Furtivo);
+                            pj.elegirEnemigo(horda, input).recibirDanno(danno);                                
                         }
                     }
                 }
-                
             }
-            
             for (Jugador aventurero: aventureros.getJugadores()){
                 aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
             }
-    
-        
                 //Ahora ataca el enemigo
-            if(enemigo.getPG_enemigo()>0){
+        if(enemigo.getPG_enemigo()>0){
                 enemigo.getAtaque(Descripciones);
-            }
+        }
         }
     System.out.println("Pin pan muerto\n Cawen dioh que no os morís\n Curaos pedazo de pus tumurosa");
     mesaPrincipal.eliminar_enemigo_lista(enemigo);

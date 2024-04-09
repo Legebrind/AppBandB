@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 public class Picaro extends Jugador {
     private HashMap<Integer,String> Sentido_Trampas;
-    private HashMap<Integer,Integer> Furtivo; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private boolean Ha_bebido;
     
@@ -22,7 +21,6 @@ public class Picaro extends Jugador {
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Picaro);
         setTablaAtaque(new HashMap<Integer,Integer>());
-        Furtivo = new HashMap<>();
         Sentido_Trampas = new HashMap<>();
         setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
         addSalvaciones(Enums.Tipo_Salvacion.Reflejos);
