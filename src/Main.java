@@ -43,7 +43,10 @@ public class Main {
         Grupo Aventureros = new Grupo(input);
         //Establecer el Jefe de grupo inicial
         Reglas.jefeDeGrupo(Aventureros,1,input);
-
+        System.out.println("*********************************************");
+        System.out.println("*****         Empieza el juego          *****");
+        System.out.println("*****   ¡Inmundos ¿Estáis preparados!   *****");
+        System.out.println("*********************************************");
         //Este es el bucle que gestiona todo el juego. El juego va desde el nivel 1 hasta el nivel 15. Cada nivel se compone de 
         //4 salas. La salas de 1 a 3 son normales, la sala 4 es contra un Boss. Una vez matado al boss se repiten las salas pero de nivel 2...
         for(int NivelMundo=1;NivelMundo<16;NivelMundo++){

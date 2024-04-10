@@ -31,18 +31,23 @@ public class Logica {
 
         //1ºMirar si hay trampa
         //Comprueba si hay pj que puedan buscar trampa
+        if(!aventureros.hayBuscador()){
+            System.out.println(aventureros.getJugador_inicial().getNombre()+" te toca buscar trampa en cueros");
+            trampa(NivelMundo); 
+            return;
+        }
         int contador=0;
         for (Jugador jugador : aventureros.getJugadores()) {
             if(jugador.isBuscaTrampas()){
                 System.out.println(contador+") "+jugador.getNombre());
                 contador++;
             }
-            if(contador!=0){System.out.println("99) Si nadie tiene huevos");}
+            
         
         }
-        
+        System.out.println("69) Si nadie tiene huevos");
         int jugador=-1;
-        System.out.println("\n¿Quién de los nombrados se sacrifica por el equipo y busca trampas\n Si nadie tiene huevos a buscar una trampa sufreréis las consecuencias, panda de pijosprogre");
+        System.out.println("\n¿Quién de los nombrados se sacrifica por el equipo y busca trampas?\nSi nadie tiene huevos a buscar una trampa sufreréis las consecuencias, panda de pijosprogre");
         do{
             try{
                 jugador=input.nextInt();
@@ -51,24 +56,24 @@ public class Logica {
                 System.out.println("enga no me toquéis los huevos que no tengo todo el día, escribir el nombre del héroe o el de nadie");
             }
             input.nextLine();
-        }while(jugador<0 || ((jugador>contador)&&(jugador!=99)));
+        }while(jugador<0 || ((jugador>contador)&&(jugador!=69)));
 
         switch (jugador) {
-            case 99:
-                System.out.println("Panda de desgraciaos cobardes y borrachos mediocres\n Pues ahora toca comprobar si hay trampa y hace ¡¡¡¡booooom!!!!");
+            case 69:
+                System.out.println("Panda de desgraciaos cobardes y borrachos mediocres\nPues ahora toca comprobar si hay trampa y hace ¡¡¡¡booooom!!!!");
                 //Hay que llamar aquí al jugador inicial
-                System.out.println(aventureros.getJugador_inicial()+"te toca buscar trampa en cueros");
+                System.out.println(aventureros.getJugador_inicial().getNombre()+" te toca buscar trampa en cueros");
                 trampa(NivelMundo); //to do.
                 break;
             default:
-                System.out.println("Ole tú coño moreno"+jugador+",bébete ese UBE bueno para evitar la trampa");
-                break;
+                System.out.println("Ole tú coño moreno "+aventureros.getJugador(jugador).getNombre()+", bébete ese UBE bueno para evitar la trampa");
         }    
     }
     
     public Enemigo patearPuerta(Grupo aventureros,MesaDestino Mesaprincipal,int NivelMundo,Scanner input){
        //Antes de patear se puede hacer el ritual del chaman
        for (Jugador pJugador : aventureros.getJugadores()) {
+       
         if(pJugador.getClase()==Enums.Tipo_Clase.Chaman){
             System.out.println(pJugador.getNombre()+"Ritual de batalla [1UBE por pj y te restriegas con ellos, pa suberles el ataque,ya tu sabeh]\n¿Te hace?\n1)Si\n2)No");
             int respuesta=-1;
@@ -99,7 +104,7 @@ public class Logica {
         System.out.println("Veamos que tenemos aquí\n\n");
         System.out.println(enemigo.getNombre());
         System.out.print(enemigo.getDescripcion());
-        System.out.println("Interesante....Veamos la putada\n\n");
+        System.out.println("\nInteresante....Veamos la putada\n");
         System.out.print(enemigo.getPutada());
         int buscarOtroEnemigo=-1;
         for (Jugador jugador : aventureros.getJugadores()) {
@@ -128,7 +133,7 @@ public class Logica {
                     
             if(jugador.getClase()==Enums.Tipo_Clase.Paladin||jugador.getClase()==Enums.Tipo_Clase.Sanador){
                 if(enemigo.getCaracteristicas().contains("Demonio")){
-                    System.out.println("Mala suerte chavales, no se si lo sabéis pero "+jugador.getNombre()+" es un puto Pala\n El enemigo tiene ganas de frotarle la cara a un Palaca");
+                    System.out.println("Mala suerte chavales, no se si lo sabéis pero "+jugador.getNombre()+" es un puto Pala\nEl enemigo tiene ganas de frotarle la cara a un Palaca");
                 return enemigo;
                 }
             }
@@ -160,7 +165,7 @@ public class Logica {
             enemigo=Mesaprincipal.getEnemigo(NivelMundo);
             System.out.println(enemigo.getNombre());
             System.out.print(enemigo.getDescripcion());
-            System.out.println("Interesante....Veamos la putada\n\n");
+            System.out.println("\nInteresante....Veamos la putada\n");
             System.out.print(enemigo.getPutada());
             return enemigo;
         }
@@ -224,6 +229,7 @@ public class Logica {
                         for (Jugador aventurero: aventureros.getJugadores()){
                             aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
                         }
+                        return;
                     }
                 System.out.println("Encima de Druida, vago y jipioso");
                 }
@@ -244,7 +250,7 @@ public class Logica {
                 respuesta=-1;
                 if(aventurero.isIsAtaqueMagico() && !aventurero.isHajugado() && enemigo.getPG_enemigo()>0){
                     
-                    System.out.println(aventurero.getNombre() +"¿Quieres usar tu ataque mágico?\n1)Si\n2)No)");
+                    System.out.println("\n"+aventurero.getNombre() +" ¿Quieres usar tu ataque mágico?\n1)Si\n2)No");
                     do{
                         try{
                             respuesta=input.nextInt();
@@ -267,7 +273,7 @@ public class Logica {
                 respuesta=-1;
                 if(!aventurero.isHajugado() && enemigo.getPG_enemigo()>0){
                     
-                    System.out.println(aventurero.getNombre() +"¿Quieres atacar? \n1)Si\n2)No)");
+                    System.out.println("\n"+aventurero.getNombre() +" ¿Quieres atacar? \n1)Si\n2)No");
                     do{
                         try{
                             respuesta=input.nextInt();
@@ -314,15 +320,16 @@ public class Logica {
                     }
                 }
             }
-            for (Jugador aventurero: aventureros.getJugadores()){
+        for (Jugador aventurero: aventureros.getJugadores()){
                 aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
-            }
+        }
                 //Ahora ataca el enemigo
         if(enemigo.getPG_enemigo()>0){
                 enemigo.getAtaque(Descripciones);
         }
-        }
-    System.out.println("Pin pan muerto\n Cawen dioh que no os morís\n Curaos pedazo de pus tumurosa");
+        aventureros.reiniciarTurnoPj();
+    }
+    System.out.println("Pin pan muerto\nCawen dioh que no os morís\nCuraos pedazo de pus tumurosa");
     mesaPrincipal.eliminar_enemigo_lista(enemigo);
     }
     public void limpieza(Grupo aventureros,int nivelMundo){
@@ -362,7 +369,7 @@ public class Logica {
             aventureros.getJugador(respuesta).setJugador_inicial(true);
             aventureros.ordenarJugadores();
             
-            System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador_inicial());
+            System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador_inicial().getNombre());
 
         }
         else{
@@ -386,7 +393,7 @@ public class Logica {
             aventureros.getJugador(respuesta).setJefe(true);
             aventureros.getJugador(respuesta).setJugador_inicial(true);
             aventureros.ordenarJugadores();
-            System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+aventureros.getJugador(respuesta).getNombre());
+            System.out.println("Ole tú, Ole tú, y dice si soy yo, no voy a ser yo  "+ aventureros.getJugador(respuesta).getNombre());
 
         }
     }

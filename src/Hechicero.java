@@ -94,7 +94,7 @@ public class Hechicero extends Jugador {
                 if(nivelMundo<3){
                     System.out.println("¿Que ataque mágico quires hacer Hechicerdo?");
                     System.out.println("0: Energía arcana [1 Chp, y le enchufas con un cable pelao trifásico]");
-                    System.out.println("1:  Purgar invisibilidad [1UBE Otorgas luz a esta sala para pegar agusto]");
+                    System.out.println("1: Purgar invisibilidad [1UBE Otorgas luz a esta sala para pegar agusto]");
                     do{
                         try{
                             respuesta =input.nextInt();
@@ -136,13 +136,13 @@ public class Hechicero extends Jugador {
                                     if(x=="Invisible"){x="Ninguna";}
                                 }    
                             }
-                            break;
+                            return;
                     }
                 }
                 
                 System.out.println("¿Que ataque mágico quires hacer Hechicerdo?");
                 System.out.println("0: Energía arcana [1 Chp, y le enchufas con un cable pelao trifásico]");
-                System.out.println("1:  Purgar invisibilidad [1UBE Otorgas luz a esta sala para pegar agusto]");
+                System.out.println("1: Purgar invisibilidad [1UBE Otorgas luz a esta sala para pegar agusto]");
                 System.out.println("2: Daño en area [1 Chp+1UBE, y le enchufas con un cable pelao trifásico a unos cuantos]");
                 do{
                     try{

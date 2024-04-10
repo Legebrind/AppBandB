@@ -63,8 +63,7 @@ public abstract class Jugador {
     }
     public void iniciarNombre(Scanner input){
         System.out.println("\nIntroduce tu nombre");
-        String Nom;
-        Nom= input.nextLine();
+        var Nom= input.nextLine();
         this.Nombre=Nom;
     }
     public void setJefe(boolean a){
@@ -107,7 +106,7 @@ public abstract class Jugador {
         }
         int i=input.nextInt();
         while(i<=0 || i>aux){
-            System.out.println("No me toques los cojones escoge un número de la raza que quieras ser, no me hagas elegir a mi\n Puto Gnomo de los cojones");
+            System.out.println("No me toques los cojones escoge un número de la raza que quieras ser, no me hagas elegir a mi\nPuto Gnomo de los cojones");
             i=input.nextInt();
             input.nextLine();
         }
@@ -221,7 +220,7 @@ public abstract class Jugador {
         int objetivo = input.nextInt();
         input.nextLine();
         while (objetivo<0 || objetivo>horda.size()) {
-            System.out.println("Ya estamos tocando los cojones otra vez.\n Deja de beber coño ya y pon el número bien");
+            System.out.println("Ya estamos tocando los cojones otra vez.\nDeja de beber coño ya y pon el número bien");
             System.out.println("¿A quién quieres zurrale bien zurrao?:1-"+horda.size());
             objetivo = input.nextInt();
             input.nextLine();
@@ -260,7 +259,7 @@ public abstract class Jugador {
             boolean pasa=false;
             int tipo =-1;
             System.out.println("Elige el tipo de daño");
-            for(int i=0;i<=getTipoAtaque_Fisico().size();i++){
+            for(int i=0;i<getTipoAtaque_Fisico().size();i++){
                 System.out.println(i+") "+getTipoAtaque_Fisico().get(i));
                 }
             //Revisar el bucle para evitar un error si no es un int en el System.in
@@ -270,9 +269,10 @@ public abstract class Jugador {
                     pasa=true;
                 }catch(Exception e){
                     System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                    input.nextLine();
+                   
                 }
-            }while((tipo<0||tipo>getTipoAtaque_Fisico().size())||!pasa);
+                input.nextLine();
+            }while((tipo<0||tipo>=getTipoAtaque_Fisico().size())||!pasa);
            
             danno.setTipo(getTipoAtaque_Fisico().get(tipo));
         };

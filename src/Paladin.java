@@ -16,7 +16,7 @@ public class Paladin extends Jugador{
 
 
     public Paladin (Scanner input){
-        setIsAtaqueMagico(true);
+        setIsAtaqueMagico(false);
         iniciarNombre(input);
         setBuscaTrampas(false);
         setNR(3);
@@ -33,6 +33,7 @@ public class Paladin extends Jugador{
         iniciarTabla_MD();
          
     }
+   
 
     private void iniciarExpulsar_NM() {
             Expulsar_NM = new HashMap<Integer,Integer>();
@@ -188,7 +189,7 @@ public class Paladin extends Jugador{
  
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,
             ArrayList<Modificador> modificadores, Grupo aventureros) {
-       System.out.println("Muy bien señorito, expulsas muy bine");
+       System.out.println("Muy bien señorito, expulsas muy bien");
        expulsar_NM(horda, nivelMundo);
     }
 
@@ -206,6 +207,9 @@ public class Paladin extends Jugador{
 
     @Override
     public void fase_limpieza(int nivelMundo) {
+        if(nivelMundo==3){
+            setIsAtaqueMagico(true);
+        }
         System.out.println("\n"+getNombre()+"\n\t"+Imposicion_Manos.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
     }
 

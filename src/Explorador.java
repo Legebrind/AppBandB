@@ -29,7 +29,7 @@ public class Explorador extends Jugador {
         setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Cortante);
         setTablaAtaque(iniciarAtaqueBase());
-        iniciarArco();
+        
         EstiloArco=false;
         Ataque_doble=false;
         
@@ -79,7 +79,7 @@ public class Explorador extends Jugador {
 
   private void iniciarArco(){
     Arco = new HashMap<>();
-    addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
+   
     //Este bonificador solo se aplica cuando es contra BOSS
     //El resto de combates el daño es el daño base, con característica de Adistancia y Perforante
 
@@ -124,14 +124,18 @@ public class Explorador extends Jugador {
                     Ataque_doble=true;
                 }
                 if(respuesta==2){
-                    EstiloArco=true;addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
+                    iniciarArco();
+                    EstiloArco=true;
+                    addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
+                    addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
+                   
                 }
                 EstiloArco=false;
             }
             if(EstiloArco){
                 return getAtaqueBase(nivelMundo);
             }
-            System.out.println("Te tomas [1UBE] y pegas dos veces haciendo un poquito menos de daño\n Sinceramente te compensa\n1)Si\n2)no");
+            System.out.println("Te tomas [1UBE] y pegas dos veces haciendo un poquito menos de daño\nSinceramente te compensa\n1)Si\n2)no");
             do{
                 try{
                     respuesta=input.nextInt();
@@ -146,7 +150,7 @@ public class Explorador extends Jugador {
             }
             return getAtaqueBase(nivelMundo);
 
-            }
+        }
         return getAtaqueBase(nivelMundo);
     }
        

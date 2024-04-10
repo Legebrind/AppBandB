@@ -21,7 +21,7 @@ public class Sanador extends Jugador{
   
 
     public Sanador (Scanner input){
-        setIsAtaqueMagico(true);
+        setIsAtaqueMagico(false);
         iniciarNombre(input);
         setBuscaTrampas(false);
         setNR(1);
@@ -260,8 +260,10 @@ public class Sanador extends Jugador{
 
     @Override
     public void fase_limpieza(int nivelMundo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fase_limpieza'");
+        if(nivelMundo==4){
+            setIsAtaqueMagico(true);
+        }
+        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
     }
 
     @Override

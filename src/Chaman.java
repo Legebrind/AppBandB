@@ -231,7 +231,7 @@ public class Chaman extends Jugador{
             }
             input.nextLine();
         }while((njugadores<=0||njugadores>aventureros.getJugadoresMax()));
-        System.out.println("¿Quién será el agraciado que reciba tus aceites ritualiticos?");
+        System.out.println("¿Restriegate agusto para que el jugador reciba tus aceites ritualiticos?");
         aventureros.mostrarInformacionEquipo();
         while (njugadores!=0) {
             int respuesta=0;
@@ -243,9 +243,10 @@ public class Chaman extends Jugador{
                 
                 }
                 input.nextLine();
-            }while((respuesta<0||respuesta>aventureros.getJugadoresMax()));
+            }while((respuesta<0||respuesta>=aventureros.getJugadoresMax()));
             
             njugadores--;
+            System.out.println("Te has refrotao agusto con "+aventureros.getJugador(respuesta).getNombre());
             aventureros.getJugador(respuesta).setModificador_toda_la_sala(Ritual_Brujo.get(nivelMundo).getModificador());
         }
         

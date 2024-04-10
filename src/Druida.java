@@ -172,7 +172,7 @@ public class Druida extends Jugador{
         }
        //Si tiene compañero animal se le pregunta si quiere que ataque y se le añade el modificador del compañero al ataque
         if(isCompaSalvaje){
-            System.out.println("¿Quieres que tu amigo salvaje le saque los ojos al malo? \n1)Si\\n2)No");
+            System.out.println("¿Quieres que tu amigo salvaje le saque los ojos al malo?\n1)Si\n2)No");
             do{
                 try{
                     respuesta=input.nextInt();
@@ -182,9 +182,12 @@ public class Druida extends Jugador{
                  
                 } //comprobar
                 input.nextLine();
-            }while (respuesta<1&&respuesta>2);
+            }while (respuesta!=1&&respuesta!=2);
         
             if(respuesta==1){
+                if(nivelMundo<4){
+                    CompaSalvaje=2;
+                }
                 if(nivelMundo>=4&&nivelMundo<7){
                     CompaSalvaje=4;
                 }

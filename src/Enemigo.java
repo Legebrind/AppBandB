@@ -43,7 +43,7 @@ public class Enemigo {
     }
      
     public void getAtaque(Descripcion_Combate Descripciones) {
-        System.out.println(Descripciones.getDescripcion_del_Ataque() + " y hace"+Ataque +"de daño");
+        System.out.println(Descripciones.getDescripcion_del_Ataque() + " y hace "+Ataque +" de daño");
         
     }
 
@@ -98,23 +98,28 @@ public class Enemigo {
     public void recibirDanno(Danno danno){
         if(this.Caracteristicas.contains("Ninguna")){
             this.PG_enemigo-=danno.getCantidad();
+            System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
             return;
         }
         if((this.Caracteristicas.contains("No Muerto")) && danno.getTipo()==Enums.Tipo_Ataque.Expulsar){
             this.PG_enemigo-=danno.getCantidad();
+            System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
             return;
         }
         if((this.Caracteristicas.contains("No Muerto")||this.Caracteristicas.contains("Inmune a Crítico")) && danno.getTipo()==Enums.Tipo_Ataque.Furtivo){
             danno.setCantidad(0);
+            System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
         }
         if((this.Caracteristicas.contains("Volador")) && danno.getTipo()!=Enums.Tipo_Ataque.Adistancia && danno.getTipo()!=Enums.Tipo_Ataque.Magia){
 
             danno.setCantidad(danno.getCantidad()/2);
+            System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
         }
         if((this.Caracteristicas.contains("Invisible"))){
             Aleatorio= new Random();
             if(Aleatorio.nextInt(0,2)==0){
                 danno.setCantidad(0);
+                System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
             }
 
         }

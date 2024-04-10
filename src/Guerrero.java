@@ -122,7 +122,7 @@ public class Guerrero extends Jugador {
             respuesta=-1;}
         respuesta=-1;
         if(nivelMundo>=6 && (Acorazado==false&&EstiloAtaque_Poderoso==false)){
-            System.out.println("Muy bien machote, ahora tienes que elegir pa los restos si pegar chuki de Cieza(1)\n como un armadillo(2) con una falsa sensación de protección");
+            System.out.println("Muy bien machote, ahora tienes que elegir pa los restos si pegar chuki de Cieza(1)\ncomo un armadillo(2) con una falsa sensación de protección");
             do{
                 try{
                     respuesta=input.nextInt();

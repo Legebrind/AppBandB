@@ -115,7 +115,7 @@ public class Barbaro extends Jugador {
             try{
                 utilizarFuria=input.nextInt();
             }catch(Exception e){
-                System.out.println("Se que tú ser Bárbaro, y no saber leer\n Tú decir 1 Si, 2 No (Tontico)");
+                System.out.println("Se que tú ser Bárbaro, y no saber leer\nTú decir 1 Si, 2 No (Tontico)");
             }
             input.nextLine();
         }while(utilizarFuria<1||utilizarFuria>2);

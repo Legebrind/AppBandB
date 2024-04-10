@@ -153,7 +153,7 @@ public class Bardo extends Jugador{
     }
     public void ataque_magico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda,ArrayList<Modificador> modificadores,Grupo aventureros) {
         System.out.println("¿Que ataque mágico quires hacer, pequeño jublar");
-        System.out.println("0:  "+Infundir_Valor.get(nivelMundo));
+        System.out.println("0:  Cantas, recita o arenga a todos sus aliados, otorgándoles "+Infundir_Valor.get(nivelMundo)+" al ataque, en todo este turno");
         
         System.out.println("1:  [1 Chp] y toca tu música bardote machote");
         if (nivelMundo>4){

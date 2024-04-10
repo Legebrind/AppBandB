@@ -59,7 +59,7 @@ public class Grupo {
       
         for (int i = 1; i <= njugadores; i++) {
         
-            System.out.println("Jugador nº"+i+ "¿Que clase quieres jugar?\n");
+            System.out.println("Jugador nº "+i+ " ¿Que clase quieres jugar?\n");
             for (Enums.Tipo_Clase s : Enums.Tipo_Clase.values()) {
                 System.out.println(j+")"+s);
                 j++;
@@ -71,7 +71,7 @@ public class Grupo {
                  
                     clase=input.nextInt();
                     
-                    if(clase<=0){
+                    if(clase<0){
                         System.out.println("No metas números negativos ¿Eres fascista?");
                     }
                     if(clase>j){
@@ -206,7 +206,7 @@ public class Grupo {
                         break;
                 case Enums.Tipo_Clase.Paladin:
                     if(enemigo.getCaracteristicas().contains("Diablo")){
-                        System.out.println("¡Qué lástimaaaaa!Este enemigo se iba a ir una vez hecha la putada\n Pero hay un palaca en grupo así que os va a frotar la cara");
+                        System.out.println("¡Qué lástimaaaaa!Este enemigo se iba a ir una vez hecha la putada\nPero hay un palaca en grupo así que os va a frotar la cara");
                         return false;
                     }
                 default:
@@ -231,6 +231,21 @@ public class Grupo {
             return false;
             }
         return false;
+    }
+    public boolean hayBuscador(){
+     for (Jugador jugador : jugadores) {
+        if(jugador.isBuscaTrampas()){
+            return true;
+        }
+     }
+     return false;
+    }
+
+    public void reiniciarTurnoPj(){
+        for (Jugador jugador : jugadores) {
+            jugador.setHajugado(false);
+            jugador.setHa_bebido(false);
+        }
     }
 }
 
