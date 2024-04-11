@@ -207,4 +207,20 @@ public class Reproductor {
                 killPlayer();
             }
         }
+        public void cargarTrampa()
+        {   int posicion=aleatorio.nextInt(Trampa.length);
+            String filename=Trampa[posicion];
+            try {
+                InputStream is = getInputStream(filename);
+                player = new AdvancedPlayer(is, createAudioDevice());
+            }
+            catch (IOException e) {
+                reportProblem(filename);
+                killPlayer();
+            }
+            catch(JavaLayerException e) {
+                reportProblem(filename);
+                killPlayer();
+            }
+        }
     }
