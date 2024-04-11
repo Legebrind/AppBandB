@@ -64,17 +64,17 @@ public class Main {
                 Reglas.limpieza(Aventureros,NivelMundo);//4_Limpieza, esta fase es para curarse. Como el programa no lleva las heridas de los pj imprimirá por pantalla
                 //cada personaje con la habilidad de curar, el coste de la habilidad y su efecto. Preguntará a los jugadores que indiquen cuando estén listos para ir a la siguiente sala.
                 if(NivelMundo==5&& sala==4){
-                    Reglas.prueba1();
+                    Reglas.prueba1(input);
                 } 
                 if(NivelMundo==10 && sala==4){
-                    Reglas.prueba2();
+                    Reglas.prueba2(input);
                 }
                 if(NivelMundo==15 && sala==4){
                     System.out.println("----------------------------------------------------------------");
                     System.out.println("                     Aquí acaba vuestro viaje                   ");
                     System.out.println("Última prueba, donde serán respondidas todas nuestras preguntas ");
                     System.out.println("----------------------------------------------------------------");
-                    Reglas.prueba3();
+                    Reglas.prueba3(input);
                 }             
             }
 

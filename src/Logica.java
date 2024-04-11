@@ -470,7 +470,7 @@ public class Logica {
         System.out.println("///////////////////////////////////////////////////");
         System.out.println("");
         System.out.println("///////////////////////////////////////////////////");
-        System.out.println("/                ¡VERDÉRCULES!                    /"); 
+        System.out.println("/                                                 /"); 
         System.out.println("/                                                 /");
         System.out.println("/  ¿Eres el nuevo crossfiter del barrio?          /");
         System.out.println("/  ¡Has sido retado! Derrota a todos los maestros /");
@@ -519,6 +519,36 @@ public class Logica {
             }
             input.nextLine();    
         }while(respuesta!=20240511);
+
+    }
+    public void prueba3(Scanner input){
+        System.out.println("**************************************************");
+        System.out.println("*                    ¡BOSS!                      *");
+        System.out.println("**************************************************");
+        System.out.println("");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("/                 Salva al ADC                    /");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("/                                                  /"); 
+        System.out.println("/ ¿Te crees mejor que los chupapiedras?    o       /");
+        System.out.println("/ ¿Eres mejor que los asesinos de bonsahiihihis    /");
+        System.out.println("/                                                  /");
+        System.out.println("/                    ¡Verdércules!                 /");
+        System.out.println("/                                                  /");
+        System.out.println("///////////////////////////////////////////////////"); 
+        System.out.println("");
+        System.out.println("Introduce la clave una vez finalizada la prueba");
+        int respuesta=-1;
+        do{
+            try{
+                respuesta=input.nextInt();
+            }catch(Exception e){
+                System.out.println("Si no sabes la clave no metas mierdas");
+            }
+            input.nextLine();    
+        }while(respuesta!=20240412);
 
     }
 }
