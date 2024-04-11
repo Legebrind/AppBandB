@@ -174,7 +174,9 @@ public abstract class Jugador {
    
     public void addTipoAtaque_fisico(Enums.Tipo_Ataque tipoAtaque){
         this.TipoAtaque_Fisico.add(tipoAtaque);
-
+    }
+    public void addTipoAtaque_magico(Enums.Tipo_Ataque tipoAtaque){
+        this.TipoAtaque_Magico.add(tipoAtaque);
     }
     public ArrayList<Objeto> getEquipo() {
         return Equipo;
@@ -279,7 +281,6 @@ public abstract class Jugador {
         };
         Enemigo enemigo=elegirEnemigo(horda, input);
         enemigo.recibirDanno(danno);
-        
     }
     public abstract void quitarbeneficios();//este método lo tiene que implementar cada clase para quitarse las aptitudes
     //activadas durante el combate y que deban quitarse al finalizar el combate como el cambiaformas del druida.

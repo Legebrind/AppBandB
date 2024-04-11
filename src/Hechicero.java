@@ -23,10 +23,10 @@ public class Hechicero extends Jugador {
         setHajugado(false);
         setClase(Enums.Tipo_Clase.Hechicero);
         setTablaAtaque(new HashMap<Integer,Integer>());
-        
         setSalvaciones(new ArrayList<Enums.Tipo_Salvacion>());
         addSalvaciones(Enums.Tipo_Salvacion.Voluntad);
         setTipoAtaque_Fisico(new ArrayList<Enums.Tipo_Ataque>());
+        setTipoAtaque_Magico(new ArrayList<Enums.Tipo_Ataque>());
         addTipoAtaque_fisico(Enums.Tipo_Ataque.Contundente);
         setTablaAtaque(iniciarAtaqueBase());
         Energia_Arcana();
@@ -60,7 +60,7 @@ public class Hechicero extends Jugador {
 
   private void Energia_Arcana(){
     Energia_Arcana = new HashMap<>();
-    addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
+    addTipoAtaque_magico(Enums.Tipo_Ataque.Magia);
     //Este bonificador solo se aplica cuando bebe un UBE, añade esta cantidad al ataque base
     Energia_Arcana.put(1,10);
     Energia_Arcana.put(2,10);
@@ -105,29 +105,9 @@ public class Hechicero extends Jugador {
                     }while((respuesta<0|| respuesta>1));
                     switch (respuesta) {
                         case 0:
-                            Danno danno =new Danno();
-                            danno.setCantidad(Energia_Arcana.get(nivelMundo));
-                            danno.setTipo(Enums.Tipo_Ataque.Magia);
-                            if(horda.size()==1){
-                                horda.getFirst().recibirDanno(danno);
-                                return;
-                            }
-                            else{
-                                System.out.println("¿A que enemigo le vas a enchufar?");
-                                for(int i=0;i<=horda.size();i++){
-                                    System.out.println(i+") "+horda.get(i).getNombre());
-                                }
-                                do{
-                                    try{
-                                        respuesta =input.nextInt();
-                                    }catch(Exception e){//comprobar que no afecte respuesta del if anterior
-                                    System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                                    input.nextLine();
-                                    }
-                                }while((respuesta<0|| respuesta>horda.size()));
-                                horda.get(respuesta).recibirDanno(danno);
-                                return;
-                            }
+                            Danno danno =new Danno(Energia_Arcana.get(nivelMundo), Enums.Tipo_Ataque.Magia);
+                            elegirEnemigo(horda, input).recibirDanno(danno);
+                            return;
 
                         case 1:
                              //Comprobar si Invisible se aplica al array características del enemigo
@@ -154,30 +134,16 @@ public class Hechicero extends Jugador {
                 }while((respuesta<0|| respuesta>2));
                 switch (respuesta) {
                     case 0:
-                        Danno danno =new Danno();
-                        danno.setCantidad(Energia_Arcana.get(nivelMundo));
-                        danno.setTipo(Enums.Tipo_Ataque.Magia);
+                        Danno danno =new Danno(Energia_Arcana.get(nivelMundo), Enums.Tipo_Ataque.Magia);
                         if(horda.size()==1){
                             horda.getFirst().recibirDanno(danno);
-                            return;
                         }
                         else{
-                            System.out.println("¿A que enemigo le vas a enchufar?");
-                            for(int i=0;i<=horda.size();i++){
-                                System.out.println(i+") "+horda.get(i).getNombre());
-                            }
-                            do{
-                                try{
-                                    respuesta =input.nextInt();
-                                }catch(Exception e){//comprobar que no afecte respuesta del if anterior
-                                System.out.println("¿Alma de Hokague, no sabes meter un puto número tal y como aparece en la lista?");
-                                input.nextLine();
-                                }
-                            }while((respuesta<0|| respuesta>horda.size()));
-                            horda.get(respuesta).recibirDanno(danno);
-                            return;
+                            Enemigo enemigo=elegirEnemigo(horda, input);
+                            enemigo.recibirDanno(danno);
                         }
-                        
+                        return;
+
 
                     case 1:
                      //Comprobar si Invisible se aplica al array características del enemigo

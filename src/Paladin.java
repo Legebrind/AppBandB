@@ -210,7 +210,7 @@ public class Paladin extends Jugador{
         if(nivelMundo==3){
             setIsAtaqueMagico(true);
         }
-        System.out.println("\n"+getNombre()+"\n\t"+Imposicion_Manos.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
+        System.out.println("\n"+getNombre()+"\n\t"+Imposicion_Manos.get(nivelMundo)+"\n\t"+"[1UBE] Permite a un Jugador ir al baño");
     }
 
     @Override

@@ -31,17 +31,10 @@ public class Clerigo extends Jugador{
         iniciarSanacion();
         iniciarCuracion();
         iniciarExpulsar_NM();
-        
-        
-        
-        
-                      
-        
+        iniciarRestablecimiento();
     }
 
     private void iniciarExpulsar_NM() {
-        
-        
             Expulsar_NM = new HashMap<Integer,Integer>();
             Expulsar_NM.put(1,10);
             Expulsar_NM.put(2,10);
@@ -58,7 +51,6 @@ public class Clerigo extends Jugador{
             Expulsar_NM.put(13,40);
             Expulsar_NM.put(14,40);
             Expulsar_NM.put(15,45);
-            
     } 
     
 
@@ -102,8 +94,6 @@ public class Clerigo extends Jugador{
     } 
     private void iniciarSanacion(){
         Sanacion=new HashMap<>();
-    
-        
         Sanacion.put(2,"[1UBE] Suprime estados negativos por valor de 1");
         Sanacion.put(3,"[1UBE] Suprime estados negativos por valor de 1");
         Sanacion.put(4,"[1UBE] Suprime estados negativos por valor de 1");
@@ -136,7 +126,6 @@ public class Clerigo extends Jugador{
         Curacion.put(13,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
         Curacion.put(14,"[1Chp] Invocas comida, un rico y necesario Medio Sandwich por persona");
         Curacion.put(15,"[1Chp] Ole tú y tus huevos morenos que invocas comida suprema; Hamburguesa, Kebab, Pizza, Pincho de tortilla / jugador");
-
     }
 
     public String getRestablecimiento(int nivelMundo) {
@@ -173,8 +162,6 @@ public class Clerigo extends Jugador{
 
     public int atacar (Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
         return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
-       
-            
         }
 
 

@@ -75,7 +75,7 @@ public class Logica {
        for (Jugador pJugador : aventureros.getJugadores()) {
        
         if(pJugador.getClase()==Enums.Tipo_Clase.Chaman){
-            System.out.println(pJugador.getNombre()+"Ritual de batalla [1UBE por pj y te restriegas con ellos, pa suberles el ataque,ya tu sabeh]\n¿Te hace?\n1)Si\n2)No");
+            System.out.println(pJugador.getNombre()+", Ritual de batalla [1UBE por pj y te restriegas con ellos, pa suberles el ataque,ya tu sabeh]\n¿Te hace?\n1)Si\n2)No");
             int respuesta=-1;
             do{
             
@@ -104,11 +104,11 @@ public class Logica {
         System.out.println("Veamos que tenemos aquí\n");
         System.out.println(enemigo.getNombre());
         System.out.print(enemigo.getDescripcion());
-        System.out.print(enemigo.getDescripcion_Enemigo());
+        System.out.print(" "+enemigo.getDescripcion_Enemigo());
         System.out.println("\n___________________________");
         System.out.println("            PUTADA");
         System.out.println("___________________________");
-        System.out.println("");
+        System.out.println();
         System.out.print(enemigo.getPutada());
         int buscarOtroEnemigo=-1;
         for (Jugador jugador : aventureros.getJugadores()) {
@@ -326,10 +326,7 @@ public class Logica {
                             }
                         }while(furtivo!=1 && furtivo!=2);
                         if(furtivo==1){
-                            ataque_Atfurtivo atfuritvo= new ataque_Atfurtivo();
-                            Danno danno =new Danno();
-                            danno.setCantidad(atfuritvo.atfurtivo(NivelMundo, pj.getModificador()));
-                            danno.setTipo(Enums.Tipo_Ataque.Furtivo);
+                            Danno danno =new Danno(getAtFurtivo(NivelMundo, pj.getModificador()), Enums.Tipo_Ataque.Furtivo);
                             pj.elegirEnemigo(horda, input).recibirDanno(danno);                                
                         }
                     }
@@ -439,6 +436,18 @@ public class Logica {
                 i.remove();
             }
         }
+    }
+
+    public int getAtFurtivo(int nivelMundo,int modificador){
+        return switch (nivelMundo) {
+            case (1), (2), (3) -> 4 + modificador;
+            case (4) -> 5 + modificador;
+            case (5), (6) -> 10 + modificador;
+            case (7), (8) -> 12 + modificador;
+            case (9) -> 18 + modificador;
+            case (10), (11), (12) -> 21 + modificador;
+            default -> 32 + modificador;
+        };
     }
 }
 
