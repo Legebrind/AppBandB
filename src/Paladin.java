@@ -31,7 +31,7 @@ public class Paladin extends Jugador{
         iniciarImposicion_Manos();
         iniciarExpulsar_NM();
         iniciarTabla_MD();
-         
+        iniciarRestablecimiento();
     }
    
 
@@ -131,7 +131,6 @@ public class Paladin extends Jugador{
         Tabla_MD.put(13,7);
         Tabla_MD.put(14,7);
         Tabla_MD.put(15,8);
-        
 
     }
 
@@ -210,7 +209,13 @@ public class Paladin extends Jugador{
         if(nivelMundo==3){
             setIsAtaqueMagico(true);
         }
-        System.out.println("\n"+getNombre()+"\n\t"+Imposicion_Manos.get(nivelMundo)+"\n\t"+"[1UBE] Permite a un Jugador ir al baño");
+        if(nivelMundo > 1){
+            var output = "\n"+getNombre()+"\n\t"+"[1UBE] Permite a un Jugador ir al baño";
+            if(nivelMundo > 2){
+                output += "\n\t"+Imposicion_Manos.get(nivelMundo);
+            }
+            System.out.println(output);
+        }
     }
 
     @Override

@@ -9,7 +9,7 @@ public class Druida extends Jugador{
 
     private HashMap<Integer,String> Sanacion,BuenasBayas,Restablecimiento;
 
-    private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
+    private HashMap<Integer,String> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private HashMap<Integer,Integer> CambiaFormas;
     private boolean isCambiaFormas,isCompaSalvaje;
@@ -75,21 +75,21 @@ public class Druida extends Jugador{
     
     private void iniciarCurarHeridas(){
         CurarHeridas = new HashMap<>();
-        CurarHeridas.put(1,2);
-        CurarHeridas.put(2,2);
-        CurarHeridas.put(3,2);
-        CurarHeridas.put(4,2);
-        CurarHeridas.put(5,2);
-        CurarHeridas.put(6,5);
-        CurarHeridas.put(7,5);
-        CurarHeridas.put(8,5);
-        CurarHeridas.put(9,5);
-        CurarHeridas.put(10,5);
-        CurarHeridas.put(11,8);
-        CurarHeridas.put(12,8);
-        CurarHeridas.put(13,8);
-        CurarHeridas.put(14,8);
-        CurarHeridas.put(15,8);
+        CurarHeridas.put(1,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(2,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(3,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(4,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(5,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(6,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(7,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(8,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(9,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(10,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(11,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(12,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(13,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(14,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(15,"[1UBE] Numero de fd curadas: "+8);
     } 
    
     public void iniciarBuenasBayas(){
@@ -314,11 +314,11 @@ public class Druida extends Jugador{
         Restablecimiento = restablecimiento;
     }
 
-    public HashMap<Integer, Integer> getCurarHeridas() {
+    public HashMap<Integer, String> getCurarHeridas() {
         return CurarHeridas;
     }
 
-    public void setCurarHeridas(HashMap<Integer, Integer> curarHeridas) {
+    public void setCurarHeridas(HashMap<Integer, String> curarHeridas) {
         CurarHeridas = curarHeridas;
     }
 
@@ -364,7 +364,7 @@ public class Druida extends Jugador{
 
     @Override
     public void fase_limpieza(int nivelMundo) {
-        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+BuenasBayas.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo));
+        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+BuenasBayas.get(nivelMundo)+"\n\t"+ (nivelMundo > 1 ? Restablecimiento.get(nivelMundo) : ""));
     }
 
     @Override
