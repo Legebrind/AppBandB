@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Chaman extends Jugador{
 
     private HashMap<Integer,String> Sanacion,Curacion,Restablecimiento;
-    private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
+    private HashMap<Integer,String> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque;
     private HashMap<Integer,Ritual_Brujo> Ritual_Brujo;
     private HashMap<Integer,Maldicion_vudu> Maldicion_vudu;
@@ -31,6 +31,7 @@ public class Chaman extends Jugador{
         iniciarSanacion();
         iniciarCuracion();
         iniciarRitual();
+        iniciarRestablecimiento();
         iniciarMaldicion_vudu();
     }
     private HashMap<Integer,Integer> iniciarAtaqueBase(){
@@ -54,21 +55,21 @@ public class Chaman extends Jugador{
     } 
     private void iniciarCurarHeridas(){
         CurarHeridas = new HashMap<>();
-        CurarHeridas.put(1,2);
-        CurarHeridas.put(2,2);
-        CurarHeridas.put(3,2);
-        CurarHeridas.put(4,2);
-        CurarHeridas.put(5,5);
-        CurarHeridas.put(6,5);
-        CurarHeridas.put(7,5);
-        CurarHeridas.put(8,5);
-        CurarHeridas.put(9,8);
-        CurarHeridas.put(10,8);
-        CurarHeridas.put(11,8);
-        CurarHeridas.put(12,8);
-        CurarHeridas.put(13,11);
-        CurarHeridas.put(14,11);
-        CurarHeridas.put(15,11);
+        CurarHeridas.put(1,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(2,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(3,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(4,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(5,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(6,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(7,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(8,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(9,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(10,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(11,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(12,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(13,"[1UBE] Numero de fd curadas: "+11);
+        CurarHeridas.put(14,"[1UBE] Numero de fd curadas: "+11);
+        CurarHeridas.put(15,"[1UBE] Numero de fd curadas: "+11);
     } 
     private void iniciarSanacion(){
         Sanacion=new HashMap<>();
@@ -298,6 +299,10 @@ public class Chaman extends Jugador{
     }
     @Override
     public void fase_limpieza(int nivelMundo) {
-    System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo));   
+        var output = "\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo);
+        if(nivelMundo > 1){
+            output += "\n\t"+Restablecimiento.get(nivelMundo);
+        }
+        System.out.println(output);
     }
 }

@@ -1,4 +1,5 @@
-import javax.sound.sampled.*;
+import javafx.scene.media.Media;
+import javaFx.scene.media.MediaPlayer;
 import java.io.File;
 import java.util.Random;
 
@@ -37,39 +38,37 @@ public class Reproductor {
         "Trampa5.mp3"
     };
     
-
-    private File audioFile;
-    private Clip clip;
+    private MediaPlayer mediaPlayer;
     private Random aleatorio;
+
     public Reproductor() {
-        aleatorio=new Random();
+        aleatorio = new Random();
     }
-    public void reproducir(String titulo){
+
+    public void reproducir(String titulo) {
         try {
-            audioFile = new File(titulo);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
+            String path = new File(titulo).toURI().toString();
+            Media media = new Media(path);
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.play();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void stop(){
-        this.clip.stop();
+
+    public void stop() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
     }
 
     public String getPuerta() {
         int index = aleatorio.nextInt(PatearPuerta.length);
-        return PatearPuerta [index];
+        return PatearPuerta[index];
     }
+
     public String getCancion() {
         int index = aleatorio.nextInt(Cancion.length);
-        return Cancion [index];
-    }
-    public String getLimpieza() {
-        int index = aleatorio.nextInt(Limpieza.length);
-        return Limpieza [index];
+        return Cancion[index];
     }
 }
-

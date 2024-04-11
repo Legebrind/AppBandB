@@ -61,7 +61,7 @@ public class Guerrero extends Jugador {
 
   private void iniciarAtaque_Poderoso(){
     Ataque_Poderoso = new HashMap<>();
-    addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
+    
     //Este bonificador solo se aplica cuando bebe un UBE, añade esta cantidad al ataque base
     Ataque_Poderoso.put(1,3);
     Ataque_Poderoso.put(2,3);
@@ -82,7 +82,7 @@ public class Guerrero extends Jugador {
   }
   private void iniciarAtaque_Poderoso_mejorado(){
     Ataque_Poderoso_mejorado = new HashMap<>();
-    addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
+ 
     //Este bonificador solo se aplica cuando bebe un UBE, añade esta cantidad al ataque base
    
     Ataque_Poderoso_mejorado.put(6,6);

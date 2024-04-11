@@ -113,7 +113,7 @@ public class Barbaro extends Jugador {
         //Preguntamos al jugador que quiere hacer y devolvemos el parametro int danno de nuestro ataque.
         do{
             try{
-                System.out.println("¿Quieres usar furia?: "+danoBase+furia.getDescripcion()+"(1 Si, 2 No)");
+                System.out.println("¿Quieres usar furia?: "+danoBase+" "+furia.getDescripcion()+"(1 Si, 2 No)");
                 utilizarFuria=input.nextInt();
             }catch(Exception e){
                 System.out.println("Se que tú ser Bárbaro, y no saber leer\nTú decir 1 Si, 2 No (Tontico)");

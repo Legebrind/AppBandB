@@ -101,14 +101,15 @@ public class Logica {
        
         //2ºPatear la puerta
        Enemigo enemigo;
-       //CajaMusica.reproducir(CajaMusica.getPuerta());
+       CajaMusica.reproducir(CajaMusica.getPuerta());
        System.out.println(aventureros.getJugador_inicial().getNombre()+"\n¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
        
         enemigo=Mesaprincipal.getEnemigo(NivelMundo);
         System.out.println("Veamos que tenemos aquí\n");
         System.out.println(enemigo.getNombre());
         System.out.print(enemigo.getDescripcion());
-        System.out.print(" "+enemigo.getDescripcion_Enemigo());
+
+        System.out.print("Descripción:"+enemigo.getDescripcion_Enemigo());
         System.out.println("\n___________________________");
         System.out.println("            PUTADA");
         System.out.println("___________________________");
@@ -210,7 +211,9 @@ public class Logica {
                             System.out.println("****************");
                             System.out.println("Combate evitado");
                             System.out.println("****************");
-                            CajaMusica.stop();
+                            try{
+                                CajaMusica.stop();}
+                                catch(Exception e){System.out.println("No se ha podido parar la música");}
                             mesaPrincipal.eliminar_enemigo_lista(enemigo);
                             for (Jugador aventurero: aventureros.getJugadores()){
                                 aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
@@ -238,7 +241,9 @@ public class Logica {
                         System.out.println("****************");
                         System.out.println("Combate evitado");
                         System.out.println("****************");
-                        CajaMusica.stop();
+                        try{
+                            CajaMusica.stop();}
+                            catch(Exception e){System.out.println("No se ha podido parar la música");}
                         mesaPrincipal.eliminar_enemigo_lista(enemigo);
                         for (Jugador aventurero: aventureros.getJugadores()){
                             aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
@@ -258,7 +263,7 @@ public class Logica {
             Enemigo copia=enemigo.copiarEnemigo(enemigo);           
             horda.add(i,copia);
         }
-        boolean noHayEnemigos=false;
+       
         System.out.println(" ");
         System.out.println("................................");
         System.out.println("      Comienza el combate");  
@@ -354,11 +359,13 @@ public class Logica {
     
     
     System.out.println("Pin pan muerto\nCawen dioh que no os morís\nCuraos pedazo de pus tumurosa");
-    CajaMusica.stop();
+    try{
+    CajaMusica.stop();}
+    catch(Exception e){System.out.println("No se ha podido parar la música");}
     mesaPrincipal.eliminar_enemigo_lista(enemigo);
     }
     public void limpieza(Grupo aventureros,int nivelMundo){
-            CajaMusica.reproducir(CajaMusica.getLimpieza());
+          CajaMusica.reproducir(CajaMusica.getLimpieza());
             //4º Limpieza.
             //Hay que eliminar todas las ventajas al finalizar el combate
             //Druida:

@@ -11,7 +11,7 @@ public class Sanador extends Jugador{
     
 
 
-    private HashMap<Integer,Integer> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
+    private HashMap<Integer,String> CurarHeridas; //tabla que controla los valores de las aptitudes especiales
     private HashMap<Integer,Integer> TablaAtaque,Expulsar_NM;
     
     
@@ -84,21 +84,21 @@ public class Sanador extends Jugador{
     
     private void iniciarCurarHeridas(){
         CurarHeridas = new HashMap<>();
-        CurarHeridas.put(1,2);
-        CurarHeridas.put(2,2);
-        CurarHeridas.put(3,2);
-        CurarHeridas.put(4,5);
-        CurarHeridas.put(5,5);
-        CurarHeridas.put(6,5);
-        CurarHeridas.put(7,8);
-        CurarHeridas.put(8,8);
-        CurarHeridas.put(9,8);
-        CurarHeridas.put(10,11);
-        CurarHeridas.put(11,11);
-        CurarHeridas.put(12,11);
-        CurarHeridas.put(13,14);
-        CurarHeridas.put(14,14);
-        CurarHeridas.put(15,14);
+        CurarHeridas.put(1,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(2,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(3,"[1UBE] Numero de fd curadas: "+2);
+        CurarHeridas.put(4,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(5,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(6,"[1UBE] Numero de fd curadas: "+5);
+        CurarHeridas.put(7,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(8,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(9,"[1UBE] Numero de fd curadas: "+8);
+        CurarHeridas.put(10,"[1UBE] Numero de fd curadas: "+11);
+        CurarHeridas.put(11,"[1UBE] Numero de fd curadas: "+11);
+        CurarHeridas.put(12,"[1UBE] Numero de fd curadas: "+11);
+        CurarHeridas.put(13,"[1UBE] Numero de fd curadas: "+14);
+        CurarHeridas.put(14,"[1UBE] Numero de fd curadas: "+14);
+        CurarHeridas.put(15,"[1UBE] Numero de fd curadas: "+14);
     } 
     private void iniciarSanacion(){
         Sanacion=new HashMap<>();

@@ -126,6 +126,13 @@ public class Enemigo implements Cloneable {
             }
 
         }
+        if((!this.Caracteristicas.contains("No Muerto")) && danno.getTipo()==Enums.Tipo_Ataque.Expulsar){
+            
+            
+            System.out.println("Le haces to esto "+0+" de daño");
+            System.out.println("La has liao parda, has jutao sagrado con normal y has hecho montones de la mas auténtica nada");
+            return;
+        }
         if(this.Caracteristicas.contains("Ninguna")){
             this.PG_enemigo=PG_enemigo-danno.getCantidad();
             System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
