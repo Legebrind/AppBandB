@@ -117,7 +117,8 @@ public class Enemigo implements Cloneable {
         }
         if((this.Caracteristicas.contains("Invisible"))){
             Aleatorio= new Random();
-            if(Aleatorio.nextInt(0,2)==0){
+            var haPegado = Aleatorio.nextInt(0,2);
+            if(haPegado==0){
                 danno.setCantidad(0);
                 this.PG_enemigo=PG_enemigo-danno.getCantidad();
                 System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");

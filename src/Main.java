@@ -23,7 +23,7 @@ public class Main {
        //Clase donde se guarda el grupo, los enemigos y los tesoros. Debería controlar el orden del juego.
         MesaDestino Mesaprincipal = new MesaDestino(); 
         
-        Reglas.leer_Txt("Portada.txt");
+        Reglas.leer_Txt("src/Portada.txt");
         Descripcion_Combate descripciones_Combate = new Descripcion_Combate();
         
         
