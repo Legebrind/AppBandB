@@ -226,14 +226,12 @@ public class Bardo extends Jugador{
 
     @Override
     public void fase_limpieza(int nivelMundo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fase_limpieza'");
+       return;
     }
 
     @Override
     protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+       return;
     }
 
  

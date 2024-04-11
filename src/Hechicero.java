@@ -240,8 +240,7 @@ public class Hechicero extends Jugador {
     
 
     public void quitarbeneficios() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'quitarbeneficios'");
+      return;
     }
 
     public HashMap<Integer, Integer> getEnergia_Arcana() {
@@ -275,7 +274,6 @@ public class Hechicero extends Jugador {
 
     @Override
     protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+      return;
     }
 }

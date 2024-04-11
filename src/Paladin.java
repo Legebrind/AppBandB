@@ -215,8 +215,7 @@ public class Paladin extends Jugador{
 
     @Override
     protected void Ritual_Brujo(int nivelMundo, Grupo aventureros, Scanner input) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Ritual_Brujo'");
+      return;
     }
 
 

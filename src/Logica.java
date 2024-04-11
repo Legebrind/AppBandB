@@ -66,7 +66,7 @@ public class Logica {
                 trampa(NivelMundo); //to do.
                 break;
             default:
-                System.out.println("Ole tú coño moreno "+aventureros.getJugador(jugador).getNombre()+", bébete ese UBE bueno para evitar la trampa");
+                System.out.println("Ole tú coño moreno , ese buscador de trampas bueno, bébete un UBE fregco para evitar la trampa");
         }    
     }
     
@@ -104,6 +104,7 @@ public class Logica {
         System.out.println("Veamos que tenemos aquí\n");
         System.out.println(enemigo.getNombre());
         System.out.print(enemigo.getDescripcion());
+        System.out.print(enemigo.getDescripcion_Enemigo());
         System.out.println("\n___________________________");
         System.out.println("            PUTADA");
         System.out.println("___________________________");
@@ -168,6 +169,8 @@ public class Logica {
             enemigo=Mesaprincipal.getEnemigo(NivelMundo);
             System.out.println(enemigo.getNombre());
             System.out.print(enemigo.getDescripcion());
+            System.out.println("");
+            System.out.print(enemigo.getDescripcion_Enemigo());
             System.out.println("\nInteresante....Veamos la putada\n");
             System.out.print(enemigo.getPutada());
             return enemigo;
@@ -253,12 +256,12 @@ public class Logica {
         System.out.println("................................");
         System.out.println("      Comienza el combate");  
         System.out.println("................................");
-        while(!noHayEnemigos){
+        while(horda.size()>0){
             ArrayList<Modificador> modificadores=new ArrayList<>();
             //fase de ataques magicos
             for (Jugador aventurero: aventureros.getJugadores()) {
                 respuesta=-1;
-                if(aventurero.isIsAtaqueMagico() && !aventurero.isHajugado() && enemigo.getPG_enemigo()>0){
+                if(aventurero.isIsAtaqueMagico() && !aventurero.isHajugado() && horda.size()>0){
                     
                     System.out.println("\n"+aventurero.getNombre() +" ¿Quieres usar tu ataque mágico?\n1)Si\n2)No");
                     do{
@@ -272,6 +275,7 @@ public class Logica {
                     //Aquí se produce un ataque
                     if(respuesta==1){
                         aventurero.ataque_magico(input, NivelMundo,horda,modificadores,aventureros);//Pasar HaJugado a false
+                        comprobarEnemigosVivos(horda);
                         aventurero.setHajugado(true);
                         aventurero.setHa_bebido(true);
                         atacan_todos--;
@@ -281,7 +285,7 @@ public class Logica {
             //fase de ataque normal
             for (Jugador aventurero: aventureros.getJugadores()) {
                 respuesta=-1;
-                if(!aventurero.isHajugado() && enemigo.getPG_enemigo()>0){
+                if(!aventurero.isHajugado() && horda.size()>0){
                     
                     System.out.println("\n"+aventurero.getNombre() +" ¿Quieres atacar? \n1)Si\n2)No");
                     do{
@@ -295,6 +299,7 @@ public class Logica {
                     //Aquí se produce un ataque
                     if(respuesta==1){
                         aventurero.ataque_fisico(input, NivelMundo,horda);//Pasar HaJugado a false
+                        comprobarEnemigosVivos(horda);
                         aventurero.setHa_bebido(true);
                         atacan_todos--;
                         
@@ -334,23 +339,11 @@ public class Logica {
                     aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
             }
                 //Ahora ataca el enemigo
-            Iterator<Enemigo> i=horda.iterator();
-            while(i.hasNext()) {
-                
-                if(i.next().getPG_enemigo()<=0){//eliminamos los enemigos muertos
-                    if(horda.size()==1){
-                    noHayEnemigos=true; 
-                    }
-                    else{
-                        i.remove();
-                    }
-                }
-            }
-            if(!noHayEnemigos){//si quedan enemigos vivos atacan todos ellos
+    
                for (Enemigo vivEnemigo : horda) {
                     vivEnemigo.getAtaque(Descripciones);
                 }
-            }
+            
             aventureros.reiniciarTurnoPj();
         }
     
@@ -437,6 +430,15 @@ public class Logica {
             e.printStackTrace();
         }
         
+    }
+
+    public void comprobarEnemigosVivos (ArrayList<Enemigo> horda){
+        Iterator<Enemigo> i=horda.iterator();
+        while(i.hasNext()) {
+            if(i.next().getPG_enemigo()<=0){//eliminamos los enemigos muertos
+                i.remove();
+            }
+        }
     }
 }
 
