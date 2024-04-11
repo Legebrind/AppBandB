@@ -12,7 +12,7 @@ Gran Trasgo/1/1/10/Todos los jugadores gritan ‘No soy uno de ellos’ con voz 
 
 Gnoll/1/1/10/Ríe como una hiena para que se confunda y no te meta un GOLPETAZO. Golpetazo: 1 Daño/Ninguna/Ninguna/Mitad hombre mitad hiena… Mitad monstruo mitad masilla/1/Looking for group Hogger/
 
-Gatos/1/1(3)/3/Si algún jugador tiene tres o más gatos (vivos!!) en casa, los gatos no lucharán pero se llevarán toda la comida de la mesa/Ninguna/Ninguna/El Daño aumenta a 3 si hay algún ‘Hechicero’ en el grupo/5/Tras abrir la puerta encuentras a una manada de gatos devorando a la charo feminista y empoderada que les llamaba ‘sus gathijos’/
+Gatos/1/1/3/Si algún jugador tiene tres o más gatos (vivos!!) en casa, los gatos no lucharán pero se llevarán toda la comida de la mesa/Ninguna/Ninguna/El Daño aumenta a 3 si hay algún ‘Hechicero’ en el grupo/5/Tras abrir la puerta encuentras a una manada de gatos devorando a la charo feminista y empoderada que les llamaba ‘sus gathijos’/
 
 Orcos/2/1/8/No prestan atención a los Trasgos. Cada jugador que diga con voz de trasgo ‘Soy un trasgo’, sólo recibirá un UBE representando el capón que estos abusones propinan a sus primos pequeños. Si todos los jugadores beben de esta forma, el combate termina/Ninguna/Ninguna/’Jo jo jo! Trasgos graciosos!’/5/¿Quiereh 50 euroh?¿Quiereh 50 euroh o noooooo?/
 

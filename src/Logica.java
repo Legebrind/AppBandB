@@ -9,8 +9,10 @@ import java.util.ArrayList;
 
 public class Logica {
     private Random Aleatorio;
+    private Reproductor CajaMusica;
     public Logica(){
         this.Aleatorio = new Random();
+        this.CajaMusica=new Reproductor();
     }
 
     public int lanza_1D6(){
@@ -18,6 +20,7 @@ public class Logica {
     } 
     public void trampa(int NivelDungeon){
         if (lanza_1D6()==1){
+
             System.out.println("¡¡¡¡¡TRAMPA!!!!!");
             System.out.println("El daño de la trampa es: "+ NivelDungeon + " VAS" );
             System.out.println("Dolor de la trampa: 1 ficha de dolor por VAS ingerido");
@@ -98,6 +101,7 @@ public class Logica {
        
         //2ºPatear la puerta
        Enemigo enemigo;
+       
        System.out.println(aventureros.getJugador_inicial().getNombre()+"\n¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
        
         enemigo=Mesaprincipal.getEnemigo(NivelMundo);
