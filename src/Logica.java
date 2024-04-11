@@ -101,9 +101,11 @@ public class Logica {
        
         //2ºPatear la puerta
        Enemigo enemigo;
-       CajaMusica.reproducir(CajaMusica.getPuerta());
+      
        System.out.println(aventureros.getJugador_inicial().getNombre()+"\n¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
-       
+       CajaMusica.stop();
+       CajaMusica.cargarPuerta();
+       CajaMusica.reproducir();
         enemigo=Mesaprincipal.getEnemigo(NivelMundo);
         System.out.println("Veamos que tenemos aquí\n");
         System.out.println(enemigo.getNombre());
@@ -192,6 +194,8 @@ public class Logica {
     public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int NivelMundo,Descripcion_Combate Descripciones,MesaDestino mesaPrincipal){
         //3º Combatir
         
+        CajaMusica.cargarMusica();
+        CajaMusica.reproducir();
         for (Jugador jugador : aventureros.getJugadores()) {
             if(jugador.getClase()==Enums.Tipo_Clase.Explorador){
                     if(enemigo.getCaracteristicas().contains("Animal")){
@@ -268,7 +272,7 @@ public class Logica {
         System.out.println("................................");
         System.out.println("      Comienza el combate");  
         System.out.println("................................");
-        CajaMusica.reproducir(CajaMusica.getCancion());
+        
         while(horda.size()>0){
             ArrayList<Modificador> modificadores=new ArrayList<>();
             //fase de ataques magicos
@@ -365,7 +369,9 @@ public class Logica {
     mesaPrincipal.eliminar_enemigo_lista(enemigo);
     }
     public void limpieza(Grupo aventureros,int nivelMundo){
-          CajaMusica.reproducir(CajaMusica.getLimpieza());
+        CajaMusica.stop();  
+        CajaMusica.cargarLimpieza();
+          CajaMusica.reproducir();
             //4º Limpieza.
             //Hay que eliminar todas las ventajas al finalizar el combate
             //Druida:
