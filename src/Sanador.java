@@ -36,14 +36,7 @@ public class Sanador extends Jugador{
         iniciarSanacion();
         iniciarCuracion();
         iniciarExpulsar_NM();
-        
-        
-  
-        
-        
-        
-                      
-        
+        iniciarRestablecimiento();
     }
 
     private void iniciarExpulsar_NM() {
@@ -192,7 +185,7 @@ public class Sanador extends Jugador{
                 }
                 System.out.println("¿Que ataque mágico quires hacer chupapiedras homeopático");
                 Danno danno =new Danno();
-                if(nivelMundo>=5 && nivelMundo<9){
+                if(nivelMundo<9){
                     System.out.println("Bien, con astucia y elegancia te tomas [1 Chp] y le pegas, un chorrillo homeopático tuyo, al enemigo");
                     System.out.println("¿Quién será el agraciado?");
                     for(int i=0;i<horda.size();i++){
@@ -263,7 +256,11 @@ public class Sanador extends Jugador{
         if(nivelMundo==4){
             setIsAtaqueMagico(true);
         }
-        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
+        var output = "\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+Curacion.get(nivelMundo);
+        if(nivelMundo > 1){
+            output += "\n\t"+Restablecimiento.get(nivelMundo);
+        }
+        System.out.println(output);
     }
 
     @Override

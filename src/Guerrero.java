@@ -106,7 +106,7 @@ public class Guerrero extends Jugador {
     public int atacar(Scanner input,int nivelMundo,ArrayList<Enemigo>horda){
         int respuesta=-1;
         boolean atqpoderoso=false;
-        System.out.println("¿Quieres darle al enemigo pa que la sienta en el pecho? \n(1)Si\n(2)No");
+        System.out.println("¿Quieres darle al enemigo pa que la sienta en el pecho? \n1)Si\n2)No");
             do{
                 try{
                     respuesta=input.nextInt();
