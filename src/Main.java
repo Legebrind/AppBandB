@@ -22,7 +22,7 @@ public class Main {
        
        //Clase donde se guarda el grupo, los enemigos y los tesoros. Debería controlar el orden del juego.
         MesaDestino Mesaprincipal = new MesaDestino(); 
-        
+        Reglas.leer_Txt("Advertencia.txt");
         Reglas.leer_Txt("Portada.txt");
         Descripcion_Combate descripciones_Combate = new Descripcion_Combate();
         
@@ -83,6 +83,8 @@ public class Main {
         
  
         //Esta linea debe ir al final del programa
+        System.out.println("Final de viaje, ale majos a mimirla");
+        System.out.println("¿Ha resuelto el viaje todas vuestras preguntas?");
         System.out.println("Cerrando programa");
         input.close();
     }
