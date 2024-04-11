@@ -3,7 +3,7 @@ import java.util.Random;
 //Clase de Enemigo. Define el nombre, ataque, nivel y puntos de golpe. Ademas tiene un arraylist Enums para 
 //el tipo de Aptitud del boss.
 //También tiene dos campos para la putada y descripcion
-public class Enemigo {
+public class Enemigo implements Cloneable {
 
     private String Nombre,Ataque;
     private int Nivel,PG_enemigo;
@@ -96,36 +96,50 @@ public class Enemigo {
    
 
     public void recibirDanno(Danno danno){
-        if(this.Caracteristicas.contains("Ninguna")){
-            this.PG_enemigo-=danno.getCantidad();
-            System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
-            return;
-        }
+    
         if((this.Caracteristicas.contains("No Muerto")) && danno.getTipo()==Enums.Tipo_Ataque.Expulsar){
-            this.PG_enemigo-=danno.getCantidad();
+            this.PG_enemigo=PG_enemigo-danno.getCantidad();
             System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
             return;
         }
         if((this.Caracteristicas.contains("No Muerto")||this.Caracteristicas.contains("Inmune a Crítico")) && danno.getTipo()==Enums.Tipo_Ataque.Furtivo){
             danno.setCantidad(0);
             System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
+            this.PG_enemigo=PG_enemigo-danno.getCantidad();
+            return;
         }
         if((this.Caracteristicas.contains("Volador")) && danno.getTipo()!=Enums.Tipo_Ataque.Adistancia && danno.getTipo()!=Enums.Tipo_Ataque.Magia){
-
+            
             danno.setCantidad(danno.getCantidad()/2);
             System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
+            this.PG_enemigo=PG_enemigo-danno.getCantidad();
+            return;
         }
         if((this.Caracteristicas.contains("Invisible"))){
             Aleatorio= new Random();
             if(Aleatorio.nextInt(0,2)==0){
                 danno.setCantidad(0);
+                this.PG_enemigo=PG_enemigo-danno.getCantidad();
                 System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
+                return;
             }
 
         }
-        this.PG_enemigo-=danno.getCantidad();
+        if(this.Caracteristicas.contains("Ninguna")){
+            this.PG_enemigo=PG_enemigo-danno.getCantidad();
+            System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
+            return;
+        }
+        this.PG_enemigo=PG_enemigo-danno.getCantidad();
+        System.out.println("Le haces to esto "+danno.getCantidad()+" de daño");
                 
     }
+
+    public Enemigo copiarEnemigo(Enemigo enemigo){
+        Enemigo copia= new Enemigo(enemigo.getNombre(),enemigo.getNivel(),enemigo.getAtaque(),enemigo.getPG_enemigo(),enemigo.getPutada(),enemigo.getDescripcion(),enemigo.getnEnemigos(),enemigo.getDescripcion_Enemigo(),enemigo.getCaracteristicas());
+        return copia;
+    }
+
 
 }
 

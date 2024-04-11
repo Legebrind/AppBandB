@@ -216,17 +216,19 @@ public abstract class Jugador {
         if(horda.size()==1){
             return horda.get(0);
         }
-        System.out.println("¿A quién quieres zurrale bien zurrao?:1-"+horda.size());
-        int objetivo = input.nextInt();
-        input.nextLine();
-        while (objetivo<0 || objetivo>horda.size()) {
-            System.out.println("Ya estamos tocando los cojones otra vez.\nDeja de beber coño ya y pon el número bien");
-            System.out.println("¿A quién quieres zurrale bien zurrao?:1-"+horda.size());
-            objetivo = input.nextInt();
+        System.out.println("¿A quién quieres zurrale bien zurrao?:0-"+(horda.size()-1));
+        int objetivo=-1;
+        do{
+            try{
+                objetivo = input.nextInt();
+            }catch(Exception e){
+                System.out.println("Ya estamos tocando los cojones otra vez.\nDeja de beber coño ya y pon el número bien");
+                System.out.println("¿A quién quieres zurrale bien zurrao?:0-"+(horda.size()-1));
+            }
             input.nextLine();
-        }
-        return horda.get(objetivo-1);
-
+        }while(objetivo<0 || objetivo>(horda.size()-1));
+        
+        return horda.get(objetivo);
     }
     public int getModificador() {
         return Modificador;
@@ -249,7 +251,6 @@ public abstract class Jugador {
     public void ataque_fisico(Scanner input, int nivelMundo, ArrayList<Enemigo> horda) {
         //Este método es común a todos los personajes. Sirve para calcular el ataque físico base
         Danno danno = new Danno();
-        System.out.println(getNombre()+"es hora de hacer cosas");//to do: personalizar diálogos;
         int ataque =atacar(input, nivelMundo,horda);
         danno.setCantidad(ataque);
         if(getTipoAtaque_Fisico().size()==1){

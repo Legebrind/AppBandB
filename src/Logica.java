@@ -203,6 +203,7 @@ public class Logica {
                             for (Jugador aventurero: aventureros.getJugadores()){
                                 aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
                             }
+                            return;
                         }
                     System.out.println("Nunca me hubiera imaginado un explorador que rechazara esta oportunidad, vago y melindroso, muy mal");
                     }
@@ -241,7 +242,8 @@ public class Logica {
         int respuesta=-1;
         ArrayList<Enemigo> horda= new ArrayList<Enemigo>();
         for(int i=0;i<enemigo.getnEnemigos();i++){
-            horda.add(i,enemigo);
+            Enemigo copia=enemigo.copiarEnemigo(enemigo);           
+            horda.add(i,copia);
         }
         while(horda.size()>0){
             ArrayList<Modificador> modificadores=new ArrayList<>();
@@ -324,10 +326,20 @@ public class Logica {
                 aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
         }
                 //Ahora ataca el enemigo
-        if(enemigo.getPG_enemigo()>0){
-                enemigo.getAtaque(Descripciones);
+        for (Enemigo vivEnemigo : horda) {
+            if(vivEnemigo.getPG_enemigo()<=0){//eliminamos los enemigos muertos
+                if(horda.size()==1){
+                    horda.clear();
+                }
+                else{
+                    horda.remove(horda.indexOf(vivEnemigo));
+                }
+            }
+            else{//si quedan enemigos vivos atacan todos ellos
+                vivEnemigo.getAtaque(Descripciones);
+            }
         }
-        aventureros.reiniciarTurnoPj();
+    aventureros.reiniciarTurnoPj();
     }
     System.out.println("Pin pan muerto\nCawen dioh que no os morís\nCuraos pedazo de pus tumurosa");
     mesaPrincipal.eliminar_enemigo_lista(enemigo);

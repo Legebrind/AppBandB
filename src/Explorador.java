@@ -128,6 +128,7 @@ public class Explorador extends Jugador {
                     EstiloArco=true;
                     addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
                     addTipoAtaque_fisico(Enums.Tipo_Ataque.Perforante);
+                    getTipoAtaque_Fisico().remove(Enums.Tipo_Ataque.Cortante);
                    
                 }
                 EstiloArco=false;
