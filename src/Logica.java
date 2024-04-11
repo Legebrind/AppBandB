@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+import java.util.Iterator;
 
 
 import java.util.Random;
@@ -101,10 +101,13 @@ public class Logica {
        System.out.println(aventureros.getJugador_inicial().getNombre()+"\n¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
        
         enemigo=Mesaprincipal.getEnemigo(NivelMundo);
-        System.out.println("Veamos que tenemos aquí\n\n");
+        System.out.println("Veamos que tenemos aquí\n");
         System.out.println(enemigo.getNombre());
         System.out.print(enemigo.getDescripcion());
-        System.out.println("\nInteresante....Veamos la putada\n");
+        System.out.println("\n___________________________");
+        System.out.println("            PUTADA");
+        System.out.println("___________________________");
+        System.out.println("");
         System.out.print(enemigo.getPutada());
         int buscarOtroEnemigo=-1;
         for (Jugador jugador : aventureros.getJugadores()) {
@@ -245,7 +248,12 @@ public class Logica {
             Enemigo copia=enemigo.copiarEnemigo(enemigo);           
             horda.add(i,copia);
         }
-        while(horda.size()>0){
+        boolean noHayEnemigos=false;
+        System.out.println(" ");
+        System.out.println("................................");
+        System.out.println("      Comienza el combate");  
+        System.out.println("................................");
+        while(!noHayEnemigos){
             ArrayList<Modificador> modificadores=new ArrayList<>();
             //fase de ataques magicos
             for (Jugador aventurero: aventureros.getJugadores()) {
@@ -322,25 +330,31 @@ public class Logica {
                     }
                 }
             }
-        for (Jugador aventurero: aventureros.getJugadores()){
-                aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
-        }
+            for (Jugador aventurero: aventureros.getJugadores()){
+                    aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
+            }
                 //Ahora ataca el enemigo
-        for (Enemigo vivEnemigo : horda) {
-            if(vivEnemigo.getPG_enemigo()<=0){//eliminamos los enemigos muertos
-                if(horda.size()==1){
-                    horda.clear();
-                }
-                else{
-                    horda.remove(horda.indexOf(vivEnemigo));
+            Iterator<Enemigo> i=horda.iterator();
+            while(i.hasNext()) {
+                
+                if(i.next().getPG_enemigo()<=0){//eliminamos los enemigos muertos
+                    if(horda.size()==1){
+                    noHayEnemigos=true; 
+                    }
+                    else{
+                        i.remove();
+                    }
                 }
             }
-            else{//si quedan enemigos vivos atacan todos ellos
-                vivEnemigo.getAtaque(Descripciones);
+            if(!noHayEnemigos){//si quedan enemigos vivos atacan todos ellos
+               for (Enemigo vivEnemigo : horda) {
+                    vivEnemigo.getAtaque(Descripciones);
+                }
             }
+            aventureros.reiniciarTurnoPj();
         }
-    aventureros.reiniciarTurnoPj();
-    }
+    
+    
     System.out.println("Pin pan muerto\nCawen dioh que no os morís\nCuraos pedazo de pus tumurosa");
     mesaPrincipal.eliminar_enemigo_lista(enemigo);
     }

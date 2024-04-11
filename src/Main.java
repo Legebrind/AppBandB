@@ -55,7 +55,9 @@ public class Main {
             }
 
             for(int sala=1;sala<5;sala++){
-               
+               System.out.println("------------------------------------------------------");
+               System.out.println("   Nivel de Dungeon: "+NivelMundo+"         Sala: "+sala);
+               System.out.println("------------------------------------------------------");
                 Reglas.buscarTrampas(Aventureros, Mesaprincipal, input, NivelMundo); //1_Secuencia de busqueda de trampas
                 Enemigo enemigo=Reglas.patearPuerta(Aventureros,Mesaprincipal,NivelMundo,input);//2_Secuencia, crea un boss, se lee la putada y se combate.
                 Reglas.combatir(enemigo,Aventureros,input,NivelMundo,descripciones_Combate,Mesaprincipal);//3_Secuencia, el combate.
