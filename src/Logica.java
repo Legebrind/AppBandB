@@ -409,7 +409,7 @@ public class Logica {
                     System.out.println("Elige a un jugador¡¡¡Pijo en dioh!!!");
                 }
                 input.nextLine();
-            }while(respuesta<0||respuesta>aventureros.getJugadoresMax());
+            }while(respuesta<0||respuesta>aventureros.getJugadoresMax()-1);
             aventureros.getJugador(respuesta).setJefe(true);
             aventureros.getJugador(respuesta).setJugador_inicial(true);
             aventureros.ordenarJugadores();

@@ -31,19 +31,12 @@ public class Druida extends Jugador{
         iniciarCurarHeridas();
         iniciarBuenasBayas();
         iniciarCambiaFormas();
+        iniciarRestablecimiento();
         isCambiaFormas=false;
         isCompaSalvaje=false;
-        
-       
-        
-        
-        
-                      
-        
     }
 
     private void iniciarCambiaFormas() {
-        
         
             CambiaFormas = new HashMap<Integer,Integer>();
             CambiaFormas.put(5,9);
@@ -57,8 +50,7 @@ public class Druida extends Jugador{
             CambiaFormas.put(13,16);
             CambiaFormas.put(14,16);
             CambiaFormas.put(15,16);
-            
-    } 
+    }
     
 
     private HashMap<Integer,Integer> iniciarAtaqueBase(){
@@ -204,13 +196,13 @@ public class Druida extends Jugador{
             }
         }
         //A partir de este nivel puede transformarse
-        if(nivelMundo>=4){
+        if(nivelMundo>4){
             //Si está transformado se aplica el daño directamente
             if(isCambiaFormas()){
             return CambiaFormas.get(nivelMundo)+getModificador()+getModificador_toda_la_sala();
             }
             //Si no está transformado se le pregunta si quiere transformarse
-            System.out.println("¿Estás cómodo con esa piel? ¿No prefieres cambiarte ;)? [1UBE y pega como una lagartija grande]\n1)Si\n2)No");
+            System.out.println("¿Estás cómodo con esa piel? ¿No prefieres cambiarte? [1UBE y pega como una lagartija grande]\n1)Si\n2)No");
             do{
 
                 try{
@@ -372,7 +364,7 @@ public class Druida extends Jugador{
 
     @Override
     public void fase_limpieza(int nivelMundo) {
-        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+Sanacion.get(nivelMundo)+"\n\t"+BuenasBayas.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo)); 
+        System.out.println("\n"+getNombre()+"\n\t"+CurarHeridas.get(nivelMundo)+"\n\t"+BuenasBayas.get(nivelMundo)+"\n\t"+Restablecimiento.get(nivelMundo));
     }
 
     @Override
