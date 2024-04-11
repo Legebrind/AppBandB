@@ -1,6 +1,6 @@
 Kobols/1/1/3/¡Son unos cobardes!El jugador más bajito debe dar 3 vueltas alrededor de la sala para escapar. No podrá participar en el combate o puede quedarse y Golpetazo 1/Ninguna/Ninguna/Para poder atacar a un Kobold, el jugador debe beder sus UBEs,Chp y Vass en cuclillas/5/Que monos los cinco Kobolitos con sus cinco minicuchillos relucientes y afilados.No cabe duda de que os van a rajar si no le dais lo que lleváis en los bolsillos./
 
-Esqueleto/1/1/4/¡Buscan carne fresca! El jugador que más pese debe dar 3 vueltas alrededor de la sala para escapar.No podrá participar en el combate o puede quedarse y recibir 3 GOLPETAZOS. Golpetazo: 1(x3)/No Muerto/Inmune a Criticos/Daño afilado o cortante daña la mitad/3/Son tres esqueletos ochenteros, con sus gorrita puestas del revés y collares de oro colgados del cuellon se mueven a ritmo de rap con unos alfarjones afiladicoh y resulientes que ya quisiera el Rafu./
+Esqueleto/1/1/4/¡Buscan carne fresca! El jugador que más pese debe dar 3 vueltas alrededor de la sala para escapar.No podrá participar en el combate o puede quedarse y recibir 3 GOLPETAZOS. Golpetazo: 1(x3)/No Muerto/Inmune a Criticoss/Daño afilado o cortante daña la mitad/3/Son tres esqueletos ochenteros, con sus gorrita puestas del revés y collares de oro colgados del cuellon se mueven a ritmo de rap con unos alfarjones afiladicoh y resulientes que ya quisiera el Rafu./
 
 Necrófago/1/1/10/Permaneces PARALIZADO todo el combate/No muerto/Inm. Crít./Paralizado: No puedes flexionar codos ni rodillas/1/Tiene peor pinta que la habitación original de la inmundicia despues de un fin de semana sin Rodrigo/
 
@@ -59,3 +59,415 @@ Mefits/4/1/5/Individual & Común Cada uno de los jugadores recibe un efecto alea
 Engendro Vampírico/4/2/20/Individual Dominado: Debes elegir a un compañero para atacarle con 1 UBE (ver reglas de combate PvP). El ataque no consume acción/No Muerto/Inm. Crít./Succión de Energía: Debilitado 2/1/¡¡Cuidado!! ¡Hacienda!/
 
 Canarconte/4/3/30/Individual Si hay un Paladín o un Sanador Sagrado en el Grupo, el Canarconte en vez de luchar, invita a estos a un trago y os deja pasar: 1UBE para Paladines y S.Sagrados. Si no lo hay: Golpetazo: 3 Daño/Ángel/ninguno/El espíritu de Rancan es tan bondadoso como letal/1/Es un perro angelical, y se llama Lila/
+
+Momia/5/2/25/Individual:Putridez de Momia Común:Desesperación: TS VOL o dañar la mitad (redondeando hacia arriba) durante todo el combate/No Muerto/Inmune a Criticoss/Putridez de Momia: Elige-Debilitado 3 o Putrefacto: Rodea el brazo derecho con papel higiénico. No puedes usar ese brazo hasta ser sanado con Sanación 3/1/Ante la ausencia de rasgos que caractericen su género autopercibido decides dirigirte a ella como Momie/
+
+Trasgos de la Orden Sagrada/5/2/8/Si hay un Paladín o un Sanador Sagrado en el Grupo el JI puede elegir A o B
+A) Luchar
+GOLPETAZO (3 Daño) + combate
+B) Discutir con ellos sobre los antiguos textos sagrados de la Orden Sagrada
+JI interpreta a un Trasgo religioso trasgo muy brasas que debe dar la chapa (con voz de trasgo) a los Paladines y Sanadores Sagrados (que permanecerán callados) del grupo durante 30 segundos.
+Después los que lo deseen pueden tomar 1UBE para curarse todas las heridas o 2 UBEs para Sanar Estados Negativos/Ninguna/Ninguna/Según los antiguos textos de Orgarûm, el bien está encerrado incluso en el pequeño cuerpo de una lombriz, desmintiendo las afirmaciones del Gran Maestre Carsten en relación con la fisionomía del Bien/5/Para que te hagas una idea son gitanos con graduado escolar, tienen malas pintas pero son buena gente/
+
+Deinónicos/5/2/15/Si convences a tres compañeros para que hagan de Velocirraptors y los 4 representáis la famosa escena de Jurassic World, te ahorras un GOLPETAZO.
+El resto de jugadores determinan si mereces salvarte
+Golpetazo: 3 Daños/Animal/Ninguna/Qué lista eres/3/Nada mas que añadir/
+
+Arañas de fase/5/2/15/Todos los jugadores a los que les den grima las arañas beben 2 UBE/Invisible/Ninguna/EXCURSION ETÉREA (INVISIBILIDAD): 50% prob. fallar cada ataque (tira una moneda)
+· Veneno: Sanación 2/1/Aunque su nombre sea plural es solo una/
+
+Troll/5/2/25/Los Trolls siempre aparecen cobrando peajes en puentes. Este también:
+Os roba una bolsa de comida/Ninguna/Ninguna/Regeneración: Recupera 20 de vida cuando le toca atacar.
+Después de derrotarlo hay que quemarlo. El JI elige a un jugador para tomar un chupito./1/Para que te hagas una idea, es como el patriarca del clan inclusivo, lleno mierda y no se muere porque regenera mas rápido./
+
+Barbazu/5/2/25/Golpetazo a todos los que no tengan barba
+Golpetazo: 1 Daño/Demonio/Ninguna/No podrá atacar al más barbudo del grupo/1/Nada que añadir/
+
+Mantícora/5/2/20/Que putada, no hay putada/Volador/Ninguna/Si la mantícora es derrotada en el primer asalto:
+'SALVASTEIS A LA HIGA DEL COMERCIANTE DEL MANTICORE'
+Los bardos cantarán canciones sobre este grupo de aventureros. Es más, si hay un bardo en el grupo, más vale que improvise un cantar sobre esta heroica gesta. Si no lo hace tomará 1VAS.
+Si la ‘higa del comerciante’ ha sido salvada, el JI imita a la muchacha diciendo lo siguiente:
+'Si sois tan mensos de ir a esa torre afligida, necesitaréis esto'
+El JG gana la Carta de Tesoro 'MAPA'
+'Salvaste a la hija del comerciante del manticore'/1/La reina del carnaval/
+
+Djinni/5/0/20/TORBELLINO/Invisible/Ninguna/Invisibilidad: 50% prob. fallar cada ataque (tira una moneda)
+· Torbellino: Gira hasta 4 veces sobre ti mismo.
+Daño = 4 – número de vueltas dadas/1/Si le frotas la lámpara, fuerte y flojo, sale a saludar/
+
+
+Esqueletos Gigantes/6/2/15/¡Buscan carne! El jugador que más pese debe correr alrededor de la sala para escapar durante todo el combate y no podrá participar mientras corra.
+O puede quedarse y recibir 3 GOLPETAZOS
+Golpetazo: 2 (x3)/No Muerto/Inmune a Criticoss/Ataques perforantes y cortantes hacen mitad de daño (redondeando hacia arriba)/3/Son esqueletos nórdicos que van a follarse a vuestras monturas y a despellejaros vivos.
+Como no ven que tengáis monturas entiendo que os harán las dos cosas/
+
+Draco/6/3/25/Para vencerlo es importante no confundirlo con otra cosa
+Cada jugador, por orden, dice la frase ‘NO ES…’ y algo que empiece por ‘DR-’
+Ej: ‘ No es un DRagón’
+Los jugadores que no digan nada, no podrán participar en todo el combate
+Si todos los jugadores consiguen decir algo que empiece por DR, el Draco cambiará de Ataque y Daño (entre paréntesis)/Volador/Ninguna/Veneno: Envenenado 3 y Volador: Mitad de daño con ataques normales/1/Pues eso, un Dragco malo./
+
+Ettin/6/3/30/Ninguna/Ninguna/Ninguna/Si os juntáis de dos en dos y utilizáis sólo la mano libre durante todo el combate, sólo atacará al que quede solitario
+Si sois pares, no atacará a nadie porque sus cabezas estarán discutiendo mientras le atacáis./1/Este enemigo está puesto porque tiene que haber de todo en este mundo inclusivo./
+
+Tiranosaurio/6/4/40/Según comiences a leer esto quédate completamente quieto o te engancha un mordiscazo (4 Daño)
+No puedes participar en el combate.
+Solo puedes hablar. Que el próximo JI haga tus funciones de JI hasta que el Tiranosaurio sea derrotado./Animal/Ninguna/Buena suerte, muchachos, la vais a necesitar/1/Que lástima que no tengáis una bengala para enfrentaros a él./
+
+Damian/6/3/5/¡Es sólo un niño!
+Paladines y S. Sagrados no pueden atacarle porque piensan que puede haber bondad en él. Je! Típico…
+Todas y cada una de las veces que alguien ataque a Damian, todos los Paladines y S. Sagrados atacarán a la vez al atacante empleando 1UBE/Demonio/Ninguna/Si hay algún triciclo a la vista. Su ataque aumenta en 5/1/Típico niño pijo blanco, repeinado
+con náuticos y pelusilla en el labio superior. Sobran las palabras, hay que matar a este fascista./
+
+Fuego Fatuos/6/2/5/Se alimentan del miedo:
+Cada miembro del grupo debe contar una situación de su vida donde pasó miedo o beber 2 UBEs
+No vale repetir historia/Volador/Invisible/Volador: Mitad de daño con ataques normales (redondeando hacia arriba)
+· Invisibilidad: 50% posibilidades de fallar cada ataque (tira una moneda)/3/Chinches voladoras que siguen los preceptos de la agenda 2030. Es hora de las tortas fastoides./
+
+Hidra/6/1(a cada jugador)/50/Dile a los demás que os toca enfrentaros a una hidra por no haber elegido al monstruo de al lado, pringao!/Ninguna/Ninguna/Curación Rápida: Cura 20 PG cada asalto
+· Daña a todos los jugadores con cada ataque
+· Se puede atacar a las cabezas después de cada ataque. Si todos los jugadores atacan después de recibir un ataque, la hidra muere independientemente del daño causado./1/Te sientes abrumado ante tantas cabezas, te pueden atacar desde cualquier flanco.
+Es como cuando estas jugando, no puedes parar la partida, te está hablando tu mujer a la vez que tus colegas te están hablando por Discord y por wasap y ella te pregunta ¿Te has enterado?.../
+
+Gauth/6/1/20/Individual Aturdido: No combates hasta el próximo combate. Común: Rayos oculares/Volador/Ninguna/Volador: Mitad de daño con ataques normales
+· Rayos oculares: 50% prob. por jugador. Rayo aleatorio
+1- Debilitamiento 2
+2- Sin MAGIA durante el combate
+3- Dormir: (pérdida de turno)
+4- 1 UBE
+5- Parálisis (no flexionar codos & rodillas)
+6- 2 UBEs/1/Buenos, pues ya estamos todos./
+
+Espectro/7/3/20/Pregunta a cada uno de los demás jugadores por los colores del arcoíris. Deben representar con gestos el color que digan y no pueden repetir ninguno.
+El que no responda recibe 1 Daño
+(Rojo, Naranja, Amarillo, Verde, Azul, Añil, Violeta)/No Muerto/Inmune a Criticoss/· Compañeros animales no pueden actuar.
+· Pánico a la luz solar: Si es de día cambia su Daño y Puntos de Golpe (entre paréntesis)
+· Incorporal: Solo le afecta la MAGIA y un 50% de los ataques con armas mágicas
+· Succión de Vida: Pérdida de Nivel 3/1/ Un fantasma como los de antes, con su sombrero de copa y monóculo/
+
+Draña/7/1/30/Todos los jugadores a los que les den grima las arañas beben 2 UBE/Ninguna/Ninguna/Veneno: Envenenado 2
+· Hechizo Telaraña: Permanece inmóvil hasta que un compañero beba 1 UBE para liberarte o sea tu turno de JI (Te puedes tirar así la noche, amigo)/1/Es la típica Dragña que da mucha grima, de género fluido, se te acerca delicadamente
+y se pega a tí hasta que está bien envuelto en sus telaraña de confeti./
+
+Súcubo/7/2/20/Individual:Dominado por su belleza: Debes elegir a un compañero para atacarle con 1 UBE durante tu primer turno. Común:Cuenta tu primera experiencia sexual (Con quien? Donde? Cuando? Posturas?)…
+…o no cuentes esas cosas y toma 2 UBEs./Demonio/Volador/1/Sabes esa sensación de timo cuando el plato que has pedido no es el que se corresponde con el de la imagen...pues es la que sientes al ver al supuesto Súcubo
+y darte cuenta de que es un Súcube./
+
+Arpías/7/1/12/Canción cautivadora: Los jugadores cantarán juntos (elegid una canción que todos conozcan) hasta el final del combate comunicándose sólo por gestos.
+Si alguien deja de cantar y no es para beber, cae bajo el hechizo de las arpías.
+Un jugador hechizado empleará el resto de turnos en atacar con 1UBE al compañero de la derecha/Volador/Ninguna/Volador: Mitad de daño con ataques normales/3/Perchas tío, perchas, perdón Arpías tío Arpías. Tienes la sensación de haber 
+matado muchas arpías y recogido muchas plumas, demasiadas para una sola vida(Puto WOW)./
+
+Pinchos de tortilla/7/2/10/Son pinchos putrefactos que quitan las ganas de comer. Desaparece la comida que haya en juego./Inmune a Criticoss/Ninguna/Antes de cada ataque hay que decir: ‘Tortilla a 6 euros’ o beber 1 UBE adicional./5/Todas con cebolla, como debe ser. Nada de tortilla sin cebolla ¿Que somos, comunistas?/
+
+¿Que es ese animal?/7/5/50/Si lees el nombre de este monstruo como lo leería la china de APM, no hay golpetazo.
+Golpetazo: 5 Daño/Ninguna/Ninguna/Inmune a Empatía Salvaje
+Si el JI o el JG asume el papel de la Guardia Civil y manda un mensaje de tranquilidad como en el vídeo de APM, el Ataque y los PG cambian/1//
+
+Medusa/7/2/30/Individual:Petrificado el siguiente combate. Común: TS FOR o Petrificación (este combate)/Ninguna/Ninguna/· Petrificación: No puedes moverte y debes permanecer sentado con la boca abierta. El JI verterá dentro de tu boca la bebida que debas beber.
+· Veneno: Envenenado 2/1/En peores plazas habéis toreao, así que no quiero remilgos./
+Gigante de las colinas/4/7/40/La putada es un GOLPETAZO
+Golpetazo: 4 Daño
+Puedes agachar la cabeza y beber 1 UBE para pasar la Putada al siguiente jugador./Ninguna/Ninguna/’Yo pegar. Tú al suelo’/1/Un gitano musculado¡Huid insensatos!/
+
+Tricerátopo/8/4/60/Individual:Puedes elegir entre combatir o ser veterinario:
+Veterinario: Examinas sus heces y pringas tu cara de nocilla hasta el próximo nivel de dungeon. El JI anterior es el que te ‘pinta’. Comun:Si hay combate, el Tricerátopo arrolla al grupo: TS REF/Animal/Ninguna/Cagarse en los ancestros del JI es lícito/1//
+
+Gigante de piedra/8/4/45/La putada es un GOLPETAZO
+Golpetazo: 4 Daño
+Puedes agachar la cabeza y beber 1 UBE para pasar la Putada al siguiente jugador./Ninguna/Ninguna/’Yo pegar. Tú chafado’/1/Un gitano de Murcia,ale suerte con la integración./
+
+Gorgón/8/2 Petrificación/35/Individual:Petrificado el siguiente combate. Común:TS REF o Petrificación (este combate)/Ninguna/Ninguna/Petrificación: No puedes moverte y debes permanecer sentado con la boca abierta. El JI verterá dentro de tu boca la bebida que debas beber./1//
+
+Morhg/8/4/40/Individual: Parálisis. Común:Es el cadáver reanimado de un asesino en serie. Quizás le conozcáis y os evitéis un terrible GOLPETAZO. Cada jugador dice el nombre de un famoso asesino en serie para evitarlo.
+Golpetazo: 4 daño
+Si todos los jugadores nombran uno, el Möhrg desaparece/No Muerto/Inmune a Criticoss/Paralizado: No puedes flexionar codos ni rodillas/1/Te lo describiría pero no me apetece/
+
+Acotamentes/8/1/25/Individual:Dominado: Durante todo el combate, ataca a tus compañeros empezando por los que menos vida tengan.
+Gasta 2 UBEs (si puedes) por ataque para lograr el máximo daño.
+Comun:Explosión Cerebral (NO LEAS LAS REGLAS DE COMBATE EN ALTO)/Ninguna/Ninguna/Explosión Cerebral (Cuanto más cerebro, más dolor)
+Pregunta a los demás personajes '¿Cuántos siglos han pasado desde las Guerras del Dragón?' (no vale repetir)
+Diles el Daño a cada uno según su respuesta sin explicar por qué:
+1-5: 0, 6-8: 1, 9-10: 2, 11: 3, 12-13: 2, 14-16: 1, 17+: 0/1/Aventureros, sus mentes serán acotadas en breve./
+
+Hijos de las grandes amas/8/3/25/Te atrapan y pretenden torturarte a no ser que hagas de heraldo. Tienes dos opciones:
+A. Ser su Heraldo: Anuncia al resto del Grupo el 'Regreso de las Grandes Amas y el Fin del Imperio de los Mortales'.
+B. Escapar: recibiendo Golpetazo
+Golpetazo: 4 daño/Ninguna/Ninguna/Si durante la partida habéis eliminado a los Jabalís o a la Hidra, Añade otro Hijo de las Grandes Amas (por cada uno de esos encuentros)/2/Mas que de las grandes amas son unos hijos de Puta, sobre todo el druida, ese si que es un hijo de Puta/
+
+Lamasu/8/3/45/Si hay un Paladín o un Sanador Sagrado en el Grupo, el Lamasu en vez de luchar, invita a estos a un trago y os deja pasar: 1UBE para cada Paladín y S.Sagrado.
+Si no lo hay:
+Abalanzarse: 3 Daño no evitable/Volador/Ninguna/Volador: Mitad de daño con ataques normales
+· Castigo Divino: A un jugador al que no haya atacado le manda hacer 10 flexiones. El jugador no podrá actuar este turno (está castigado!)/1/Visto un Lamasu vistos todos/
+
+Ogro Hechicero/8/2/30/Polimorfar: Hasta el final del combate eres un sapo. Ejerce tus funciones de JI imitando a un sapo. Ganas Salvacion REF durante este combate pero no puedes llevar a cabo ninguna acción./Ninguna/Ninguna/1/Esto pasa por darle estudios superiores a un Gitano, que solo lo utiliza para hacer daño/
+
+Megarraptor/9/5/60/Golpetazo: 5 Daño
+Puedes evitar el Golpetazo si fueras en una moto rodeado de, al menos, 3 deinónicos. Da al menos 2 vueltas a la sala/Animal/Ninguna/- El muro tiene 12 metros de altura ¿De verdad cree que lo escaló?
+- Depende
+- ¿De qué?
+- De la clase de dinosaurio que nos haya puesto el Master/1/¡Nuevo Megarraptor! Machaca a los Raptor del patio con este Megarraptor! TU SERAS EL REEEYYY, ¡MEGARRAPTOR!, DE MATEL, pilas no incluidas/
+
+Trio de Sagas/9/2/15/Individual: (Annis) Golpetazo: 2 Daño.
+Comun: (Saga Marina) Horrenda: TS VOL./Invisible/Ninguna/Si alguna de las tres sobrevive al primer turno de combate: Desaparecen todas ellas y es invocada una SAGA NOCTURNA que actúa inmediatamente.
+Ataque: 5 + Enfermedad (debilitamiento 3) PG: 50/3/Siempre has querido hacer un trio, y la vida va y te da tu Trio de Sagas. Puta vida Tete/
+
+Perro de guerra Ressiano/9/5/50/Aliento de Fuego: Guindilla o TS REF/Demonio/Ninguna/Ahora no te caen tan bien los Paladines o Sanadores Sagrados del Grupo ¿eh?/1/Este perro tiene mas estudios que tú. Perro con especialidad fundamental de guerra y especialidad complementaria Ressiano/
+
+Gigante de la escarcha/9/5/45/La putada es un GOLPETAZO
+Golpetazo: 4 Daño
+Puedes agachar la cabeza y beber 1 UBE para pasar la Putada al siguiente jugador./Ninguna/Ninguna/Yo pegar. Tú agonizar/1/MMmmmm¿Si le chupas la espinilla se te queda pegada la lengua?/
+
+Ents/9/3/20/Si hay algún Druida en el grupo y se lo pide educadamente en su idioma, los Ents conducen al grupo a la siguiente sala (sin necesidad de efectuar chequeo de trampas). Eso sí, el Druida debe tomar 1 UBE con ellos/Animal/Ninguna/Mi hogar se esconde en lo profundo del bosque/3/Algo estás haciendo mal si hasta los árboles se mueven para guantearte la cara/
+
+Vampiro/9/2/40/Cada jugador empezando por el JI debe decir un método de mantener a raya a un vampiro (o destruirlo). Sin repetir
+Aquellos que no digan ninguno son DOMINADOS hasta el final del combate.
+Si cada jugador dice uno, el combate termina/No Muerto/Inmune a Criticoss/Dominado: El jugador, durante su turno, ataca al jugador de su derecha de la forma más letal que pueda tomando 1 UBE
+· Succión de Vida: Pérdida de Nivel 2/1/Este debe ser de los mindundis para no tener ni siquiera un nombre propio/
+
+Avoral/9/4/60/A. Si hay un Paladín o un Sanador Sagrado en el Grupo, el Avoral en vez de luchar invita a todo el grupo a volar al país de la sanación.
+Todos los que quieran vuelan alrededor de la sala de juego agitando los brazos como si fueran alas.
+Cada vuelta a la sala cura 1 FD (Máx 3)
+Si todo el grupo ‘vuela’, obtenéis:
+- Bolsa de comida
+- Vaso de Agua / persona
+B. Si no lo hay:
+Aura de miedo: TS VOL o Agacharse bajo la mesa hasta el final del combate/Volador/Angel/Volador: Mitad de daño con ataques normales/1/Angelico weno/
+
+Cuotal/10/1/30/Si hay un Paladín o un Sanador Sagrado en el Grupo: Elige a un Jugador para restablecer todos sus PG y regalarle 1 Vaso de Agua
+Si no lo hay:
+Dominado: Durante tu primer turno ataca a un compañero tomándote 2 UBEs para hacer el máximo daño posible./Volador/Invisible/Veneno: Envenenado 4
+· Volador: Mitad de daño con ataques normales (redondeando hacia arriba)
+· Invisibilidad: 50% posibilidades de fallar cada ataque (tira una moneda)/1//
+
+Gigante de Fuego/10/5/50/La putada es un GOLPETAZO
+Golpetazo: 5 Daño
+Puedes agachar la cabeza y beber 1 UBE para pasar la Putada al siguiente jugador./Ninguna/Ninguna/Yo pegar. Tú morir/1//
+
+Golem de Arcilla/10/4/60/Si alguno conoce la canción más famosa de la película GHOST y la canta (o tararea) mientras el JI y otro jugador interpretan la escena de la arcilla, el Golem se pone triste y os deja pasar. El combate termina
+Si no es así, Golpetazo (4 daño + Herida maldita)/Inmune a Criticoss/Ninguna/Herida maldita: Todo jugador que reciba daño del Golem de Arcilla obtiene una Ficha de Herida Maldita.
+A partir de ese momento, cada curación realizada sobre este jugador requiere el doble de Puntos de Curar Heridas
+Un jugador sin FD, pierde la Ficha de Herida Maldita/1//
+
+Rakshasa/10/2/40/Si algún jugador le regala 1 Objeto Mágico, os deja pasar sin luchar/Invisible/Ninguna/Invisibilidad: 50% posibilidades de fallar cada ataque (tira una moneda)
+· Astuto
+Si no es derrotado en el primer asalto de combate, atacará y después escapará.
+Retira todas sus FD y no guardes esta Carta.
+Aparecerá junto con la siguiente Carta de Encuentro o junto con el Boss
+Escapará siempre que pueda/1/Que lástima que en este mundo no haya objetos mágicos. Para mas información hablar con Toe/
+
+Destructor de trasgos/4/60/Si durante toda la partida ningún jugador se ha hecho pasar por trasgo, el Destructor de Trasgos os indicará el camino a la siguiente Sala.
+Omite el chequeo de trampa (en caso de haberlo)/Ninguna/Ninguna/Así que ya no quieres ser un trasgo, eh?/1//
+
+Michael Jackson(séquito)/10/4/10/Elige:
+A. Busca algún reproductor de música y pon de fondo la canción de Thriller
+B. Bebe 1 VAS
+(Es como una novia. ‘Hazlo si quieres’ Pero como no lo hagas te enteras!)/No Muerto/Inmune a Criticoss/Séquito: Viene acompañado por 5 ZOMBIES BAILONGOS
+[Ataque: 2 PG:10 No muertos e Inm. Crít.]
+· Los Jugadores pueden bailar Thriller durante 5 segundos. Desaparece 1 zombie bailongo por cada Jugador que baile. Si todo el grupo baila a la vez, MJ también desaparece/5/Hay laique tu frillerrr na ah nah/
+
+Gatopocalipsis/10/3/20/Individual: Elige a dos jugadores para para que uno de ellos meta el dedo en la boca de otro
+Elige a otros dos para que uno se apoye en los hombros del otro
+Elige un jugador con MAGIA de CURACIÓN (invocar comida), este debe tomar 1 Chp (para los gatos)
+Mantenlos así hasta sacar una foto al grupo.
+Comun:Si algún jugador tiene tres o más gatos (vivos!!) en casa, los gatos no lucharán pero se llevarán toda la comida de la mesa/Animal/Ninguna/Si esto te parece chungo espera a ver cómo está la funda del sofá/3/Los gatos nos comen, nos comen los gatos/
+
+Bebilith/10/4/50/Cazador de Demonios: Si no habéis derrotado a ningún demonio hasta ahora, dejará pasar al grupo sin hacer las otras Putadas.
+Los Paladines y S.Sagrados deberán beber 1UBE para contenerse o iniciar el combate.
+Comun:Telaraña: Cada jugador elige:
+- TS REF
+- Sólo un UBE por turno/Demonio/Ninguna/Veneno: Envenenado 3/1/¿Pooiilo Popeeye?/
+
+Rispitlin, el payaso vampiro/11/2 (x2)+ Succión de vida/50/Individual:Mira a tu alrededor:
+¿Hay globos, ropa tendida, una alcantailla, algún álbum de fotos, galletas de la fortuna o tumbas?
+En caso afirmativo: Golpetazo 4
+Común:Los jugadores que nunca hayan ido al circo no sabrán diferenciarlo de un payaso común y sufrirán Golpetazo 1/No Muerto/Inmune a Criticoss/Succión de Vida: Pérdida de Nivel 2/1/Sientes un inevitable deseo de apretarle la naríz Moc Moc/
+
+Elemental Anciano/11/4 (+guindilla) ó Torbellino 6/50/Cada jugador debe decir una frase 'chey', es decir, 'de viejo' o recibir Golpetazo (3 daño)
+Si todo el grupo dice una frase de chey, el Elemenal deja pasar al grupo sin luchar/Ninguna/Ninguna/Par - Fuego o Piedra: Ataque 4 + guindilla
+Impar - Agua o Aire: Ataque Torbellino 6
+Torbellino: Gira hasta 6 veces sobre ti mismo
+Daño = 6 – número de vueltas dadas/1/Un elemental con mejillones en los huevos pero con babuchas de ferpa/
+
+Vrocs/11/2 + Esporas/30/Danza de la Ruina: 4 Daño a cada jugador
+Se puede contrarrestar si todo el grupo ejecuta el poderoso contrahechizo: 'El corro de la patata'/Demonio/Ninguna/Esporas: Envenenado 1 (objetivo más los dos jugadores adyacentes)
+Al corro de la patata comeremos ensalada como comen los señores naranjitas y limones ¡Achupé! ¡Achupé! ¡Sentadita me quedé!/1//
+
+No leas el nombre del monstruo en alto/11/1 a todos/40/(Lee esto en silencio)
+Plantea en voz alta esta pregunta al grupo:
+'Compañeros, sólo podréis contestar una respuesta por persona ¿Qué tienen en común un hámster, un dentista, el porno duro y Steven Seagal?'
+Alguien debe responder exactamente: 'Wishmaster/Nightwish/Una canción'
+A. Si no lo hace ninguno. Todo el grupo bebe 2 UBEs
+B. Si alguno en vez de contestar eso, empieza a cantar 'Wishmaster del grupo Nightwish', el combate termina/Invisible/Ninguna/Invisibilidad: 50% posibilidades de fallar cada ataque/1/No es tan maestro como desearía/
+
+Golem de Piedra/11/4/70/Puedes jugar contra él a 'piedra-papel-tijeras' tantas veces como desees antes de empezar el combate.
+Cada ronda cuesta 1 UBE
+El que pierde recibe 20 Daño
+Él, por supuesto, siempre elige Piedra/Inmune a Criticoss/Ninguna/Inmune a Magia: Ninguna habilidad de MAGIA que tenga como objetivo al Golem de Piedra puede afectarle
+'En mi país se llama cuarzo, pergamino, tenazas'/1//
+
+Kraken/12/2 a todos + Apresar/70/Si algún jugador tiene la Marca Negra, es devorado (Golpetazo)
+Devorado: 4 daño
+Ah, ¿que ninguno ha sido marcado por el bueno de Jones? Nos vale cualquier tatuaje/Ninguna/Ninguna/Apresar: Después de ser dañado por el Kraken, debe tomarse 1 UBE para poder actuar/1/Que ya no escuchemos voces felices, que nadie alce la vista al cielo buscando esperanza. Que este día se maldiga, por los que van a despertar… ¡Al Kraken!
+
+Horda Zombie/12/2 a todo el grupo/50/Pregunta al resto del grupo, uno a uno y por orden:
+'¿Te ha gustado la segunda temporada de Walking Dead?'
+Una vez que todos hayan contestado comprueba qué sucede:
+Si alguno responde afirmativamente, es devorado por la horda: 4 Daño
+Si todo el grupo responde que 'No la ha visto', el combate termina./No Muerto/Inmune a Criticoss/Horda: En la unión está su fuerza. Por muchos que mates, siempre habrá más:
+- Cada ataque sólo hace 1 de daño
+- La MAGIA con daño de área hará su daño íntegro//
+
+El rey Leonal/12/6/80/A. Si hay un Paladín o un Sanador Sagrado en el Grupo, El Rey Leonal en vez de luchar invita a estos a 1 UBE y os deja pasar si cantan juntos 10 segundos de una canción del Rey León
+B. Si no lo hay: Combate/Angel/Ninguna/Debilidad a los musicales: Si un jugador canta un trozo de una canción (10 segundos como mínimo) del Rey León antes de atacar, duplica el daño que hubiera de infligir
+No se puede repetir canción.(No implementado, pero puedes cantar igual)/1/Nunca será como el rey mas grande que DaniD Vito interpretó en tu imaginación/
+
+Doplegganger/12/1/20/El Doplegganger te IMITA
+Toma 1 VAS si quieres evitarlo. En ese caso el combate se resuelve de la forma normal/Ninguna/Ninguna/Imitar JI: Nadie puede estar seguro de quien es el Doplegganger y quien el Compañero
+Para asegurarse de eliminarlo, los ataques deben dirigirse al compañero (no valen ataques con varios objetivos).
+Después de cada ataque tira una moneda.
+- Cara: El Doplegganger recibe el daño
+- Cruz: Jugador Inicial recibe el daño (Ver reglas Player vs Player)/1/¿Eres tú? y dice Si soy yo/
+
+Kolyarut/12/5/70/Todos aquellos jugadores que deban dinero a otro, reciben golpetazo
+Golpetazo: 4 Daño
+Si no hay ni una sola pareja de jugadores con deudas económicas dentro del grupo, el Kilyarut os ignora dejando vía libre/Inmune a Criticoss/Ninguna/Pagarás, pagarás, ya verás que pagarás
+Hasta la última peseta ya verás que pagarás/1//
+
+Gusano de la Escarcha/12/4/60/Golpetazo: 4
+Puedes convencer a dos jugadores (uno de ellos podrías ser tú) para que se pasen un hielo con la boca. De esta forma quedará sorprendido y no llevará a cabo el Golpetazo
+Si lo hace la mitad del grupo (redondeando hacia abajo) el gusano recordará a su mujer gusana y se marchará sin combatir/Ninguna/Ninguna/Agonía mortal: Explosión de frío al morir (TS REF)x2/1/Esto es lo que pasa cuando dejamos que el anisaki campe a sus anchas/
+
+Contemplador/13/2+Rayos oculares/40/Individual:Sin MAGIA hasta el fin del combate
+Común: Rayos Oculares/Volador/Ninguna/Volador: Mitad de daño con ataques normales
+· Rayos oculares: 50% prob. por jugador. Rayo aleatorio
+1- 2 TS FOR
+2- Petrificado
+3- 2 UBES
+4- 2 TS VOL
+5- Ralen Volador: Mitad de daño con ataques normales
+· Rayos oculares: 50% prob. por jugador. Rayo aleatorio
+1- 2 TS FOR
+2- Petrificado
+3- 2 UBES
+4- 2 TS VOL
+5- Ralentizado
+6- 4 UBES
+· Petrificado: No puedes moverte en todo el combate. El JI (o JG en su defecto) debe echar la bebida en tu boca
+· Ralentizado: +1 UBE en cada acción o ap. especialtizado
+6- 4 UBES
+· Petrificado: No puedes moverte en todo el combate. El JI (o JG en su defecto) debe echar la bebida en tu boca
+· Ralentizado: +1 UBE en cada acción o ap. especial/1/¿Que miras?/
+
+Campeón Sazonado/13/5 putridez de momie/70/Individual:Putridez de Momia
+Común:Desesperación: TS VOL o dañar la mitad (redondeando hacia arriba) durante todo el combate/No Muerto/Inmune a Criticoss/Putridez de Momia: Elige
+-Debilitado 5
+-Putrefacto: Rodea el brazo derecho con papel higiénico. No puedes usar ese brazo hasta ser sanado con Sanación 5/1//
+
+Ragas Guardianas/13/4 +veneno/30/A. Si hay un Paladín o un Sanador Sagrado en el Grupo, las Nagas Guardianas, en vez de luchar, avisan a estos de que más adelante sólo enemigos encontrarán. El grupo puede retirarse ahora si el JG lo dice y nadie podrá reprochárselo
+B. Si no lo hay:
+Putada individual: 2 daño + Escupir/Invisible/Ninguna/Invisibilidad: 50% posibilidades de fallar cada ataque (tira una moneda)
+· Escupir: Elige entre Veneno 4 o Escupir en tu vaso antes de beber el daño recibido/3//
+
+Dejar el LOL/13/0+joderte los estudios/1/Si alguna vez has jugado más de 2 horas seguidas a un MOBA… Vas a tener que elegir:
+A. Abandonar la partida (para irte a pensar en builds y metajuegos). Dejarás de jugar pero no tendrás que beber en ningún encuentro sucesivo.
+B. Hacer 2 TS VOL/Ninguna/Ninguna/El mayor reto del juego es salir de él/1/¿Un Lol? A mi me apetece/
+
+Grupo de Balaeyrghts/13/2/30/Individual: Como les enseñó el Jefe del clan, primero golpean, luego preguntan:
+Golpetazo: 2 daño
+Común: Elige si luchar o demostrar que en el grupo sois todos TIPOS DUROS/Ninguna/Ninguna/Mostrar que sois TIPOS DUROS:
+El JI empareja a todos los miembros del grupo de dos en dos (si alguno queda libre, se une él)
+Realiza una de estas pruebas (aleatoria). El JI hace de juez y el perdedor bebe 1UBE (si se empata beben los dos):
+1- Pulso de fuerza
+2- Eructo: El más sonoro gana
+3- Sacar bicpes: el más grande gana
+4- Mirada amenazante: La más intimidatoria gana
+5- Juramento: El que más imponga al decir ‘LO JURO’, gana.
+6- Beber chupitos: El que más beba (min 1), gana/5/Por fin, un grupo de gente buena y amable en todo este Dungeons/
+
+Liche/14/2+ Paralización(atacados)+Magias arcanas (en grupo)/70/Parlización permanente/No Muerto/Inmune a Criticoss/Paralizado permanente: Afecta a todos los atacados por el ataque normal. No puedes flexionar codos ni rodillas. Necesaria Sanación 2 al final del combate.
+· Magia arcana: Cada jugador del grupo hace una salvación aleatoria (1-2 FOR, 3-4 REF, 5-6 VOL)
+· Filactelia: Para acabar con él, después del combate es necesario destruir la filactelia (1Chp)
+· Demente parlanchín: Si le dejáis hablar lo suficiente podréis os revelará la ubicación de sus tesoros. Al acabar el combate el JG roba 1 Tesoro nivel 1-4. Para ello no debéis derrotarlo antes del segundo turno de combate./1/No te dejes engañar por su aspecto juvenil, tiene mas años que la tarasca/
+
+Trogol, trol de guerra/14/6 Golpe Tronante/80/Es un Troll de Guerra tan poderoso como vanidoso. Si recitas dos cuartetos (rimas ABBA) hablando de lo estupendo que es, os dejará pasar sin combatir/Ninguna/Ninguna/Al ser derrotado un jugador de quemarlo con ácido o fuego (1 Chp)
+· Golpe Tronante: Todo personaje herido por Trogol, debe superar 1 TS de FOR o no actuar el próximo turno/1//
+
+Señor de los Achuchones/14/5 abrazado/70/Individual: Eres fuertemente abrazado por él.
+Común:Sólo para jugadores varones:
+Vuestra masculinidad quedará en entredicho a no ser que os rasquéis los testículos mientras eructáis./Ninguna/Ninguna/Abrazado: Todo personaje atacado queda maldito hasta el fin de sus días. Cada vez que un nuevo JI se levante, debe levantarse para darle un abrazo.
+Para librarse de esta terrible maldición: Sanación 4/1/Mas que su daño, duele su forma de abrazar, te sentir enla friendzone/
+
+Ralfesni/14/3 +Castigar/50/Se encarga de jugzar a las almas que llegan al abismo y ninguno sois trigo limpio.
+Todos los personajes menos S.Sagrado y Paladín sufren Castigar/Demonio/Volador/Volador: Mitad de daño con ataques normales
+· Castigar: Tumbate en el suelo boca abajo y haz 10 flexiones. Tras cada flexión debes decir ‘soy un pecador’.
+Además debes elegir hacer TS VOL o perder tu próximo turno/1//
+
+Dragón/14/8/80/Explica al grupo que ‘hay formas peores de morir’ y después elige:
+A. Combatir contra él:
+Todo el grupo sufre Aliento de dragón (3TS REF) y después lucháis contra él.
+B. Hacerle una ofrenda de tesoro:
+El grupo le regala 2 cartas de equipo
+Después os traicionará y lucharéis contra él
+C. Hacerle una GRAN ofrenda:
+El grupo le regala 5 cartas de equipo
+El combate termina y os deja pasar/Volador/Ninguna/Volador: Mitad de daño con ataques normales
+· Tesoro: Si lucháis contra él y vencéis, el JG roba 2 tesoros de nivel 1-4 y otro de nivel 5-9/1/Mentira, nadie va a robar nada, no hay tesoros en este Dungeons. Para mas información hablar con Toe/
+
+La criatura aviaria regenerante/14/5+ veneno/45/Verlo tan de cerca te desconcierta. Comienzas a pensar en todas las veces que oíste preguntar por ella
+‘¿Es aviaria? ¿Es regenerante?’
+El resto del combate meditarás sobre ello y beberás 1 UBE.
+No actuarás./Volador/Ninguna/Volador: Mitad de daño con ataques normales
+· Regeneración: Retira 30 FD cada vez que sea su turno.
+Al ser derrotado un jugador de quemarlo con ácido o fuego (1 Chp)
+· Veneno: Envenenado 4/1/Parece que se quedaron sin recursos para nombrar a los enemigos/
+
+Señor de los vampiros/15/6/80/Individual: Dominado/No Muerto/Inmune a Criticoss/Séquito: Viene acompañado por su señora Vampiresa
+· Dominado: El jugador, en su turno y durante todo el combate, ataca a un jugador de su elección de la forma más letal que pueda tomando 1 UBE.
+· Succión de Vida: Pérdida de Nivel 4/2//
+
+Taiga Teris Tarcastilla de los Torotei de Terequinintis/15/0+Magia Arcana/50/Individual:Pierdes tu primer turno hablando con una ilusión/Volador/Invisible/Azote de Gigantes y Amiga de dragones: Si el grupo NO ha luchado contra EL DRAGÓN y ha combatido al menos contra un Gigante, la Gnoma os dejará pasar.
+· Volador: Mitad de daño con ataques normales
+· Imagen múltiple (invisible): 50% posibilidades de fallar cada ataque (tira una moneda)
+· Contingencias: Ninguna habilidad de MAGIA que tenga como objetivo a la Gnoma puede afectarle
+· Magia arcana: Cada jugador del grupo hace una salvación aleatoria (1-2 FOR, 3-4 REF, 5-6 VOL)/1/Para una descripción mas detalla hablar con Teje Tejerino de los Tejedores del Tejar/
+
+Abogados/15/4/50/Individual: Determina aleatoriamente de parte de quién vienen:
+1-2: Bebitalia (B&B)
+3-4: Mediaset (ByB)
+5-6: Devir (D&D)/Demonio/Ninunga/El dinero es el dinero: Lucharán aunque no haya Paladines ni S.Sagrados
+· Bebitalia: Nadie puede estar sentado este combate
+· Mediaset: Cada turno, cada jugador debe decir un personaje del mundo del corazón en España o beber 1UBE
+· Devir: Ilustraciones no autorizadas. Ninguna carta de equipo funciona este turno/3/Algebráico/
+
+Abolez Mago/15/4+esclavizar/50/En la cueva donde el Abolez levita sobre un lago, encontráis una varita de Polimorfismo:
+Pregunta a un único jugador (con personaje de Poder) en qué animal de estos habría que transformar al Abolez para que se ahogara al caer al agua:
+'¿Elefante – Pez – Armadillo?'/Volador/Invisible/Respuesta: Una vez el jugador ha elegido, lee su opción:
+- Elefante: Al caer queda apresado en el lecho del lago y muere ahogado. Podéis continuar
+- Pez: Por primera vez siente que su cueva no es pequeña. Ahora disfruta de la vida y os deja pasar
+- Armadillo: Son excelentes buceadores. Consigue escapar y contrahechizar el polimorfismo ¡Luchad!
+· Volador: Mitad de daño con ataques normales
+· Imagen múltiple (invisible): 50% posibilidades de fallar cada ataque (tira una moneda)
+· Esclavizar: El personaje impactado queda esclavizado. En su próximo turno ataca a un jugador de su elección de la forma más letal que pueda tomando 1 UBE/1//
+
+Angel Guardián/15/6+Castigo divino/60/No os dejará pasar porque sois unos simples mortales y no sabéis a lo que os enfrentáis. Debéis luchar contra él.
+Pero como es bueno (tonto), os permite atacar primero/Angel/Volador/'Esto está mal, chicos': Paladines y S.Sagrados hacen la mitad de daño (redondeando hacia arriba)
+· Barrera de cuchillas: Atacantes cuerpo a cuerpo reciben 1 Daño
+· Castigo Divino: Todo personaje impactado debe hacer 10 sentadillas/1//
+
+Sean Bean/15/14/140/¡Es él, el más poderoso de todos! Pero se le puede vencer y sabéis cómo ¿No?
+Pregunta, por orden, al resto de jugadores. Cada debe decir:
+- UNA Serie o Peli donde muere Sean Bean
+- Cómo muere
+Cada jugador que conteste, restará 20 PG y 2 Atq. a Sean Bean/Ninguna/Ninguna/’One does not simply reach level 15/1/Puedes decir todas sus películas, pero seguirá teniendo toda su vida, por algo es Sean Bean/
+
+
+
+
+
+
+
+
+
+
+
