@@ -41,7 +41,7 @@ public class MesaDestino  {
     }    
     public void ListaEnemigos(){
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/enemigos.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("enemigos.txt"))) {
             StringBuilder contenido = new StringBuilder();
             String linea;
             while ((linea = reader.readLine()) != null) {

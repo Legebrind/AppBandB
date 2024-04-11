@@ -85,16 +85,16 @@ public class Guerrero extends Jugador {
     addTipoAtaque_fisico(Enums.Tipo_Ataque.Adistancia);
     //Este bonificador solo se aplica cuando bebe un UBE, añade esta cantidad al ataque base
    
-    Ataque_Poderoso.put(6,6);
-    Ataque_Poderoso.put(7,7);
-    Ataque_Poderoso.put(8,8);
-    Ataque_Poderoso.put(9,10);
-    Ataque_Poderoso.put(10,11);
-    Ataque_Poderoso.put(11,12);
-    Ataque_Poderoso.put(12,13);
-    Ataque_Poderoso.put(13,15);
-    Ataque_Poderoso.put(14,16);
-    Ataque_Poderoso.put(15,17);
+    Ataque_Poderoso_mejorado.put(6,6);
+    Ataque_Poderoso_mejorado.put(7,7);
+    Ataque_Poderoso_mejorado.put(8,8);
+    Ataque_Poderoso_mejorado.put(9,10);
+    Ataque_Poderoso_mejorado.put(10,11);
+    Ataque_Poderoso_mejorado.put(11,12);
+    Ataque_Poderoso_mejorado.put(12,13);
+    Ataque_Poderoso_mejorado.put(13,15);
+    Ataque_Poderoso_mejorado.put(14,16);
+    Ataque_Poderoso_mejorado.put(15,17);
 
   }
     
@@ -118,7 +118,7 @@ public class Guerrero extends Jugador {
             }while (respuesta!=1 && respuesta!=2);
         if(respuesta==1){
             atqpoderoso=true;
-            iniciarAtaque_Poderoso_mejorado();
+            
             respuesta=-1;}
         respuesta=-1;
         if(nivelMundo>=6 && (Acorazado==false&&EstiloAtaque_Poderoso==false)){
@@ -135,16 +135,19 @@ public class Guerrero extends Jugador {
             if(respuesta==2){
                 Acorazado=true;
             }
-            else{ EstiloAtaque_Poderoso=true;}
+            else{ 
+                iniciarAtaque_Poderoso_mejorado();
+                EstiloAtaque_Poderoso=true;
+            }
         }
         if(Acorazado){
             if(atqpoderoso){
                 aumentarModificador(Ataque_Poderoso.get(nivelMundo));
             }
-            
         }
         if(atqpoderoso){
-            aumentarModificador(Ataque_Poderoso_mejorado.get(nivelMundo));
+            aumentarModificador(EstiloAtaque_Poderoso?Ataque_Poderoso_mejorado.get(nivelMundo):Ataque_Poderoso.get(nivelMundo));
+           
         }
         return getAtaqueBase(nivelMundo)+getModificador()+getModificador_toda_la_sala();
     }

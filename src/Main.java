@@ -23,7 +23,7 @@ public class Main {
        //Clase donde se guarda el grupo, los enemigos y los tesoros. Debería controlar el orden del juego.
         MesaDestino Mesaprincipal = new MesaDestino(); 
         
-        Reglas.leer_Txt("src/Portada.txt");
+        Reglas.leer_Txt("Portada.txt");
         Descripcion_Combate descripciones_Combate = new Descripcion_Combate();
         
         
@@ -63,7 +63,19 @@ public class Main {
                 Reglas.combatir(enemigo,Aventureros,input,NivelMundo,descripciones_Combate,Mesaprincipal);//3_Secuencia, el combate.
                 Reglas.limpieza(Aventureros,NivelMundo);//4_Limpieza, esta fase es para curarse. Como el programa no lleva las heridas de los pj imprimirá por pantalla
                 //cada personaje con la habilidad de curar, el coste de la habilidad y su efecto. Preguntará a los jugadores que indiquen cuando estén listos para ir a la siguiente sala.
-                              
+                if(NivelMundo==5&& sala==4){
+                    Reglas.prueba1();
+                } 
+                if(NivelMundo==10 && sala==4){
+                    Reglas.prueba2();
+                }
+                if(NivelMundo==15 && sala==4){
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("                     Aquí acaba vuestro viaje                   ");
+                    System.out.println("Última prueba, donde serán respondidas todas nuestras preguntas ");
+                    System.out.println("----------------------------------------------------------------");
+                    Reglas.prueba3();
+                }             
             }
 
         }

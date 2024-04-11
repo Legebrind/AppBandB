@@ -101,7 +101,7 @@ public class Logica {
        
         //2ºPatear la puerta
        Enemigo enemigo;
-       
+       //CajaMusica.reproducir(CajaMusica.getPuerta());
        System.out.println(aventureros.getJugador_inicial().getNombre()+"\n¡Pateas la puerta! (Como diría nuestro Miguelañez 'Con dos cojones y un palo')");
        
         enemigo=Mesaprincipal.getEnemigo(NivelMundo);
@@ -190,6 +190,7 @@ public class Logica {
 
     public void combatir (Enemigo enemigo, Grupo aventureros, Scanner input,int NivelMundo,Descripcion_Combate Descripciones,MesaDestino mesaPrincipal){
         //3º Combatir
+        
         for (Jugador jugador : aventureros.getJugadores()) {
             if(jugador.getClase()==Enums.Tipo_Clase.Explorador){
                     if(enemigo.getCaracteristicas().contains("Animal")){
@@ -209,6 +210,7 @@ public class Logica {
                             System.out.println("****************");
                             System.out.println("Combate evitado");
                             System.out.println("****************");
+                            CajaMusica.stop();
                             mesaPrincipal.eliminar_enemigo_lista(enemigo);
                             for (Jugador aventurero: aventureros.getJugadores()){
                                 aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
@@ -236,6 +238,7 @@ public class Logica {
                         System.out.println("****************");
                         System.out.println("Combate evitado");
                         System.out.println("****************");
+                        CajaMusica.stop();
                         mesaPrincipal.eliminar_enemigo_lista(enemigo);
                         for (Jugador aventurero: aventureros.getJugadores()){
                             aventurero.setModificador(0);//Se elimina los modificadores que duran un turno
@@ -260,6 +263,7 @@ public class Logica {
         System.out.println("................................");
         System.out.println("      Comienza el combate");  
         System.out.println("................................");
+        CajaMusica.reproducir(CajaMusica.getCancion());
         while(horda.size()>0){
             ArrayList<Modificador> modificadores=new ArrayList<>();
             //fase de ataques magicos
@@ -350,9 +354,11 @@ public class Logica {
     
     
     System.out.println("Pin pan muerto\nCawen dioh que no os morís\nCuraos pedazo de pus tumurosa");
+    CajaMusica.stop();
     mesaPrincipal.eliminar_enemigo_lista(enemigo);
     }
     public void limpieza(Grupo aventureros,int nivelMundo){
+            CajaMusica.reproducir(CajaMusica.getLimpieza());
             //4º Limpieza.
             //Hay que eliminar todas las ventajas al finalizar el combate
             //Druida:
@@ -452,6 +458,68 @@ public class Logica {
             case (10), (11), (12) -> 21 + modificador;
             default -> 32 + modificador;
         };
+    }
+
+    public void prueba1(Scanner input){
+        System.out.println("**************************************************");
+        System.out.println("*                 ¡BOSS!                         *");
+        System.out.println("**************************************************");
+        System.out.println("");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("/             Maestro Crosfitero                  /");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("/                ¡VERDÉRCULES!                    /"); 
+        System.out.println("/                                                 /");
+        System.out.println("/  ¿Eres el nuevo crossfiter del barrio?          /");
+        System.out.println("/  ¡Has sido retado! Derrota a todos los maestros /");
+        System.out.println("/  del barrio para ser el maestro crossfitero     /");
+        System.out.println("/                                                 /");
+        System.out.println("///////////////////////////////////////////////////");      
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Introduce la clave una vez finalizada la prueba");
+        int respuesta=-1;
+        do{
+            try{
+                respuesta=input.nextInt();
+            }catch(Exception e){
+                System.out.println("Si no sabes la clave no metas mierdas");
+            }
+            input.nextLine();    
+        }while(respuesta!=19901024);
+
+    }
+     public void prueba2(Scanner input){
+        System.out.println("**************************************************");
+        System.out.println("*                    ¡BOSS!                      *");
+        System.out.println("**************************************************");
+        System.out.println("");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("/                 Salva al ADC                    /");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("");
+        System.out.println("///////////////////////////////////////////////////");
+        System.out.println("/ Tati te ha contratado tus servicios como suporte/"); 
+        System.out.println("/                    porque                       /");
+        System.out.println("/ sabe que esta noche carricoche y no quiere que  /");
+        System.out.println("/ acabe con un 'Me encuentro maaaaaaaaaal'        /");
+        System.out.println("/   ¡Salva a Miguelico, tu ADC favorito!          /");
+        System.out.println("///////////////////////////////////////////////////");      
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Introduce la clave una vez finalizada la prueba");
+        int respuesta=-1;
+        do{
+            try{
+                respuesta=input.nextInt();
+            }catch(Exception e){
+                System.out.println("Si no sabes la clave no metas mierdas");
+            }
+            input.nextLine();    
+        }while(respuesta!=20240511);
+
     }
 }
 
